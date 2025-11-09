@@ -1,0 +1,118 @@
+title: Alfabet literowania (PL)
+description: Utrwal polski alfabet literowy używany w łączności radiowej i telefonicznej.
+slug: polski-alfabet-literowy
+questions:
+  - type: open
+    text: Jakim słowem literujesz literę "A" w polskim alfabecie literowym?
+    answers:
+      - Adam
+  - type: open
+    text: Jakiego imienia używasz dla litery "B"?
+    answers:
+      - Barbara
+  - type: open
+    text: Jakie słowo reprezentuje literę "C"?
+    answers:
+      - Celina
+  - type: open
+    text: Jak brzmi wyraz przypisany literze "D"?
+    answers:
+      - Dorota
+  - type: open
+    text: Jak literujesz literę "E"?
+    answers:
+      - Ewa
+  - type: open
+    text: Jakie słowo odpowiada literze "F"?
+    answers:
+      - Franciszek
+  - type: open
+    text: Jakie imię przypisano literze "G"?
+    answers:
+      - Grazyna
+  - type: open
+    text: Jak nazywa się litera "H" w tym alfabecie?
+    answers:
+      - Henryk
+  - type: open
+    text: Jakiego słowa używasz przy literze "I"?
+    answers:
+      - Irena
+  - type: open
+    text: Jakim słowem wywołujesz literę "J"?
+    answers:
+      - Jadwiga
+  - type: open
+    text: Jakie słowo kodowe odpowiada literze "K"?
+    answers:
+      - Karol
+  - type: open
+    text: Jak literujesz literę "L"?
+    answers:
+      - Ludwik
+      - Leon
+  - type: open
+    text: Jak brzmi słowo przypisane literze "Ł"?
+    answers:
+      - Łukasz
+  - type: open
+    text: Jakim imieniem nazywasz literę "M"?
+    answers:
+      - Maria
+  - type: open
+    text: Jakie słowo stosujesz dla litery "N"?
+    answers:
+      - Natalia
+  - type: open
+    text: Jak wywołujesz literę "O"?
+    answers:
+      - Olga
+  - type: open
+    text: Jak literujesz literę "P"?
+    answers:
+      - Paweł
+      - Piotr
+  - type: open
+    text: Jakie słowo przypisano literze "Q"?
+    answers:
+      - Quebec
+      - ku
+  - type: open
+    text: Jakie słowo przypisano literze "R"?
+    answers:
+      - Roman
+  - type: open
+    text: Jak brzmi słowo dla litery "S"?
+    answers:
+      - Stanisław
+  - type: open
+    text: Jakie imię oznacza literę "T"?
+    answers:
+      - Tadeusz
+  - type: open
+    text: Jak wymawiasz literę "U" w tym systemie?
+    answers:
+      - Urszula
+  - type: open
+    text: Jak literujesz literę "V"
+    answers:
+      - Violetta
+  - type: open
+    text: Jakie słowo oznacza literę "W"?
+    answers:
+      - Wanda
+      - Wacław
+  - type: open
+    text: Jakim słowem literujesz literę "X"?
+    answers:
+      - Xsawery
+      - Xsantypa
+  - type: open
+    text: Jak literujesz literę "Y"?
+    answers:
+      - Ypsylon
+      - Ipsilon
+  - type: open
+    text: Jakie słowo przypisano literze "Z"?
+    answers:
+      - Zygmunt
