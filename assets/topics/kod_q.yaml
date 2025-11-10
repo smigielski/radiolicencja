@@ -145,121 +145,101 @@ questions:
     correct_index: 0
 
   - type: open
-    text: Podaj kod Q oznaczający: „Jestem zajęty, proszę nie przeszkadzać”.
+    text: Jestem zajęty, proszę nie przeszkadzać
     answers:
       - QRL
-      - qrl
 
   - type: open
-    text: Podaj kod Q oznaczający: „Kończę nadawanie, wyłączam stację”.
+    text: Kończę nadawanie, wyłączam stację
     answers:
       - QRT
-      - qrt
 
   - type: open
-    text: Podaj kod Q oznaczający: „Kto mnie woła?”.
+    text: Kto mnie woła?
     answers:
       - QRZ
-      - qrz
 
   - type: open
-    text: Podaj kod Q oznaczający: „Proszę czekać, wywołam cię ponownie”.
+    text: Proszę czekać, wywołam cię ponownie
     answers:
       - QRX
-      - qrx
 
   - type: open
-    text: Podaj kod Q oznaczający: „Zwiększ moc, zwiększam moc”.
+    text: Zwiększ moc, zwiększam moc
     answers:
       - QRO
-      - qro
 
   - type: open
-    text: Podaj kod Q oznaczający: „Moja częstotliwość jest…”.
+    text: Moja częstotliwość jest…
     answers:
       - QRG
-      - qrg
 
   - type: open
-    text: Podaj kod Q oznaczający: „Przejdź na częstotliwość, zmień częstotliwość”.
+    text: Przejdź na częstotliwość, zmień częstotliwość
     answers:
       - QSY
-      - qsy
 
   - type: open
-    text: Podaj kod Q oznaczający: „Mam zakłócenia od innych stacji”.
+    text: Mam zakłócenia od innych stacji
     answers:
       - QRM
-      - qrm
 
   - type: open
-    text: Podaj kod Q oznaczający: „Siła twoich sygnałów waha się”.
+    text: Siła twoich sygnałów waha się
     answers:
       - QSB
-      - qsb
 
   - type: open
-    text: Podaj kod Q oznaczający: „Jestem gotów do pracy, jestem czynny w eterze”.
+    text: Jestem gotów do pracy, jestem czynny w eterze
     answers:
       - QRV
-      - qrv
 
   - type: open
-    text: Podaj kod Q oznaczający: „Moje położenie geograficzne jest…”.
+    text: Moje położenie geograficzne jest…
     answers:
       - QTH
-      - qth
 
   - type: open
-    text: Podaj kod Q oznaczający: „Zmniejsz moc, zmniejszam moc”.
+    text: Zmniejsz moc, zmniejszam moc
     answers:
       - QRP
-      - qrp
 
   - type: open
-    text: Podaj kod Q oznaczający: „Mam dla ciebie telegram, wiadomość”.
+    text: Mam dla ciebie telegram, wiadomość
     answers:
       - QTC
-      - qtc
 
   - type: open
-    text: Podaj kod Q oznaczający: „Łączność, mam łączność”.
+    text: Łączność, mam łączność
     answers:
       - QSO
-      - qso
 
   - type: open
-    text: Podaj kod Q oznaczający: „Potwierdzam odbiór, przyślę kartę potwierdzającą łączność”.
+    text: Potwierdzam odbiór, przyślę kartę potwierdzającą łączność
     answers:
       - QSL
-      - qsl
 
   - type: open
-    text: Podaj kod Q oznaczający: „Czytelność twojego sygnału jest…”.
+    text: Czytelność twojego sygnału jest…
     answers:
       - QRK
-      - qrk
 
   - type: open
-    text: Podaj kod Q oznaczający: „Siła twojego sygnału jest…”.
+    text: Siła twojego sygnału jest…
     answers:
       - QSA
-      - qsa
 
   - type: open
-    text: Podaj kod Q oznaczający: „Która jest godzina?” / „Podaj czas”.
+    text: Która jest godzina? / Podaj czas
     answers:
       - QTR
-      - qtr
 
   - type: open
-    text: Podaj kod Q oznaczający: „Jakie mam miejsce w kolejce?”.
+    text: Jakie mam miejsce w kolejce?
     answers:
       - QRY
-      - qry
 
   - type: open
-    text: Podaj kod Q oznaczający: „Nazwa twojej stacji jest…”.
+    text: Nazwa twojej stacji jest…
     answers:
       - QRA
-      - qra
