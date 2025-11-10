@@ -41,6 +41,7 @@ title: My Topic
 slug: my-topic
 description: Short summary shown in the list.
 image: assets/images/example.png
+test_question_limit: 25
 questions:
   - text: Example multiple-choice question?
     answers:
@@ -58,6 +59,7 @@ questions:
 Field reference:
 
 - `title`, `slug`, `description`, `image`: topic metadata displayed on the list.
+- `test_question_limit`: optional cap (default **20**) for how many questions are pulled into a test session. Learning mode always uses the full question bank.
 - `questions`: array of question objects.
   - Multiple-choice: omit `type`, provide `answers` as strings, and either use `correct_index` (0-based or letter) or set `correct: true` in the answer map.
   - Open questions: set `type: open` and enumerate acceptable answers inside `answers`. User responses are normalized (case-insensitive, punctuation trimmed) before comparison.

@@ -90,12 +90,16 @@ class _TopicListScreenState extends State<TopicListScreen> {
     );
     if (mode == null) return;
     if (!mounted) return;
+    final questions = mode == QuizMode.test
+        ? topic.buildTestQuestions()
+        : topic.questions;
+
     await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) => QuizScreen(
           topicSlug: topic.slug,
           topicTitle: topic.title,
-          questions: topic.questions,
+          questions: questions,
           mode: mode,
           progressService: progressService,
         ),
@@ -478,6 +482,7 @@ class Topic {
     required this.imageAsset,
     required this.slug,
     required this.questions,
+    this.testQuestionLimit = 20,
   });
 
   final String title;
@@ -485,6 +490,7 @@ class Topic {
   final String imageAsset;
   final String slug;
   final List<QuizQuestion> questions;
+  final int testQuestionLimit;
 
   bool get hasQuestions => questions.isNotEmpty;
 
@@ -496,6 +502,7 @@ class Topic {
       imageAsset: (map['image'] ?? '').toString().trim(),
       slug: _slugify(map['slug'], fallback: title),
       questions: _parseQuestions(map['questions']),
+      testQuestionLimit: _parseTestLimit(map['test_question_limit']),
     );
   }
 
@@ -537,6 +544,29 @@ class Topic {
       return questions;
     }
     return const [];
+  }
+
+  static int _parseTestLimit(Object? raw) {
+    if (raw is int) {
+      return raw > 0 ? raw : 20;
+    }
+    if (raw is String) {
+      final parsed = int.tryParse(raw.trim());
+      if (parsed != null && parsed > 0) {
+        return parsed;
+      }
+    }
+    return 20;
+  }
+
+  List<QuizQuestion> buildTestQuestions({Random? random}) {
+    final rng = random ?? Random();
+    final pool = List<QuizQuestion>.from(questions)..shuffle(rng);
+    final limit = testQuestionLimit <= 0 ? 20 : testQuestionLimit;
+    if (pool.length <= limit) {
+      return pool;
+    }
+    return pool.take(limit).toList();
   }
 }
 
