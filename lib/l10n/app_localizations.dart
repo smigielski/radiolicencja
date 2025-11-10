@@ -167,6 +167,60 @@ abstract class AppLocalizations {
   /// **'Cancel'**
   String get topicResetDialogCancel;
 
+  /// No description provided for @topicStatsButtonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics'**
+  String get topicStatsButtonLabel;
+
+  /// No description provided for @topicStatsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Learning statistics'**
+  String get topicStatsTitle;
+
+  /// No description provided for @topicStatsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No answers recorded yet.'**
+  String get topicStatsEmpty;
+
+  /// No description provided for @topicStatsSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Answered {answered} times ({correct} correct / {incorrect} incorrect)'**
+  String topicStatsSummary(int answered, int correct, int incorrect);
+
+  /// No description provided for @topicStatsAccuracy.
+  ///
+  /// In en, this message translates to:
+  /// **'Accuracy: {percent}% ({correct}/{total})'**
+  String topicStatsAccuracy(int percent, int correct, int total);
+
+  /// No description provided for @topicStatsLastSeen.
+  ///
+  /// In en, this message translates to:
+  /// **'Last seen: {time}'**
+  String topicStatsLastSeen(Object time);
+
+  /// No description provided for @topicStatsNeverSeen.
+  ///
+  /// In en, this message translates to:
+  /// **'Never seen yet'**
+  String get topicStatsNeverSeen;
+
+  /// No description provided for @topicStatsCorrectAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct answer: {answer}'**
+  String topicStatsCorrectAnswer(Object answer);
+
+  /// No description provided for @topicStatsNoCorrectAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct answer not provided'**
+  String get topicStatsNoCorrectAnswer;
+
   /// No description provided for @modeSheetTestTitle.
   ///
   /// In en, this message translates to:

@@ -60,6 +60,41 @@ class AppLocalizationsPl extends AppLocalizations {
   String get topicResetDialogCancel => 'Anuluj';
 
   @override
+  String get topicStatsButtonLabel => 'Statystyki';
+
+  @override
+  String get topicStatsTitle => 'Statystyki nauki';
+
+  @override
+  String get topicStatsEmpty => 'Brak zarejestrowanych odpowiedzi.';
+
+  @override
+  String topicStatsSummary(int answered, int correct, int incorrect) {
+    return 'Odpowiedziano $answered razy ($correct poprawnie / $incorrect błędnie)';
+  }
+
+  @override
+  String topicStatsAccuracy(int percent, int correct, int total) {
+    return 'Skuteczność: $percent% ($correct/$total)';
+  }
+
+  @override
+  String topicStatsLastSeen(Object time) {
+    return 'Ostatnio widziane: $time';
+  }
+
+  @override
+  String get topicStatsNeverSeen => 'Jeszcze nie wyświetlone';
+
+  @override
+  String topicStatsCorrectAnswer(Object answer) {
+    return 'Poprawna odpowiedź: $answer';
+  }
+
+  @override
+  String get topicStatsNoCorrectAnswer => 'Brak poprawnej odpowiedzi';
+
+  @override
   String get modeSheetTestTitle => 'Test';
 
   @override

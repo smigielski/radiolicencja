@@ -47,6 +47,39 @@
   },
   "topicResetDialogConfirm": "Reset",
   "topicResetDialogCancel": "Cancel",
+  "topicStatsButtonLabel": "Statistics",
+  "topicStatsTitle": "Learning statistics",
+  "topicStatsEmpty": "No answers recorded yet.",
+  "topicStatsSummary": "Answered {answered} times ({correct} correct / {incorrect} incorrect)",
+  "@topicStatsSummary": {
+    "placeholders": {
+      "answered": {"type": "int"},
+      "correct": {"type": "int"},
+      "incorrect": {"type": "int"}
+    }
+  },
+  "topicStatsAccuracy": "Accuracy: {percent}% ({correct}/{total})",
+  "@topicStatsAccuracy": {
+    "placeholders": {
+      "percent": {"type": "int"},
+      "correct": {"type": "int"},
+      "total": {"type": "int"}
+    }
+  },
+  "topicStatsLastSeen": "Last seen: {time}",
+  "@topicStatsLastSeen": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "topicStatsNeverSeen": "Never seen yet",
+  "topicStatsCorrectAnswer": "Correct answer: {answer}",
+  "@topicStatsCorrectAnswer": {
+    "placeholders": {
+      "answer": {}
+    }
+  },
+  "topicStatsNoCorrectAnswer": "Correct answer not provided",
   "modeSheetTestTitle": "Take test",
   "modeSheetTestSubtitle": "Standard quiz, questions asked once.",
   "modeSheetLearningTitle": "Learning mode",

@@ -1,12 +1,15 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'package:yaml/yaml.dart';
 
 import 'l10n/app_localizations.dart';
 import 'quiz.dart';
 import 'services/learning_progress.dart';
+import 'services/learning_question_picker.dart';
 
 class TopicListScreen extends StatefulWidget {
   const TopicListScreen({super.key});
@@ -130,6 +133,25 @@ class _TopicListScreenState extends State<TopicListScreen> {
     }
   }
 
+  Future<void> _showTopicStats(Topic topic) async {
+    final service = await _ensureProgressService();
+    if (!mounted || service == null) return;
+    final stats = service.getQuestionStats(topic.slug);
+    if (!mounted) return;
+    await showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (context) => FractionallySizedBox(
+        heightFactor: 0.85,
+        child: TopicStatsSheet(
+          topic: topic,
+          stats: stats,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -184,6 +206,9 @@ class _TopicListScreenState extends State<TopicListScreen> {
                 onResetProgress: _progressService == null
                     ? null
                     : () => _confirmReset(topic),
+                canShowStats: _progressService != null,
+                onShowStats:
+                    _progressService == null ? null : () => _showTopicStats(topic),
                 onTap: () => _handleTopicTap(topic),
               );
             },
@@ -211,6 +236,8 @@ class TopicCard extends StatelessWidget {
     required this.progressLabel,
     this.canResetProgress = false,
     this.onResetProgress,
+    this.canShowStats = false,
+    this.onShowStats,
     this.onTap,
   });
 
@@ -218,6 +245,8 @@ class TopicCard extends StatelessWidget {
   final String progressLabel;
   final bool canResetProgress;
   final VoidCallback? onResetProgress;
+  final bool canShowStats;
+  final VoidCallback? onShowStats;
   final VoidCallback? onTap;
 
   @override
@@ -279,6 +308,12 @@ class TopicCard extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  if (canShowStats)
+                    IconButton(
+                      icon: const Icon(Icons.bar_chart_outlined),
+                      tooltip: l10n.topicStatsButtonLabel,
+                      onPressed: onShowStats,
+                    ),
                   if (canResetProgress)
                     IconButton(
                       icon: const Icon(Icons.refresh),
@@ -293,6 +328,146 @@ class TopicCard extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class TopicStatsSheet extends StatelessWidget {
+  const TopicStatsSheet({
+    super.key,
+    required this.topic,
+    required this.stats,
+  });
+
+  final Topic topic;
+  final Map<int, QuestionStats> stats;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+    final picker = LearningQuestionPicker<QuizQuestion>(
+      stats: stats,
+      idResolver: (question) => question.id,
+      random: Random(0),
+    );
+    final sortedQuestions = List<QuizQuestion>.from(topic.questions)
+      ..sort((a, b) {
+        final scoreA = picker.priorityScore(a.id);
+        final scoreB = picker.priorityScore(b.id);
+        final cmp = scoreB.compareTo(scoreA);
+        if (cmp != 0) return cmp;
+        return a.id.compareTo(b.id);
+      });
+    final totalCorrect =
+        stats.values.fold<int>(0, (sum, stat) => sum + stat.correct);
+    final totalIncorrect =
+        stats.values.fold<int>(0, (sum, stat) => sum + stat.incorrect);
+    final totalAnswered = totalCorrect + totalIncorrect;
+    final summaryText = totalAnswered == 0
+        ? l10n.topicStatsEmpty
+        : l10n.topicStatsSummary(totalAnswered, totalCorrect, totalIncorrect);
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              l10n.topicStatsTitle,
+              style: theme.textTheme.titleLarge,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              topic.title,
+              style: theme.textTheme.headlineSmall,
+            ),
+            const SizedBox(height: 12),
+            Text(
+              summaryText,
+              style: theme.textTheme.bodyMedium,
+            ),
+            const SizedBox(height: 12),
+            Expanded(
+              child: ListView.separated(
+                itemCount: sortedQuestions.length,
+                separatorBuilder: (_, __) => const Divider(height: 24),
+                itemBuilder: (context, index) {
+                  final question = sortedQuestions[index];
+                  final questionStats = stats[question.id] ?? const QuestionStats();
+                  final attempts = questionStats.totalAttempts;
+                  final accuracy = attempts == 0
+                      ? 0
+                      : ((questionStats.correct / attempts) * 100).round();
+                  final accuracyText = l10n.topicStatsAccuracy(
+                    accuracy,
+                    questionStats.correct,
+                    attempts,
+                  );
+                  final lastSeenText = questionStats.lastSeen == null
+                      ? l10n.topicStatsNeverSeen
+                      : l10n.topicStatsLastSeen(
+                          _formatTimestamp(context, questionStats.lastSeen!),
+                        );
+                  final correctAnswerText = _correctAnswerText(l10n, question);
+                  return ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(
+                      question.text,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.titleMedium,
+                    ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(accuracyText),
+                        Text(
+                          lastSeenText,
+                          style: theme.textTheme.bodySmall,
+                        ),
+                        Text(
+                          l10n.topicStatsCorrectAnswer(correctAnswerText),
+                          style: theme.textTheme.bodySmall,
+                        ),
+                      ],
+                    ),
+                    trailing: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text('✔ ${questionStats.correct}'),
+                        Text('✖ ${questionStats.incorrect}'),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  String _formatTimestamp(BuildContext context, DateTime dateTime) {
+    final localeTag = Localizations.localeOf(context).toLanguageTag();
+    final formatter = DateFormat.yMMMd(localeTag).add_Hm();
+    return formatter.format(dateTime.toLocal());
+  }
+
+  String _correctAnswerText(AppLocalizations l10n, QuizQuestion question) {
+    if (question.isOpen) {
+      if (question.acceptedAnswers.isEmpty) {
+        return l10n.topicStatsNoCorrectAnswer;
+      }
+      return question.acceptedAnswers.join(', ');
+    }
+    final answer = question.correctAnswer;
+    final formatted = '${answer.label}. ${answer.text}'.trim();
+    if (formatted.isEmpty) {
+      return l10n.topicStatsNoCorrectAnswer;
+    }
+    return formatted;
   }
 }
 

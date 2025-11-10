@@ -46,11 +46,15 @@ class LearningQuestionPicker<T> {
     items.sort(_compare);
   }
 
+  double priorityScore(int questionId) {
+    return _priorityForQuestion(questionId);
+  }
+
   int _compare(T a, T b) {
     final aId = _idResolver(a);
     final bId = _idResolver(b);
-    final aScore = _priorityForQuestion(aId);
-    final bScore = _priorityForQuestion(bId);
+    final aScore = priorityScore(aId);
+    final bScore = priorityScore(bId);
     if (aScore != bScore) {
       return bScore.compareTo(aScore);
     }

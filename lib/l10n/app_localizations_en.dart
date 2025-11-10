@@ -59,6 +59,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String get topicResetDialogCancel => 'Cancel';
 
   @override
+  String get topicStatsButtonLabel => 'Statistics';
+
+  @override
+  String get topicStatsTitle => 'Learning statistics';
+
+  @override
+  String get topicStatsEmpty => 'No answers recorded yet.';
+
+  @override
+  String topicStatsSummary(int answered, int correct, int incorrect) {
+    return 'Answered $answered times ($correct correct / $incorrect incorrect)';
+  }
+
+  @override
+  String topicStatsAccuracy(int percent, int correct, int total) {
+    return 'Accuracy: $percent% ($correct/$total)';
+  }
+
+  @override
+  String topicStatsLastSeen(Object time) {
+    return 'Last seen: $time';
+  }
+
+  @override
+  String get topicStatsNeverSeen => 'Never seen yet';
+
+  @override
+  String topicStatsCorrectAnswer(Object answer) {
+    return 'Correct answer: $answer';
+  }
+
+  @override
+  String get topicStatsNoCorrectAnswer => 'Correct answer not provided';
+
+  @override
   String get modeSheetTestTitle => 'Take test';
 
   @override

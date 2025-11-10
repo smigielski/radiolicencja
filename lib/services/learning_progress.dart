@@ -98,6 +98,8 @@ class QuestionStats {
   final int incorrect;
   final DateTime? lastSeen;
 
+  int get totalAttempts => correct + incorrect;
+
   QuestionStats incrementCorrect(DateTime seenAt) {
     return QuestionStats(
       correct: correct + 1,
