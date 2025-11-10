@@ -170,6 +170,7 @@ class _TopicListScreenState extends State<TopicListScreen> {
               final totalQuestions = topic.questions.length;
               final masteredCount =
                   _progressService?.getMastered(topic.slug).length ?? 0;
+              final hasStats = _progressService?.hasStats(topic.slug) ?? false;
               final progressLabel = !topic.hasQuestions
                   ? l10n.topicNoQuestions
                   : _progressService == null
@@ -179,7 +180,7 @@ class _TopicListScreenState extends State<TopicListScreen> {
                 topic: topic,
                 progressLabel: progressLabel,
                 canResetProgress:
-                    _progressService != null && masteredCount > 0,
+                    _progressService != null && (masteredCount > 0 || hasStats),
                 onResetProgress: _progressService == null
                     ? null
                     : () => _confirmReset(topic),

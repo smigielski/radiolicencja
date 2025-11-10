@@ -7,6 +7,7 @@ import 'package:yaml/yaml.dart';
 
 import 'l10n/app_localizations.dart';
 import 'services/learning_progress.dart';
+import 'services/learning_question_picker.dart';
 
 enum QuizQuestionType { multipleChoice, open }
 enum QuizMode { test, learning }
@@ -35,6 +36,8 @@ class _QuizScreenState extends State<QuizScreen> {
   late final List<QuizQuestion> _questions;
   late final int _totalQuestions;
   final Set<int> _masteredQuestionIds = <int>{};
+  late final Map<int, QuestionStats> _questionStats;
+  LearningQuestionPicker<QuizQuestion>? _learningPicker;
   int _currentQuestionIndex = 0;
   int _score = 0;
   QuizAnswer? _selectedAnswer;
@@ -53,20 +56,31 @@ class _QuizScreenState extends State<QuizScreen> {
   void initState() {
     super.initState();
     final initialQuestions = List<QuizQuestion>.from(widget.questions);
+    _questionStats = Map<int, QuestionStats>.from(
+      widget.progressService?.getQuestionStats(widget.topicSlug) ??
+          <int, QuestionStats>{},
+    );
     final storedMastered =
         widget.progressService?.getMastered(widget.topicSlug) ?? <int>{};
     _masteredQuestionIds.addAll(storedMastered);
     if (widget.mode == QuizMode.learning) {
+      _learningPicker = LearningQuestionPicker<QuizQuestion>(
+        stats: _questionStats,
+        idResolver: (question) => question.id,
+        random: _random,
+      );
       initialQuestions
           .removeWhere((question) => storedMastered.contains(question.id));
       _totalQuestions = widget.questions.length;
       if (initialQuestions.isEmpty) {
         _showSummary = true;
       }
+      _learningPicker?.sort(initialQuestions);
     } else {
+      initialQuestions.shuffle(_random);
       _totalQuestions = initialQuestions.length;
     }
-    _questions = initialQuestions..shuffle();
+    _questions = initialQuestions;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _ensureFocusForCurrentQuestion();
     });
@@ -89,6 +103,7 @@ class _QuizScreenState extends State<QuizScreen> {
         _score++;
       }
     });
+    _recordAnswerResult(question, answer.isCorrect);
     if (answer.isCorrect) {
       _recordMastered(question);
       _scheduleAdvanceAfterCorrect(questionIndex);
@@ -107,6 +122,7 @@ class _QuizScreenState extends State<QuizScreen> {
         _score++;
       }
     });
+    _recordAnswerResult(question, isCorrect);
     if (isCorrect) {
       _recordMastered(question);
       _openAnswerFocus.unfocus();
@@ -122,6 +138,7 @@ class _QuizScreenState extends State<QuizScreen> {
         _openAnswerCorrect = false;
       });
       _openAnswerFocus.unfocus();
+      _recordAnswerResult(question, false);
     } else {
       if (_selectedAnswer != null) return;
       _selectAnswer(_iDontKnowAnswer);
@@ -216,6 +233,24 @@ class _QuizScreenState extends State<QuizScreen> {
     if (service != null) {
       unawaited(service.markMastered(widget.topicSlug, question.id));
     }
+  }
+
+  void _recordAnswerResult(QuizQuestion question, bool isCorrect) {
+    final service = widget.progressService;
+    if (service == null) return;
+    final current = _questionStats[question.id] ?? const QuestionStats();
+    final now = DateTime.now();
+    final updated = isCorrect
+        ? current.incrementCorrect(now)
+        : current.incrementIncorrect(now);
+    _questionStats[question.id] = updated;
+    unawaited(
+      service.recordAnswerResult(
+        widget.topicSlug,
+        question.id,
+        isCorrect: isCorrect,
+      ),
+    );
   }
 
   @override
