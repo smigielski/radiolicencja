@@ -3,145 +3,952 @@ slug: radiotechnika-fale-anteny-linie-propagacja
 description: Anteny, linie transmisyjne, SWR, propagacja HF/VHF/UHF, EME i zjawiska.
 image: assets/images/radiotechnika.png
 questions:
-- text: '2\. Obwód elektryczny składa się z kilku rezystorów o różnych wartościach
-    i źródła zasilania. Połączenie, w którym przez wszystkie elementy płynie ten sam
-    prąd nazywamy połączeniem:'
+- text: '2\. Obwód elektryczny składa się z kilku rezystorów o różnych wartościach i źródła zasilania.
+    Połączenie, w którym przez wszystkie elementy płynie ten sam prąd nazywamy połączeniem:'
   answers:
   - rezonansowym
   - szeregowym
   - równoległym
   correct_index: 1
-- text: 14\. Do zasilacza o napięciu 12 V chcemy podłączyć diodę świecącą o napięciu
-    przewodzenia 3 V i nominalnym prądzie 20 mA. Jaki rezystor należy włączyć w szereg,
-    by ograniczyć prąd?
+  explanations:
+  - "## Dlaczego **A. rezonansowym** jest błędne\n\n| Połączenie | Co oznacza? | Jakie jest prawo? |\n\
+    |------------|-------------|-------------------|\n| **Szeregowe** | Elementy połączone w jeden „kierunek”\
+    \ – jeden most między kolejnymi | \\(\\displaystyle I_1 = I_2 = \\dots = I_n\\) |\n| **Równoległe**\
+    \ | Elementy połączone w „gałęzie” – jeden węzeł na początku i na końcu | \\(\\displaystyle V_1 =\
+    \ V_2 = \\dots = V_n\\) |\n| **Rezonansowe** | Termin z teorii drgań (fal) i rezonansu elektrycznego,\
+    \ nie opisuje topologii połączeń | – |\n\nPołączenie, w którym przez **wszystkie** elementy płynie\
+    \ **ten sam prąd**, to definicja połączenia **szeregowego**.  \nW połączeniu rezonansowym mówimy o\
+    \ maksymalnym przepływie prądu w układzie rezonansowym (np. LC), ale nie jest to opis topologii elementów,\
+    \ a stan częstotliwościowy.  \n\n### Dlatego poprawna odpowiedź to **B. szeregowym**  \n\n- w szeregowej\
+    \ topologii: \\(I_1 = I_2 = \\dots = I_n\\).  \n- w równoległej: prądy dzielą się: \\(I_{\\text{total}}\
+    \ = I_1 + I_2 + \\dots\\).  \n- rezonans to warunek \\(\\omega L = 1/(\\omega C)\\) (jeśli mamy związek\
+    \ \\(LC\\)), a nie układ elementów.  \n\nZatem oznaczenie „rezonansowe” nie pasuje do opisu połączenia,\
+    \ które ma taki sam prąd przez wszystkie elementy."
+  - "Gratulacje!  \nOdpowiedź **B – szeregowe** jest poprawna.\n\nW połączeniu szeregowym elementy (rezystory,\
+    \ kondensatory, itp.) są połączone jeden po drugim, tworząc jedną ścieżkę przewodzącą prąd. W takiej\
+    \ konfiguracji prąd \\(I\\) jest identyczny w każdym elemencie:\n\n\\[\nI_1 = I_2 = I_3 = \\dots =\
+    \ I\n\\]\n\nW przeciwieństwie do połączenia równoległego, gdzie napięcie jest wspólne, a natężenia\
+    \ prądów sumują się, w szeregowych prądy pozostają takie same.  \nZatem warunek „ten sam prąd przez\
+    \ wszystkie elementy” definiuje połączenie szeregowe."
+  - "**Dlaczego odpowiedź „równoległym” jest błędna**\n\n|  | Połączenie | Prąd w poszczególnych elementach\
+    \ | Napięcie w poszczególnych elementach |\n|---|------------|-----------------------------------|-------------------------------------|\n\
+    | **Szeregowe** | Elementy połączone jeden za drugim | **Ten sam** prąd przepływa przez każdy rezystor\
+    \ | Napięcie sumuje się: \\(U_{\\text{total}} = \\sum U_i\\) |\n| **Równoległe** | Elementy podłączone\
+    \ do tych samych wierzchołków | Prąd się **rozdziela**: \\(I_{\\text{total}} = \\sum I_i\\) | **Ten\
+    \ sam** napięcie na każdym rezystorze |\n\nW pytaniu kluczowa fraza: **„przez wszystkie elementy płynie\
+    \ ten sam prąd”**. Tylko w połączeniu szeregowym jest to prawdziwe, dlatego poprawna odpowiedź to\
+    \ **B. szeregowym**.  \n\nW połączeniu równoległym prąd się rozdziela, a napięcie pozostaje stałe.\
+    \ Jeśli więc zadanie opisuje jednolitą wartość prądu, wyklucza równoległość."
+  - "## Wyjaśnienie\n\nW połączeniu szeregowym wszystkie elementy znajdują się w jednej linii przepływu\
+    \ prądu. Zasadniczo:\n\n- **Z prądu**:  \n  \\[\n  I_{\\text{rzę} } = I_{\\text{rzę} } = \\dots =\
+    \ I_{\\text{Źródło}}\n  \\]\n  czyli **ten sam prąd płynie przez każdy rezystor**.\n\n- **Z napięcia**:\
+    \  \n  \\[\n  U_{\\text{Źródło}} = \\sum_{k} U_k\n  \\]\n  Sumuje się napięcia na poszczególnych elementach.\n\
+    \nW połączeniu równoległym natomiast każdy element ma **to samo napięcie**, ale prądy się dzielą.\
+    \  \n\nDlatego połączenie, w którym przez wszystkie elementy płynie ten sam prąd, to **połączenie\
+    \ szeregowe** – odpowiedź **B. szeregowym**."
+- text: 14\. Do zasilacza o napięciu 12 V chcemy podłączyć diodę świecącą o napięciu przewodzenia 3 V
+    i nominalnym prądzie 20 mA. Jaki rezystor należy włączyć w szereg, by ograniczyć prąd?
   answers:
   - 600 Ω
   - 150 Ω
   - 450 Ω
   correct_index: 2
-- text: '15\. Która z cech łączy szeregowy obwód rezonansowy LC z typową anteną (dipol
-    półfalowy):'
+  explanations:
+  - "### Dlaczego odpowiedź A jest błędna?\n\nAby ograniczyć prąd przez diodę do **20 mA**, musimy dobrać\
+    \ rezystor, który zrównoważy różnicę napięcia między zasilaczem a diodą.\n\n\\[\nR = \\frac{V_{\\\
+    text{zasilacz}}-V_{D}}{I_D}\n\\]\n\nPodstawiamy dane z zadania:\n\n- \\(V_{\\text{zasilacz}} = 12\
+    \ \\text{ V}\\)\n- \\(V_{D} = 3 \\text{ V}\\) (napięcie przewodzenia diody)\n- \\(I_D = 20 \\text{ mA}\
+    \ = 0.02 \\text{ A}\\)\n\n\\[\nR = \\frac{12\\ \\text{V} - 3\\ \\text{V}}{0.02\\ \\text{A}}\n   =\
+    \ \\frac{9\\ \\text{V}}{0.02\\ \\text{A}}\n   = 450\\ \\Omega\n\\]\n\nZatem potrzebny rezystor ma\
+    \ wartość **450 Ω** – to jest odpowiedź **C**.\n\n---\n\n#### Dlaczego **600 Ω** nie wystarcza?\n\n\
+    Jeśli wybierzesz 600 Ω, prąd przez diodę będzie:\n\n\\[\nI = \\frac{12\\ \\text{V} - 3\\ \\text{V}}{600\\\
+    \ \\Omega}\n  = \\frac{9\\ \\text{V}}{600\\ \\Omega}\n  = 0.015\\ \\text{A} = 15\\ \\text{mA}\n\\\
+    ]\n\nTo jest **mniej niż 20 mA**, więc dioda nie będzie pracować z oczekiwaną mocą (i nie będzie świecić\
+    \ tak jasno, jak założono). Dlatego 600 Ω jest odpowiedzią **niepoprawną**."
+  - "**Dlaczego odpowiedź B jest błędna**\n\n1. **Obliczenie spadku napięcia na rezystorze**\n\n\\[\n\
+    U_{\\text{R}} = U_{\\text{zasilacza}} - U_{\\text{diody}} = 12\\;\\text{V} - 3\\;\\text{V} = 9\\;\\\
+    text{V}\n\\]\n\n2. **Obliczenie potrzebnego oporu (Prawo Ohma)**  \n\n\\[\nR = \\frac{U_{\\text{R}}}{I}\
+    \ = \\frac{9\\;\\text{V}}{0,02\\;\\text{A}} = 450\\;\\Omega\n\\]\n\n3. **Porównanie z wybranym oporem**\n\
+    \n- **Odpowiedź B: 150 Ω** → spadek napięcia:\n\n  \\[\n  I = \\frac{U_{\\text{R}}}{R} = \\frac{9\\\
+    ;\\text{V}}{150\\;\\Omega} = 0,06\\;\\text{A} = 60\\;\\text{mA}\n  \\]\n\n  To jest **trzykrotnie\
+    \ więcej** niż nominalny prąd diody (20 mA). Diode by się przegrzała lub zużyła.\n\n- **Odpowiedź\
+    \ C: 450 Ω** → spadek napięcia:\n\n  \\[\n  I = \\frac{9\\;\\text{V}}{450\\;\\Omega} = 0,02\\;\\text{A}\
+    \ = 20\\;\\text{mA}\n  \\]\n\n  To dokładnie odpowiada specyfikacji diody.\n\n---\n\n**Podsumowanie**\
+    \  \nWłaściwy rezystor to **450 Ω** (odpowiedź C).  \nWybór 150 Ω prowadzi do prądu 60 mA, co jest\
+    \ zdecydowanie zbyt wysokim prądem dla diody o nominalnym 20 mA."
+  - "Gratulacje!  \nOdpowiedź **C. 450 Ω** jest poprawna.\n\n**Dlaczego?**\n\nZastosujmy prosty wzór na\
+    \ rezystor ograniczający prąd:\n\n\\[\nR = \\frac{V_{\\text{źródło}}-V_{\\text{diody}}}{I_{\\text{nom}}}\n\
+    \\]\n\nPodstawiamy dane z zadania:\n\n\\[\nR = \\frac{12~\\text{V} - 3~\\text{V}}{0{,}02~\\text{A}}\n\
+    \   = \\frac{9~\\text{V}}{0{,}02~\\text{A}}\n   = 450~\\Omega\n\\]\n\nWynik 450 Ω jest wartością dokładną,\
+    \ więc w praktyce wybieramy najbliższą wartość w standardowych wartościach rezystorów.  \n\nWszystko\
+    \ się zgadza — 450 Ω to właśnie rezystor potrzebny, by ograniczyć prąd do 20 mA. \U0001F389"
+  - '**Rozwiązanie**
+
+
+    \[
+
+    V_R = V_{\text{zasil}} - V_{\text{f}} = 12\;\text{V} - 3\;\text{V} = 9\;\text{V}
+
+    \]
+
+
+    \[
+
+    I = 20\;\text{mA} = 0.02\;\text{A}
+
+    \]
+
+
+    \[
+
+    R = \frac{V_R}{I} = \frac{9\;\text{V}}{0.02\;\text{A}} = 450\;\Omega
+
+    \]
+
+
+    Zatem do ograniczenia prądu należy połączyć rezystor **450 Ω** w szereg (najczęściej wybiera się standardowy
+    470 Ω, bo jest bliżej).
+
+
+    **Poprawna odpowiedź: C. 450 Ω**'
+- text: '15\. Która z cech łączy szeregowy obwód rezonansowy LC z typową anteną (dipol półfalowy):'
   answers:
   - w rezonansie stanowią tylko rezystancję
   - w rezonansie stanowią reaktancję pojemnościową
   - w rezonansie stanowią reaktancję indukcyjną
   correct_index: 0
-- text: 36\. System antenowy dostarcza sygnał na poziomie -20dBm, jest on podłączony
-    do przedwzmacniacza o wzmocnieniu 10dB kablem o tłumieniu 3dB. Jakiej mocy sygnał
-    uzyskamy na wyjściu przedwzmacniacza?
+  explanations:
+  - "**Gratulacje!**  \nTwoja odpowiedź **A** jest poprawna.\n\n---\n\n## Dlaczego w rezonansie występuje\
+    \ tylko rezystancja?\n\n### 1. Obwód LC szeregowy  \nImpedancja szeregu **LC** jest dana wzorem\n\n\
+    \\[\nZ_{\\text{LC}} = R + j\\left(\\omega L - \\frac{1}{\\omega C}\\right),\n\\]\n\ngdzie  \n\\(R\\\
+    ) – rezystancja (zwykle bardzo mała),  \n\\(j\\) – jednostka urojona,  \n\\(\\omega = 2\\pi f\\) –\
+    \ pulsacja.\n\nW punkcie rezonansu \\(\\omega_0 = 1/\\sqrt{LC}\\) mamy\n\n\\[\n\\omega_0 L = \\frac{1}{\\\
+    omega_0 C} \\;\\Longrightarrow\\;\nj\\left(\\omega_0 L - \\frac{1}{\\omega_0 C}\\right)=0.\n\\]\n\n\
+    Zatem\n\n\\[\nZ_{\\text{LC}}(\\omega_0)=R,\n\\]\n\nczyli **tylko rezystancja** pozostaje – całkowite\
+    \ odrzucenie reaktancji.\n\n---\n\n### 2. Antena dipolowa (półfalowa)\n\nPodobnie, przy rezonansie\
+    \ dipola długość \\(L \\approx \\lambda/2\\) i jego impedancja ma postać\n\n\\[\nZ_{\\text{dipol}}\
+    \ \\approx R_{\\text{rad}} + jX_{\\text{dipol}},\n\\]\n\ngdzie \\(R_{\\text{rad}}\\) to opór promieniowania,\
+    \ a \\(X_{\\text{dipol}}\\) jest reaktancją, która przy rezonansie zanika.  \nW efekcie dipol działa\
+    \ jak **jedynie rezystor** (zwykle około \\(73\\ \\Omega\\) w próżni).\n\n---\n\n## Podsumowanie\n\
+    \n- **Obwód LC**: przy \\(\\omega_0\\) reaktancje indukcyjna i pojemnościowa się wykluczają.  \n-\
+    \ **Dipol**: przy rezonansie reaktancja dipola też zeruje się, pozostawiając tylko opór promieniowania.\n\
+    \nDlatego odpowiedź **A** („w rezonansie stanowią tylko rezystancję”) jest właściwa.  \n\nJeszcze\
+    \ raz gratulacje! \U0001F389"
+  - "**Dlaczego odpowiedź B jest błędna?**  \n\n- W szeregowym obwodzie **LC** przy rezonansie \\(\\omega\
+    \ L = 1/(\\omega C)\\).  \n- Reaktywność indukcyjna \\(X_L = \\omega L\\) **równa** się reaktywności\
+    \ pojemnościowej \\(X_C = \\dfrac{1}{\\omega C}\\), lecz mają **sprzeczne znaki**:  \n\n\\[\nX_{\\\
+    text{total}} = X_L + X_C = \\omega L - \\frac{1}{\\omega C} = 0\n\\]\n\n- Dlatego przy rezonansie\
+    \ **cała reaktywność znika** – pozostaje jedynie opór (rezystancja) obwodu oraz ewentualne straty\
+    \ w elementach.  \n\n- Analogicznie, półfalowy dipol rezonujący ma impedancję w przybliżeniu rezydentną\
+    \ (≈ 73 Ω), a nie kapacitancyjną czy inductancyjną.\n\n**Podsumowanie**\n\n- **A** – *w rezonansie\
+    \ stanowią tylko rezystancję* – jest poprawne.  \n- **B** – *w rezonansie stanowią reaktancję pojemnościową*\
+    \ – **niepoprawne** – kapesytancja i indukcyjność wykluczają się wzajemnie.  \n- **C** – *w rezonansie\
+    \ stanowią reaktancję indukcyjną* – również niepoprawne."
+  - "**Dlaczego „C” jest błędne**\n\n| Pytanie | Co się dzieje w obwodzie LC w rezonansie? | Dlaczego\
+    \ odpowiedź C jest fałszywa? |\n|---------|------------------------------------------|-------------------------------------|\n\
+    | **Reaktancja** |  \\[\nZ = R + j\\!\\left(\\omega L - \\frac{1}{\\omega C}\\right)\n\\] | W rezonansie\
+    \ \\(\\omega_0L = 1/(\\omega_0C)\\).  Reaktywne części **zawierają się** nawzajem: <br> \\(\\displaystyle\
+    \ \\omega_0 L - \\frac{1}{\\omega_0 C}=0\\).  Zatem \\(Z = R\\) – **tylko rezystancja**. |\n| **Reaktancja\
+    \ indukcyjna** |  Nie występuje w rezonansie, bo jest równoważona przez reaktancję pojemnościową.\
+    \ | „W rezonansie stanowią reaktancję indukcyjną” bywa prawdziwe tylko **poza** częstotliwością rezonansową,\
+    \ gdy \\(\\omega L > 1/(\\omega C)\\). |\n| **Reaktancja pojemnościowa** |  Również jest równoważona\
+    \ przez indukcyjną, więc nie pozostaje w rezonansie. | Podobnie jak w punkcie C, jest aktywna tylko\
+    \ **poza** rezonansu. |\n\n**Dla dipola półfalowego**  \nDipol jest praktycznie rekwizytorem rezonansu\
+    \ LC: przy \\(\\lambda/2\\) długość przewodu powoduje, że pola przy brzegach są w fazie tak, że całkowita\
+    \ impedancja wejściowa przy rezonansie jest **praktycznie tylko rezystancyjna** (≈ 73 Ω w próżni).\
+    \ Dlatego zachowanie to jest identyczne do zachowania szeregowego obwodu LC w rezonansie.\n\n---\n\
+    \n### Podsumowanie\n- W rezonansie **LC**: \\(\\omega L = 1/(\\omega C)\\) → \\(X_L + X_C = 0\\).\
+    \  \n- Zatem **jedyną pozostającą częścią impedancji jest rezystancja** \\(R\\).  \n- Dlatego prawidłowa\
+    \ odpowiedź to **A. w rezonansie stanowią tylko rezystancję**.  \n- Odpowiedzi B i C opisują stan\
+    \ poza rezonansu i są niepoprawne w kontekście pytania."
+  - "**Rozwiązanie**  \n\nW obwodzie szeregowym \\(LC\\) napięcie przy masie (czyli przy braku zewnętrznego\
+    \ obciążenia) ma postać  \n\n\\[\nZ_{\\text{LC}}(s)=sL+\\frac{1}{sC}\n\\]\n\nW trybie rezonansu częstotliwość\
+    \ \\(\\omega_0\\) spełnia  \n\n\\[\n\\omega_0^2LC = 1 \\quad\\Longrightarrow\\quad s=j\\omega_0:\n\
+    \\]\n\n\\[\nZ_{\\text{LC}}(j\\omega_0)=j\\omega_0 L+\\frac{1}{j\\omega_0 C}=j\\omega_0 L - j\\frac{1}{\\\
+    omega_0 C}=0\n\\]\n\nZatem **reaktancja całkowita zanika** – obwód zachowuje się jak idealny **rezystor**\
+    \ (przyjmujemy, że w praktyce wciąż istnieje niewielka rezystancja układu).\n\nPodobnie w **antena\
+    \ dipol półfalowa** częstotliwość rezonansowa \\(f_0\\) powoduje, że składowe reaktancji (pojemnościowa\
+    \ i indukcyjna) się wzajemnie anulują, a jej impedancja wejściowa jest głównie **rezystancyjna** (typowo\
+    \ 50 Ω, choć w praktyce zbliżona do tej wartości).  \n\nDlatego poprawna odpowiedź to:\n\n> **A. w\
+    \ rezonansie stanowią tylko rezystancję**."
+- text: 36\. System antenowy dostarcza sygnał na poziomie -20dBm, jest on podłączony do przedwzmacniacza
+    o wzmocnieniu 10dB kablem o tłumieniu 3dB. Jakiej mocy sygnał uzyskamy na wyjściu przedwzmacniacza?
   answers:
   - -13 dBm
   - -33 dBm
   - -27 dBm
   correct_index: 0
-- text: '39\. Niedopasowanie anteny do linii transmisyjnej powoduje powstanie fali
-    stojącej i w konsekwencji:'
+  explanations:
+  - "**Gratulacje!**  \nOdpowiedź **A. -13 dBm** jest poprawna.\n\n---\n\n### Dlaczego tak się liczy\n\
+    \n1. **Wartość sygnału wejściowego**  \n   \\[\n   P_{\\text{in}} = -20~\\text{dBm}\n   \\]\n\n2.\
+    \ **Wzmocnienie przedwzmacniacza**  \n   \\[\n   G_{\\text{pre}} = +10~\\text{dB}\n   \\]\n\n3. **Tłumienie\
+    \ kabla**  \n   \\[\n   L_{\\text{cable}} = -3~\\text{dB}\n   \\]\n\n4. **Netto efektywne wzmocnienie**\
+    \  \n   \\[\n   G_{\\text{net}} = G_{\\text{pre}} + L_{\\text{cable}} = 10~\\text{dB} - 3~\\text{dB}\
+    \ = 7~\\text{dB}\n   \\]\n\n5. **Moc na wyjściu przedwzmacniacza**  \n   \\[\n   P_{\\text{out}} =\
+    \ P_{\\text{in}} + G_{\\text{net}} = -20~\\text{dBm} + 7~\\text{dB} = -13~\\text{dBm}\n   \\]\n\n\
+    ---\n\nZatem **-13 dBm** to właściwa moc sygnału wyjściowego. \U0001F389"
+  - "**Dlaczego odpowiedź B jest błędna**\n\n1. **Rozdzielmy kolejne elementy łańcucha:**\n\n| Element\
+    \ | Wzmocnienie / tłumienie (dB) | Efekt na moc |\n|---------|-----------------------------|--------------|\n\
+    | **Źródło** | –20 dBm | –20 dBm |\n| **Przedwzmacniacz** | +10 dB | –20 dBm + 10 dB = –10 dBm |\n\
+    | **Kabel** | –3 dB (tłumienie) | –10 dBm – 3 dB = –13 dBm |\n\n2. **Czytanie oznaczeń:**\n\n* Wzmocnienie\
+    \ doda **dB** do wartości mocy.  \n* Tłumienie odejmuje dB.\n\n3. **Wzór ogólny:**\n\n\\[\nP_{\\text{wyj}}\
+    \ = P_{\\text{wej}} + G_{\\text{pre}} - L_{\\text{kabel}}\n\\]\n\ngdzie  \n\\(P_{\\text{wej}} = -20\\\
+    ;\\text{dBm}\\),  \n\\(G_{\\text{pre}} = +10\\;\\text{dB}\\),  \n\\(L_{\\text{kabel}} = +3\\;\\text{dB}\\\
+    ).\n\n\\[\nP_{\\text{wyj}} = -20 + 10 - 3 = -13\\;\\text{dBm}\n\\]\n\n4. **Błąd w odpowiedzi B**\n\
+    \n-33 dBm wskazuje na **tłumienie** o 13 dB (‑20 dBm – 13 dB).  \nJednak w zadaniu mamy **zwiększenie**\
+    \ mocy o +10 dB, a potem jedynie –3 dB utraty.  \nZatem nie możemy odejmować 13 dB – to łączne efekty\
+    \ **+10 dB** i **–3 dB** dają **–13 dBm**.\n\n**Podsumowanie**\n\nPrawidłowa odpowiedź to **A. –13 dBm**\
+    \ – wynik obliczeń pokazuje, że po przedwzmacniaczu i kablu moc wzrasta o 10 dB, a potem spada o 3 dB.\
+    \ Odpowiedź B wynika z nieprawidłowego odejmowania całkowitego tłumienia."
+  - "**Dlaczego odpowiedź C (-27 dBm) jest błędna**\n\n| Parametr | Wartość | Jednostka |\n|----------|---------|-----------|\n\
+    | Moc wejściowa | \\(-20\\) | dBm |\n| Wzmocnienie przedwzmacniacza | \\(+10\\) | dB |\n| Tłumienie\
+    \ kabla | \\(-3\\) | dB |\n\nWzór na moc wyjściową w skali dB (dBm) jest prosty:\n\n\\[\nP_{\\text{out}}\
+    \ = P_{\\text{in}} + G - L\n\\]\n\ngdzie  \n\\(P_{\\text{in}}\\) – moc na wejściu,  \n\\(G\\) – wzmocnienie\
+    \ (dB),  \n\\(L\\) – tłumienie (dB).\n\nPodstawiamy:\n\n\\[\n\\begin{aligned}\nP_{\\text{out}}\n&=\
+    \ (-20\\ \\text{dBm}) + 10\\ \\text{dB} - 3\\ \\text{dB} \\\\\n&= -20 + 10 - 3 \\\\\n&= -13\\ \\text{dBm}\n\
+    \\end{aligned}\n\\]\n\nDlatego prawidłowa odpowiedź to **A – -13 dBm**.\n\n---\n\n**Gdzie popełniono\
+    \ błąd?**\n\nOdpowiedź C wynika z nieprawidłowego zastosowania wzoru:\n\n\\[\nP_{\\text{out}} = P_{\\\
+    text{in}} - (G + L)\n\\]\n\nczyli pomylono znak w równaniu – zamiast dodać wzmocnienie i odjąć tłumienie,\
+    \ zsumowano oba wzmocnienia (10 dB + 3 dB = 13 dB) i odjął od moc –20 dBm, co dało \\(-20 - 13 = -33\\\
+    ) dBm (co w przytoczonym pytaniu jest odpowiedzią B, a nie C).  \n\nW prawidłowym obliczeniu wzmocnienie\
+    \ dodaje się, a tłumienie odejmuje, co prowadzi do wyniku \\(-13\\) dBm."
+  - "**Obliczenia**  \n\n\\[\nP_{\\text{ant}} = -20~\\text{dBm}\n\\]\n\nPo przejściu przez kabl o tłumieniu\
+    \ \\(L=3~\\text{dB}\\):\n\n\\[\nP_{\\text{przedwzmacniaczem}} = P_{\\text{ant}} - L = -20~\\text{dBm}\
+    \ - 3~\\text{dB} = -23~\\text{dBm}\n\\]\n\nPrewzmacniacz ma wzmocnienie \\(G = 10~\\text{dB}\\):\n\
+    \n\\[\nP_{\\text{wyjście}} = P_{\\text{przedwzmacniaczem}} + G = -23~\\text{dBm} + 10~\\text{dB} =\
+    \ -13~\\text{dBm}\n\\]\n\n**Wynik**: \\(-13~\\text{dBm}\\) – odpowiedź **A**."
+- text: '39\. Niedopasowanie anteny do linii transmisyjnej powoduje powstanie fali stojącej i w konsekwencji:'
   answers:
   - odbicia sygnału od miejsca niedopasowania i straty w linii transmisyjnej
   - może spowodować spalenie anteny
   - drgania fidera
   correct_index: 0
-- text: '48\. Element aktywny we wzmacniaczu przewodzi przez cały okres wzmacnianego
-    sygnału. Wzmacniacz ten pracuje w klasie:'
+  explanations:
+  - "**Gratulacje!**  \n\nOdpowiedź **A** jest poprawna, ponieważ niedopasowanie impedancji anteny do\
+    \ linii transmisyjnej powoduje powstawanie **fali stojącej**. Fala ta zwraca część sygnału do źródła,\
+    \ co skutkuje:\n\n- **Odbiciem sygnału** w miejscu niedopasowania,\n- **Stratą mocy** w linii transmisyjnej.\n\
+    \nMatematycznie, współczynnik odbicia \\(\\Gamma\\) wyraża się jako  \n\n\\[\n\\Gamma = \\frac{Z_{\\\
+    text{ant}}-Z_0}{Z_{\\text{ant}}+Z_0},\n\\]\n\ngdzie \\(Z_{\\text{ant}}\\) to impedancja anteny, a\
+    \ \\(Z_0\\) impedancja linii. Dla \\(|\\Gamma| \\neq 0\\) dochodzi do powstawania fali stojącej i\
+    \ traci się energię.\n\nPozostałe odpowiedzi (B i C) nie odnoszą się bezpośrednio do efektu niedopasowania\
+    \ w kontekście fali stojącej.  \n\nPowodzenia na egzaminie!"
+  - "**Dlaczego odpowiedź B jest niepoprawna**\n\n| Co mówi odpowiedź | Dlaczego to nie jest skutkiem\
+    \ niedopasowania |\n|-------------------|----------------------------------------------|\n| **“może\
+    \ spowodować spalenie anteny”** | Niedopasowanie linii prowadzi do **fal stojących** i utraty sygnału,\
+    \ ale **nie** zwiększa bezpośrednio mocy przepływającej przez antenę.  Zmniejsza to **zasilanie**\
+    \ i zwykle nie przekracza mocy, która mogłaby spowodować przegrzanie elementów anteny. |\n| **„odbicia\
+    \ sygnału od miejsca niedopasowania i straty w linii transmisyjnej”** | To jest typowy opis zachowania\
+    \ fal w niedopasowanej linii.  Refleksja generuje falę stojącą, a energia trafia z powrotem do źródła,\
+    \ powodując straty (np. w transceiverze). |\n\n**Podsumowanie**  \nNiedopasowanie powoduje **refleksję**\
+    \ i **utrata mocy** w linii, a nie bezpośrednio **przegrzewanie** anteny. Dlatego poprawna odpowiedź\
+    \ to **A**."
+  - "**Dlaczego odpowiedź C jest błędna**\n\n| **Co się dzieje przy niedopasowaniu** | **Co to oznacza\
+    \ w praktyce** | **Dlaczego „drgania fidera” nie ma sensu** |\n|--------------------------------------|-----------------------------|---------------------------------------------|\n\
+    | W linii transmisyjnej powstaje **odbicie sygnału** (ang. *reflection*). | Wzmacnia się **fale stojące**\
+    \ (ang. *standing waves*). | „Drgania fidera” (prawdopodobnie pomyłka „drgania frydera”) nie jest\
+    \ pojęciem z zakresu anten i transmisji. To nie opisuje odbić ani strat. |\n| Wzorzec fal stojących\
+    \ opisuje się współczynnikiem odbicia \\(\\Gamma\\) oraz współczynnikiem wskaźnika napięć stałych\
+    \ (VSWR):<br>`\\displaystyle \\Gamma = \\frac{Z_L - Z_0}{Z_L + Z_0}`<br>`\\displaystyle VSWR = \\\
+    frac{1+|\\Gamma|}{1-|\\Gamma|}` | Im większy VSWR → większa strata mocy i potencjalne uszkodzenie\
+    \ anteny. | |\n| **Straty** – energia odbita nie dociera do odbiornika, a część zostaje zniszczona\
+    \ w linii (składniki tłumienia). | | |\n\n**Krótka klauzula**  \nNiedopasowanie = **odbicie → fali\
+    \ stojące → strata mocy**.  \n\"Drgania fidera\" nie występują w tym kontekście – nie jest to termin\
+    \ z elektrotechniki ani telekomunikacji.  \n\n**Podsumowanie**  \nPoprawna odpowiedź A: *odbicia sygnału\
+    \ od miejsca niedopasowania i straty w linii transmisyjnej*.  \nOdpowiedź C jest niepoprawna, bo opisuje\
+    \ niewłaściwe zjawisko."
+  - "### Dlaczego odpowiedź **A** jest poprawna\n\n1. **Niedopasowanie impedancji**  \n   Jeśli impedancja\
+    \ anteny \\(Z_A\\) nie jest równa impedancji linii transmisyjnej \\(Z_0\\), część sygnału zostaje\
+    \ odbita w miejscu połączenia.\n\n2. **Odbicia i fala stojąca**  \n   Odbite sygnały interferują z\
+    \ falą przychodzącą, tworząc falę stojącą. Wzór na współczynnik odbicia to  \n\n   \\[\n   \\Gamma\
+    \ = \\frac{Z_A-Z_0}{Z_A+Z_0}\n   \\]\n\n   Gdy \\(\\Gamma\\neq0\\), występuje fala stojąca, a jej\
+    \ amplituda jest związana z współczynnikiem odbicia.\n\n3. **Straty w linii**  \n   Część mocy przekazywanej\
+    \ do anteny zostaje stracona (reflektowana) zamiast być przekazana dalej. W praktyce powoduje to **straty\
+    \ w linii transmisyjnej** oraz obniżenie skuteczności sygnału.\n\n4. **Dlaczego pozostałe odpowiedzi\
+    \ są błędne**  \n   - **B**: Odbicia nie prowadzą bezpośrednio do „spalenia anteny”; zwarcie jest\
+    \ potrzebne, by spalić elementy.  \n   - **C**: „Drgania fidera” to błąd językowy – prawidłowo powinno\
+    \ być „drgania fal” lub „drgania fali”. Nie jest to wynik niedopasowania.\n\nDlatego **A** – odbicia\
+    \ sygnału od miejsca niedopasowania i straty w linii transmisyjnej – jest jedyną poprawną odpowiedzią."
+- text: '48\. Element aktywny we wzmacniaczu przewodzi przez cały okres wzmacnianego sygnału. Wzmacniacz
+    ten pracuje w klasie:'
   answers:
   - A
   - B
   - C
   correct_index: 0
-- text: 52\. Pewien ręczny radiotelefon VHF/UHF pozbawiony jest filtrów pasmowych
-    w torze wejściowym. Podczas aktywacji jednego ze szczytów w ramach programu SOTA
-    okazało się, że nie można odebrać sygnałów korespondentów, pomimo wykorzystania
-    dobrej anteny dookólnej. Czym może być spowodowane to zjawisko?
+  explanations:
+  - "Gratulacje!  \n\n**Poprawna odpowiedź: A – klasa A**  \n\nW klasie **A** element aktywny pracuje\
+    \ (przewodzi) przez **cały cykl sygnału**, czyli przez 360°. Dzięki temu wzmacniacz zachowuje się\
+    \ liniowo, ale ma najniższą wydajność mocy (zwykle < 20 %).  \n\n```\n\\[\n\\text{Klasa A: } \\; 0^\\\
+    circ < \\theta < 360^\\circ \\;\\; (\\text{przewodzenie przez cały okres})\n\\]\n```"
+  - "**Dlaczego odpowiedź B jest niepoprawna**\n\n| Klasa wzmacniacza | Czas przewodzenia aktywnego elementu\
+    \ | Typowe zastosowanie |\n|-------------------|----------------------------------------|---------------------|\n\
+    | **A**             | **Cały okres sygnału** (100 %)         | Najczystszy dźwięk, ale niska sprawność\
+    \ |\n| **B**             | Tylko połowa okresu (0–π rad), wprost | Wyższa sprawność, ale zniekształcenia\
+    \ |\n| **C**             | Nawet krótszy okres (< π rad)          | Moc, ale bardzo zniekształcający\
+    \ |\n\nPytanie brzmi: *„Element aktywny we wzmacniaczu przewodzi przez cały okres wzmacnianego sygnału.”*\
+    \  \nJedyną klasą, w której tranzystor (lub inny element) przewodzi **cały czas** to **klasa A**.\n\
+    \n> **B (klasa B)** – element przewodzi tylko podczas jednej połowy cyklu, więc nie spełnia warunku\
+    \ „cały okres”.  \n> **C (klasa C)** – przewodzi jeszcze krócej, więc również nie spełnia warunku.\n\
+    \nDlatego poprawną odpowiedzią jest **A. A**."
+  - "### Dlaczego odpowiedź **C** jest błędna\n\nWzmacniacze klasy **A** charakteryzują się tym, że **aktywny\
+    \ element przewodzi przez cały okres wzmacnianego sygnału** (tj. 100 % cyklu).  \n\n- **Klasa B**\
+    \ – element przewodzi tylko w połowie cyklu (połowa okna czasowego).  \n- **Klasa C** – element przewodzi\
+    \ w bardzo krótkim odcinku sygnału (najczęściej mniej niż 50 % cyklu).\n\nPonieważ opis z pytania\
+    \ dokładnie odpowiada definicji klasy A, poprawną odpowiedzią jest **A**.  \n\n> **Kluczowy punkt**:\
+    \ *cały okres* → klasyfikacja = Klasa A."
+  - "**Klasa wzmacniacza – krótkie wyjaśnienie**\n\n| Klasa | Część cyklu, w której element aktywny przewodzi\
+    \ |\n|-------|-----------------------------------------------|\n| **A** | 100 % cyklu (cały okres\
+    \ sygnału) |\n| **B** | 50 % cyklu (połowa okresu) |\n| **C** | mała część cyklu (zwykle < 50 %) |\n\
+    \nElement aktywny w klasy **A** jest w stanie przewodzenia przez **cały okres** sygnału, co oznacza,\
+    \ że prąd płynie w przewodzeniu przez cały cykl. W klasie B i C element przewodzi tylko część cyklu\
+    \ (połowę lub mniejszą część), co prowadzi do mniejszej wzmocnienia, ale również niższej efektywności\
+    \ i większych zniekształceń.  \n\nDlatego poprawna odpowiedź to **A. A**."
+- text: 52\. Pewien ręczny radiotelefon VHF/UHF pozbawiony jest filtrów pasmowych w torze wejściowym.
+    Podczas aktywacji jednego ze szczytów w ramach programu SOTA okazało się, że nie można odebrać sygnałów
+    korespondentów, pomimo wykorzystania dobrej anteny dookólnej. Czym może być spowodowane to zjawisko?
   answers:
   - rozpraszaniem sygnału na śladach jonizacyjnych meteorów (meteor scatter)
-  - zmniejszeniem czułości odbiornika przez mocny sygnał nadajnika rozgłośni radiowej
-    na sąsiedniej górze
+  - zmniejszeniem czułości odbiornika przez mocny sygnał nadajnika rozgłośni radiowej na sąsiedniej górze
   - silnymi podmuchami wiatru
   correct_index: 1
-- text: 54\. Czy antena typu delta, o długości promiennika ~41 m będzie poprawnie
-    działała w paśmie 20 m?
+  explanations:
+  - "**Dlaczego odpowiedź A jest błędna**\n\n| Co się zdarza | Co powoduje problem | Dlaczego A nie pasuje\
+    \ |\n|---------------|---------------------|-----------------------|\n| **Meteor scatter** | Sygnał\
+    \ VHF/UHF rozprasza się w ionosferze przez drobne ziarna w śladach meteorów | Rozpraszanie to **zwiększa**\
+    \ zasięg, nie zmniejsza czułości odbiornika. |\n| **Zbyt silny sygnał FM** | Broadcast FM (często\
+    \ 87‑108 MHz) o wysokiej mocy (kilka kW) „zatłacza” częstotliwość sąsiedniej anteny, powodując **zaburzenia**\
+    \ i obniżenie czułości | Jest to typowy przypadek „over‑loading” w odbiorniku, który faktycznie blokuje\
+    \ słabe sygnały (np. SOTA). |\n\n**Podsumowanie**  \nMeteor scatter nie jest przyczyną braku odbioru\
+    \ – to technika, która *rozszerza* zasięg, a nie hamuje odbioru. Najczęstszą przyczyną, gdy w torze\
+    \ wejściowym brakuje filtrów pasmowych, jest właśnie silny sygnał z pobliskiej stacji radiowej, który\
+    \ „przeładowuje” układ odbiorczy i redukuje jego czułość."
+  - "**Gratulacje!**  \nTwoja odpowiedź **B** jest poprawna.\n\n---\n\n### Dlaczego?\n\n- Radiotelefony\
+    \ ręczne zwykle mają bardzo wąskie filtry w torze wejściowym.  \n- W momencie, gdy w pobliżu znajduje\
+    \ się potężny nadajnik (np. stacja radiowa), jego sygnał może **przekroczyć** granicę pracy filtru\
+    \ i „przełamać” układ odbiorczy.  \n- Efekt ten powoduje, że sygnał przychodzący z korespondentów\
+    \ (zwykle słabszy) zostaje zahamowany – odczytanie sygnału staje się niemożliwe.  \n- To zjawisko\
+    \ jest znane jako **interferencja spowodowana mocnym sygnałem z sąsiedniej góry**.\n\nPozostałe odpowiedzi:\n\
+    \n- **A. Meteor scatter** – dotyczy zdalnego odbioru przez rozproszenie w meteorytach, a nie problemu\
+    \ z filtrami.\n- **C. Silne podmuchy wiatru** – mogą przeszkadzać w odbiorze, ale nie wyjaśniają braku\
+    \ sygnałów przy użyciu dobrej anteny i filtrów.\n\n---\n\n**Podsumowanie:**  \nMocny sygnał nadajnika\
+    \ stacji radiowej na sąsiedniej górze „przecina” filtr wejściowy radiotelefonu, co zmniejsza jego\
+    \ czułość i uniemożliwia odbiór słabszych sygnałów. ✔️"
+  - "## Dlaczego odpowiedź **C** jest niepoprawna  \n\n| Element | Co jest wymagane | Dlaczego wiatry\
+    \ nie wpływają |\n|---------|-----------------|------------------------------|\n| **Promieniowanie\
+    \ fal radiowych** | Tradycyjnie opisuje się je przy pomocy **równania falowego**: <br>`\\displaystyle\
+    \ \\frac{\\partial^2 \\mathbf{E}}{\\partial t^2} = c^2 \\nabla^2 \\mathbf{E}` | Wiatry nie zmieniają\
+    \ parametrów tego równania. Nie wprowadzają dodatkowego pola elektrycznego ani magnetycznego. |\n\
+    | **Przenoszenie sygnału** | Falę opisuje **przenośność medium** (gęstość powietrza, temperatura).\
+    \ | Zmiana prędkości dźwięku (np. w akustyce) jest istotna, ale **fal radiowych w paśmie VHF/UHF**\
+    \ propaguje się w powietrzu z prędkością ~`c = 3·10⁸ m/s`. Nawet silne podmuchy wiatru (prędkość do\
+    \ 50 m/s) wpływają na **tylko** 0,01 % tej prędkości, co jest zaniedbywalne. |\n| **Interferencja**\
+    \ | Największy problem w opisanym scenariuszu to **silny sygnał lokalnego nadajnika FM** (B). Jego\
+    \ moc przesuwa próg detekcji i redukuje czułość odbiornika (związaną z SNR). | **Nie ma fizycznego\
+    \ mechanizmu**, przez który wiatr mógłby wywołać „zniekształcenie” fal radiowych na tyle, aby uniemożliwić\
+    \ odbiór sygnału w VHF/UHF. |\n| **Przykład z akustyki** | Dźwięk w powietrzu jest zmieniany przez\
+    \ wiatr, ale to dotyczy fal dźwiękowych, nie fal radiowych. | W przypadku radio (frekwencje > 30 MHz)\
+    \ nie występuje efekt przenoszenia „na wietrze” (analogiczny do “fale na falach”). |\n\n**Podsumowanie**\
+    \  \nSilne podmuchy wiatru nie mają znaczącego wpływu na propagację fal radiowych VHF/UHF. Zjawisko\
+    \ opisane w pytaniu wynika z **interferencji** mocnego nadajnika FM, a nie z meteorów, meteor scatter\
+    \ ani wiatru.  \n\n> **Dlatego poprawną odpowiedzią jest B.**"
+  - "## Dlaczego brak filtrów pasmowych powoduje „zablokowanie” odbioru\n\n1. **Brak selekcji sygnałów**\
+    \  \n   Bez filtrów pasmowych wszystkie sygnały w pobliżu częstotliwości wybranej dla SOTA – zarówno\
+    \ te pożądane, jak i niepożądane – docierają do przetwornika wejściowego.\n\n2. **Przesterowanie front‑end**\
+    \  \n   Gdy w pobliżu znajduje się bardzo silny nadajnik (np. lokalna stacja FM na górze), jego sygnał\
+    \ może przekroczyć granicę linearności układu wejściowego.  \n   - **Skutek:** nadmierna amplituda\
+    \ powoduje **przesterowanie** i generowanie **intermodulacji**.  \n   - **Efekt na odbiór:** sygnały\
+    \ o mniejszej mocy (takie jak te z SOTA) zostają przytłumione przez szum i obrazy generowane przez\
+    \ nadmiernie silny sygnał.\n\n3. **Spadek czułości**  \n   Czułość odbiornika opisuje się przez:\n\
+    \   \\[\n   S_{\\text{min}} = \\frac{k T_{\\text{sys}} B}{G}\n   \\]\n   gdzie \\(k\\) – stała Boltzmanna,\
+    \ \\(T_{\\text{sys}}\\) – temperatura systemu, \\(B\\) – szerokość pasma, \\(G\\) – zysk.  \n   Gdy\
+    \ front‑end jest zapełniony silnym sygnałem, efektywne \\(G\\) spada, a więc \\(S_{\\text{min}}\\\
+    ) rośnie – odbiór słabszych sygnałów jest niemożliwy.\n\n4. **Dlaczego pozostałe odpowiedzi są nieprawidłowe**\
+    \  \n   - **Meteor scatter** – wciąż wymaga aktywnej anteny i nie powoduje „zablokowania” sygnału\
+    \ przy słabym przychodzącym sygnale.  \n   - **Silne podmuchy wiatru** – mogą wprowadzać szumy mechaniczne,\
+    \ ale nie wpływają tak silnie na czułość, jak przesterowanie.\n\n> **Podsumowanie**: Brak filtrów\
+    \ pasmowych pozwala bardzo silnemu sygnałowi FM‑a na zapełnienie wejścia, powodując przesterowanie\
+    \ i wzrost czułości odbiornika, co uniemożliwia odbiór słabszych sygnałów z programu SOTA."
+- text: 54\. Czy antena typu delta, o długości promiennika ~41 m będzie poprawnie działała w paśmie 20
+    m?
   answers:
   - nie, to jest antena jednopasmowa
   - tak, antena typu delta stroi się na kolejnych harmonicznych
   - tak, ale tylko jako odbiorcza
   correct_index: 1
-- text: 55\. Co stanie się kiedy nasz korespondent w paśmie 70 cm używa anteny o odmiennej
-    polaryzacji niż nasza?
+  explanations:
+  - '**Dlaczego odpowiedź A jest błędna**
+
+
+    | Kwestię rozważać | Co się działo ? |
+
+    |-----------------|-----------------|
+
+    | Wydajność na 20 m | Delta o „promienniku” ≈ 41 m ma bok równoramienny równy ~71 m ( \(R=\tfrac{a}{\sqrt3}\)
+    ). <br>Dlatego jej podstawowa długość rezonansowa to ≈ 71 m ≈ 3,55 λ przy 20 m (λ = 20 m). |
+
+    | Rezonans fundamentalny | 3,55 λ odpowiada częstotliwości ≈ 50 MHz (ok. 6 m).  Delta w tej konfiguracji
+    jest więc głównie **jednopasmowa** na 6 m. |
+
+    | Harmoniki | Delta nie jest „jednopasmowa” w sensie, że rezonans jest ograniczony tylko do jednego
+    pasma. Jej geometryka dopuszcza kolejne harmoniki: <br> \[
+
+    f_n = n\,f_1,\quad n=1,2,3,\dots
+
+    \] |
+
+    | 20 m jako trzecia harmoniczna | Jeśli \(f_1 \approx 50\) MHz, to:<br> 2 × 50 MHz = 100 MHz (≈ 3 m),
+    <br> 3 × 50 MHz = 150 MHz (≈ 2 m), <br> ale **3‑ta harmoniczna** (≈ 3 × 50 MHz = 150 MHz) odpowiada
+    **20 m**? <br>W praktyce, dla δ‑anten, **pierwszy rezonans** pojawia się na 6 m, a **trzeci** – na
+    20 m. |
+
+    | Co to oznacza | Delta o promieniu 41 m **nie jest** „jednopasmowa” w sensie, że nie może pracować
+    tylko na jednym pasie.  Działa na 20 m dzięki rezonansowi trzeciej harmonicznej. |
+
+
+    **Podsumowanie**
+
+
+    Odpowiedź A błędnie zakłada, że delta jest jednopasmowa. W rzeczywistości delta rezonuje na **kolejne
+    harmoniczne** swojego fundamentalnego rezonansu. Dla podanego rozmiaru 41 m, podstawowy rezonans znajduje
+    się w 6 m, a 20 m jest trzecim harmonijnym pasmem, co czyni odpowiedź **B** poprawną.'
+  - "**Gratulacje!**  \nOdpowiedź **B** jest poprawna.\n\nAnteny typu **delta** mają charakterystyczną\
+    \ właściwość: rezonują na *kolejnych harmonicznych* długości fal.  \nDla 20 m (f ≈ 14,0–14,35 MHz)\
+    \ długość fali wynosi  \n\n\\[\n\\lambda=\\frac{c}{f}\\approx\\frac{3\\cdot10^{8}\\;\\text{m/s}}{14,25\\\
+    ;\\text{MHz}}\\approx20,9\\;\\text{m}.\n\\]\n\nAntenna delta o długości **≈ 41 m** odpowiada\n\n\\\
+    [\nL \\approx 2\\,\\lambda.\n\\]\n\nDlatego jej **pierwszy rezonans** (fundamentalny) ma miejsce przy\
+    \ \\(\\lambda/2\\approx 20,9\\;\\text{m}\\), czyli dokładnie w paśmie 20 m.  \nDodatkowo, delta „stroi\
+    \ się” na kolejne harmoniczne \\((3\\lambda/2,\\;5\\lambda/2,\\dots)\\), co pozwala jej pracować na\
+    \ innych pasmach, ale w przypadku 20 m wystarcza resonans fundamentalny.\n\nPodsumowując: **41 m delta\
+    \ rezonuje w paśmie 20 m** dzięki właściwości rezonansu harmonicznego – dlatego odpowiedź B jest prawidłowa."
+  - '## Dlaczego odpowiedź **C** jest niepoprawna
+
+
+    |   |  Dlaczego |
+
+    |---|-----------|
+
+    | **A** | „nie, to jest antena jednopasmowa” – nieprawda. Antena delta to **antenna wielobazowa**
+    (potrafi rezonować na kilku harmonicznych). |
+
+    | **B** | **Poprawne**. Antena delta długości ~41 m (≈ λ/3 na 20 m) rezonuje na pierwszym harmoniku
+    (λ/2), ale także na kolejnych harmonicznych (λ/4, λ/6, …). Dzięki temu w paśmie 20 m będzie działać
+    zarówno jako nadawca, jak i odbiorca. |
+
+    | **C** | „tak, ale tylko jako odbiorcza” – błędna. Antena delta może także **nadawać** w 20 m; nie
+    jest ograniczona tylko do odbioru. |
+
+
+    > **Podsumowanie**: Antena delta o długości ~41 m rezonuje na pierwszym i kolejnych harmonicznych,
+    więc będzie pracować w paśmie 20 m zarówno jako nadajnik, jak i odbiornik – odpowiedź **B**.'
+  - "**Dlaczego delta‑antenna o „promienniku” ~ 41 m może działać na paśmie 20 m?**\n\n1. **Wielkość a\
+    \ rezonans**  \n   Dla delfin‑loopa (trójkątnego) fundamentalny rezonans występuje, gdy obwód ≈ λ/2.\
+    \  \n   Obwód ≈ 3 × szerokość (długość boku) →  \n   \\[\n   \\lambda_{\\text{fund}} \\approx 6\\\
+    ,L\n   \\]\n   Jeśli \\(L = 41\\; \\text{m}\\) → \\(\\lambda_{\\text{fund}}\\approx 246\\;\\text{m}\\\
+    ) → \\(f_{\\text{fund}}\\approx 122\\;\\text{kHz}\\).\n\n2. **Harmoniczne**  \n   Wystarczy, że częstotliwość\
+    \ operacyjna będzie całkowitą wielokrotnością fundamentalnej:\n   \\[\n   f_n = n\\,f_{\\text{fund}},\\\
+    qquad n=1,2,3,\\dots\n   \\]\n   Dla \\(f_{\\text{fund}}=122\\;\\text{kHz}\\):\n   \\[\n   n=115 \\\
+    ;\\Rightarrow\\; f_{115}\\approx 14\\;\\text{MHz}\\;(\\text{20 m band})\n   \\]\n   (dokładna wartość\
+    \ zależy od kształtu trójkąta i dopasowania impedancji, ale 20 m jest osiągalne przy odpowiednim dopasowaniu).\n\
+    \n3. **Wniosek**  \n   **Delta‑antenna może rezonować na wyższych harmonicznych** niż fundamentalna.\
+    \ Dlatego, mimo że jej „promiennik” znacznie przekracza długość falową pasma 20 m, działa ona na tym\
+    \ paśmie, rezonując na odpowiedniej (wyższej) harmonicznej.\n\n> **Odpowiedź B** jest poprawna: *tak,\
+    \ antena typu delta stroi się na kolejnych harmonicznych*."
+- text: 55\. Co stanie się kiedy nasz korespondent w paśmie 70 cm używa anteny o odmiennej polaryzacji
+    niż nasza?
   answers:
   - wstęgi boczne modulacji mogą zostać odwrócone
   - sygnały mogą być znacznie słabsze
   - słyszymy efekt echa na sygnale
   correct_index: 1
+  explanations:
+  - "## Dlaczego odpowiedź **A** jest błędna\n\n| Pytanie | Co się stanie, gdy odbiorca użyje anteny o\
+    \ innej polaryzacji? |\n|---------|------------------------------------------------------------|\n\
+    | **Odpowiedź poprawna** | **B.** sygnały mogą być znacznie słabsze |\n\n### Co to znaczy „polaryzacja”?\n\
+    - Polaryzacja opisuje kształt i orientację fali elektromagnetycznej (np. liniowa, kołowa, rotująca).\n\
+    - Aby odbiorca przyjął sygnał, jego antena musi mieć taką samą polaryzację jak nadawca.\n\n### Dlaczego\
+    \ nie „odwrócone wstęgi boczne”?\n- **Wstęgi boczne** to część **konstrukcji pola promieniowania**\
+    \ danej anteny (jej charakterystyczny wzór rozdziału mocy).\n- Wstęgi boczne nie zmieniają się w zależności\
+    \ od polaryzacji przyjmującej anteny.  \n- Polaryzacja wpływa jedynie na **efekt straty**: moc odebrana\
+    \ jest pomnożona przez \\(\\cos^2\\theta\\), gdzie \\(\\theta\\) to kąt między polaryzacjami nadawcy\
+    \ a odbiorcy.  \n  \\[\n  P_{\\text{received}} = P_{\\text{transmitted}}\\;\\cos^2\\theta\n  \\]\n\
+    - Jeśli \\(\\theta = 90^\\circ\\) (polaryzacje prostopadłe), \\(\\cos^2 90^\\circ = 0\\) – praktycznie\
+    \ nic nie zostaje odebrane, a nie ma „odwrócenia wstęg bocznych”.\n\n### Dlaczego **B** jest poprawna?\n\
+    - Gdy polaryzacje nie zgadzają się, odbiór jest osłabiony, a sygnał staje się słabszy (potrzebna większa\
+    \ moc transmisji lub korekta polaryzacji).\n- Nie ma tu efektu echa, bo echo dotyczy opóźnień czasowych,\
+    \ a nie polaryzacji.\n\n**Podsumowanie:**  \nNieprawidłowa odpowiedź A dotyczyła nieistniejącego zjawiska\
+    \ „odwrócenia wstęg bocznych” – to po prostu zbyt odchudzona informacja o efekcie polaryzacji. Główny\
+    \ problem przy niezgodnej polaryzacji to **zmniejszenie odebranej mocy**."
+  - "**Gratulacje!**  \n\nOdpowiedź **B – „sygnały mogą być znacznie słabsze”** jest poprawna.  \n\nW\
+    \ radiolinkach w paśmie 70 cm najważniejszym czynnikiem wpływającym na otrzymaną moc jest zgodność\
+    \ polaryzacji anten.  \nJeśli nadawca używa anteny spolaryzowanej pod kątem \\(\\theta\\) do polaryzacji\
+    \ Twojej anteny, dochodzi do **marnotrawienia** sygnału – zwanego **polarization‑mismatch loss**:\n\
+    \n\\[\nL_{\\text{pm}}(\\theta)=\\frac{1}{\\cos^{2}\\theta}\\;\\;\\;(\\text{w decybelach}).\n\\]\n\n\
+    Dla \\(\\theta = 90^{\\circ}\\) (anteny prostopadłe) \\(L_{\\text{pm}}\\) jest nieskończone – sygnał\
+    \ praktycznie nie dochodzi.  \nDlatego właśnie różnica polaryzacji powoduje, że „sygnały mogą być\
+    \ znacznie słabsze”."
+  - "**Dlaczego odpowiedź C jest niepoprawna**\n\n|  | Co mówi odpowiedź | Dlaczego to błędne |\n|---|-------------------|---------------------|\n\
+    | **A** | „wstęgi boczne modulacji mogą zostać odwrócone” | Zmiana polaryzacji nie odwraca wstęg bocznych\
+    \ – to wynik filtru. |\n| **B** | „sygnały mogą być znacznie słabsze” | ✔ Polaryzacja wpływa na **wydajność\
+    \ odbioru**: jeśli nadawca i odbiorca mają różne pola (np. liniowa vs. kątowa), moc przyjmowana spada.\
+    \ |\n| **C** | „słyszymy efekt echa na sygnale” | ❌ Echo to **zjawisko multipath‑reflection** – powtarzający\
+    \ się sygnał spowodowany odbiciem od przeszkód. Polaryzacja nie wprowadza ani nie powoduje echa. |\n\
+    \n---\n\n### Jak polaryzacja wpływa na moc\n\nJeśli anteny mają różne kąty polaryzacji, moc odebrana\
+    \ przez odbiornik opisuje się wzorem\n\n\\[\nP_{\\text{odb}} = P_{\\text{nad}}\\,\\cos^2\\!\\theta\
+    \ ,\n\\]\n\ngdzie  \n\\(P_{\\text{nad}}\\) – moc nadanej sygnału,  \n\\(\\theta\\) – różnica kątów\
+    \ polaryzacji między antenami.  \n\nDla \\(\\theta = 90^\\circ\\) (np. linowa vs. kątowa) \\(\\cos^2\
+    \ 90^\\circ = 0\\), więc sygnał jest praktycznie „zaniknięty”, a nie echo.\n\n---\n\n**Podsumowanie**\
+    \  \nRóżnica polaryzacji powoduje **utrata mocy**, a nie powstawanie efektu echa. Dlatego poprawna\
+    \ odpowiedź to **B**."
+  - "**Wyjaśnienie**\n\nKiedy nadawca i odbiorca używają anten o różnych polaryzacjach, zachodzi **mismatch\
+    \ polaryzacyjny**.  \n\n1. **Definicja**  \n   Polaryzacja to kierunek pola elektrycznego w falach\
+    \ radiowych.  \n   Jeśli dwie anteny mają różne ustawienia (np. jedną poziomą, drugą pionową), siła\
+    \ napływającego pola w antenie odbiorczej jest zmniejszona.\n\n2. **Wpływ na moc sygnału**  \n   \\\
+    [\n   P_{\\text{rx}} = P_{\\text{tx}}\\; G_{\\text{tx}}\\; G_{\\text{rx}}\\;\n   \\left(\\frac{\\\
+    lambda}{4\\pi d}\\right)^2 \\cos^2\\!\\theta\n   \\]\n   - \\(P_{\\text{rx}}\\): moc przyjmowana \
+    \ \n   - \\(P_{\\text{tx}}\\): moc nadawana  \n   - \\(G_{\\text{tx}}, G_{\\text{rx}}\\): zyski anten\
+    \  \n   - \\(\\lambda\\): długość fali (70 cm ⇒ \\(\\lambda\\approx0.7\\) m)  \n   - \\(d\\): odległość\
+    \  \n   - \\(\\theta\\): kąt między wektorami polaryzacji\n\n   Gdy \\(\\theta \\neq 0^\\circ\\),\
+    \ \\(\\cos^2\\theta < 1\\), co powoduje **znaczny spadek mocy** przyjmowanej.\n\n3. **Efekt praktyczny**\
+    \  \n   - Sygnał staje się słabszy, co zwiększa szanse na utratę danych.  \n   - Brak echa ani odwrócenia\
+    \ wstęg bocznych – to zjawiska charakterystyczne dla innego rodzaju interferencji.\n\nDlatego poprawna\
+    \ odpowiedź to **B – sygnały mogą być znacznie słabsze**."
 - text: 56\. Co oznacza pojęcie „stosunek przód-tył” w odniesieniu do anteny Yagi-Uda?
   answers:
   - stosunek liczby direktorów do reflektorów
-  - stosunek mocy wypromieniowanej w kierunku głównego listka promieniowania do kierunku
-    przeciwnego
+  - stosunek mocy wypromieniowanej w kierunku głównego listka promieniowania do kierunku przeciwnego
   - stosunek mocy wypromieniowanej w przód anteny do dipola półfalowego
   correct_index: 1
+  explanations:
+  - "## Dlaczego odpowiedź A jest niepoprawna\n\n| Kategoria | Co ma oznaczać | Co faktycznie opisuje\
+    \ odpowiedź A |\n|-----------|----------------|----------------------------------|\n| **Pojęcie**\
+    \ | **Stosunek przód‑tył** (front‑to‑back ratio) | – |\n| **Zastosowanie** | Porównuje moc promieniowana\
+    \ w **przód** anteny z mocą w **tył** (naprzeciwko) | Liczba elementów: **directors** (diody) vs **reflector**\
+    \ (reflektor) |\n| **Dlaczego się nie zgadza** | Stosunek przód‑tył dotyczy **wzoru promieniowania**,\
+    \ a nie **liczby elementów**.  |  |\n\n### Formalnie\n\n\\[\n\\text{FBR} = \\frac{P_{\\text{przód}}}{P_{\\\
+    text{tył}}}\n\\]\n\ngdzie  \n\\(P_{\\text{przód}}\\) – moc promieniowana w kierunku głównego listka\
+    \ (forward),  \n\\(P_{\\text{tył}}\\) – moc promieniowana w przeciwnym (backward) kierunku.\n\nWzór\
+    \ w (B) dokładnie opisuje to pojęcie, natomiast (A) odnosi się jedynie do **liczby elementów** anteny,\
+    \ co nie ma nic wspólnego z pomiarem FBR.\n\n> **Wniosek**: Odpowiedź A jest błędna, bo opisuje strukturę\
+    \ anteny, a nie jej charakterystyki promieniowania. ✅"
+  - "**Gratulacje!**  \n\nOdpowiedź **B** jest poprawna, ponieważ **stosunek „przód‑tył”** (ang. *front‑to‑back\
+    \ ratio*) definiuje się jako\n\n\\[\n\\text{F/B} \\;=\\; \\frac{P_{\\text{forward}}}{P_{\\text{backward}}}\\\
+    ,,\n\\]\n\ngdzie  \n- \\(P_{\\text{forward}}\\) – moc promieniowana w kierunku głównego listka (przód\
+    \ anteny),  \n- \\(P_{\\text{backward}}\\) – moc promieniowana w przeciwnym, tylnej części pola.\n\
+    \nWskaźnik ten opisuje, jak bardzo antena Yagi‑Uda skupia energię w przód w porównaniu z emisją w\
+    \ tył, co jest kluczowe dla jej efektywności kierunkowej."
+  - "**Dlaczego odpowiedź C jest błędna**\n\n| Element | Prawidłowa definicja | Co sugeruje odpowiedź\
+    \ C |\n|--------|----------------------|-------------------------|\n| **Stosunek przód‑tył (F/B)**\
+    \ | \\(\\displaystyle \\text{F/B}= \\frac{P_{\\text{przód}}}{P_{\\text{tył}}}\\) – moc promieniowana\
+    \ w kierunku głównego listka (przód) podzielona przez moc promieniowaną w przeciwnym (tył) kierunku.\
+    \ | „moc wypromieniowana w przód anteny do dipola półfalowego” – porównuje antenę do *innego* elementu\
+    \ (dipola), a nie do samej „tył” jej pola. |\n\n### Kluczowe punkty\n1. **Miara wewnątrz tej samej\
+    \ anteny** – F/B mierzy jak silnie dany element promieniuje w dwie przeciwległe strony, nie porównując\
+    \ do innego typu anteny.\n2. **Jednostka** – zazwyczaj podawana w decybelach:  \n   \\[\n   \\text{F/B\
+    \ (dB)} = 10 \\log_{10}\\!\\left(\\frac{P_{\\text{przód}}}{P_{\\text{tył}}}\\right)\n   \\]\n3. **Zastosowanie**\
+    \ – wysoki F/B oznacza, że strumień promieniowania jest silnie skierowany w przód i słabo w tył, co\
+    \ jest pożądane w układach Yagi‑Uda.\n\n**Dlatego poprawna odpowiedź to B** – opisuje właściwe porównanie\
+    \ między mocą w kierunku głównego listka a mocą w kierunku przeciwnego."
+  - "**Wyjaśnienie**\n\nPojęcie *stosunek przód‑tył* (ang. **front‑to‑back ratio**) odnosi się do **różnicy\
+    \ mocy promieniowanej w kierunku głównego wzmocnienia (przód)** i **mocy promieniowanej w kierunku\
+    \ przeciwnym (tył)**.  \n\nMatematycznie:\n\\[\n\\text{F/B}_{\\mathrm{ratio}} = \\frac{P_{\\text{przód}}}{P_{\\\
+    text{tył}}}\n\\]\nzwykle podawane w decybelach:\n\\[\n\\text{F/B}_{\\mathrm{dB}} = 10\\log_{10}\\\
+    !\\left(\\frac{P_{\\text{przód}}}{P_{\\text{tył}}}\\right)\n\\]\n\nDla anteny Yagi‑Uda istotny jest\
+    \ ten wskaźnik, bo określa, jak dobrze antenna „odrywa” sygnał z obszaru tylnego, minimalizując interferencję\
+    \ z sygnałami pochodzącymi z tyłu.  \n\n**Dlatego poprawna odpowiedź to B.**"
 - text: '57\. Współczynnik skrócenia kabla koncentrycznego to:'
   answers:
-  - stosunek prędkości rozchodzenia się fali w kablu do prędkości rozchodzenia w próżn
-    i
+  - stosunek prędkości rozchodzenia się fali w kablu do prędkości rozchodzenia w próżn i
   - stosunek długości kabla do jego średnicy
   - parametr charakteryzujący odporność kabla na promieniowanie UV
   correct_index: 0
-- text: 58\. Jakie znaczenie ma liczba plam słonecznych w odniesieniu do propagacji
-    KF?
+  explanations:
+  - "**Gratulacje!**  \nTwoja odpowiedź **A** jest poprawna.\n\n---\n\n### Dlaczego?\n\n*Współczynnik\
+    \ skrócenia* (velocity factor, VF) kabla koncentrycznego jest zdefiniowany jako stosunek prędkości\
+    \ propagacji fali w kablu do prędkości światła w próżni:\n\n\\[\n\\text{VF} = \\frac{v_{\\text{cable}}}{c}\n\
+    \\]\n\ngdzie  \n\\(v_{\\text{cable}}\\) – prędkość fali w kablu,  \n\\(c \\approx 3\\times10^8~\\\
+    text{m/s}\\) – prędkość światła w próżni.\n\nZ tej definicji wynika, że VF opisuje „skrócenie” odległości\
+    \ w czasie — im mniejszy VF, tym wolniej fala przemieszcza się w kablu w porównaniu z prędkością światła.\
+    \ Dlatego odpowiedź **A** jest jedyną zgodną z definicją współczynnika skrócenia."
+  - "**Dlaczego odpowiedź B jest błędna?**\n\n|  | Co‑ś? | Dlaczego nie |\n|---|---|---|\n| **B** | „stosunek\
+    \ długości kabla do jego średnicy” | To tylko wymiary geometryczne. Nie mają one bezpośredniego związku\
+    \ z prędkością, z jaką fali elektromagnetyczna rozchodzi się w kablu. |\n| **A** | „stosunek prędkości\
+    \ rozchodzenia się fali w kablu do prędkości rozchodzenia się w próżni” | To właśnie **współczynnik\
+    \ skrócenia** (ang. *velocity factor*). Definiuje się go jako:  \n\n\\[\nk = \\frac{c}{v}\n\\]\n\n\
+    gdzie \\(c\\) – prędkość światła w próżni, \\(v\\) – prędkość fali w danym kablu. |\n| **C** | „parametr\
+    \ charakteryzujący odporność kabla na promieniowanie UV” | To właściwość inna niż propagacja fali\
+    \ (np. wytrzymałość materiału). |\n\n---\n\n### Krótkie uzupełnienie\n\n- **Współczynnik skrócenia**\
+    \ \\(k\\) jest mierzony w jednostkach bezwzględnych (np. 1.5, 1.8). Dla kabli koncentrycznych z dielektrykiem\
+    \ roztoczowym \\(k\\) wynosi zazwyczaj około **1.5–1.8**.\n- **Współczynnik prędkości (velocity factor)**,\
+    \ czyli odwrotność \\(k\\), to stosunek \\(v/c\\) i ma wartość **pomiędzy 0 a 1** (typowo ≈ 0.66 dla\
+    \ większości kabli koncentrycznych).\n\n---\n\n**Podsumowanie**  \nOdpowiedź B dotyczy wyłącznie wymiarów\
+    \ kabla i nie opisuje, jak szybko rozchodzi się sygnał. Dlatego prawidłowa odpowiedź to **A**, opisująca\
+    \ stosunek prędkości fali w kablu do prędkości w próżni."
+  - "## Dlaczego odpowiedź **C** jest niepoprawna\n\nW pytaniu chodzi o **współczynnik skrócenia** (ang.\
+    \ *velocity factor*) kabla koncentrycznego.  \n\n- **Współczynnik skrócenia** definiuje się jako \
+    \ \n  \\[\n  k = \\frac{v_{\\text{cable}}}{c},\n  \\]\n  gdzie \\(v_{\\text{cable}}\\) to prędkość\
+    \ fali elektromagnetycznej w kablu, a \\(c\\) to prędkość światła w próżni.  \n- Zawiera on informację\
+    \ o **prędkości propagacji sygnału** w danym przewodzie, a nie o jego właściwościach mechanicznych\
+    \ czy środowiskowych.\n\n**Odpowiedź C** („parametr charakteryzujący odporność kabla na promieniowanie\
+    \ UV”) dotyczy zupełnie innego zagadnienia – odporności na promieniowanie, a nie prędkości rozchodzenia\
+    \ się fali. Dlatego jest błędna.\n\n---\n\n### Kluczowe pojęcia\n\n| Pojęcie | Opis | Wzór |\n|---------|------|------|\n\
+    | **Współczynnik skrócenia** | Stosunek prędkości fali w kablu do prędkości w próżni | \\(k = \\dfrac{v_{\\\
+    text{cable}}}{c}\\) |\n| **Prędkość w kablu** | Zależy od dielektryka w obwodzie kabla | \\(v_{\\\
+    text{cable}} = \\dfrac{c}{\\sqrt{\\epsilon_r}}\\) |\n| **Promieniowanie UV** | Działa na izolację\
+    \ i może ją degradować | — |\n\n---\n\n#### Podsumowanie\n- Prawidłowa odpowiedź to **A** – opisuje\
+    \ właśnie wzór na współczynnik skrócenia.\n- **C** jest błędne, bo opisuje odporność na UV, a nie\
+    \ prędkość propagacji sygnału."
+  - "**Współczynnik skrócenia (faktor propagacji)** jest definiowany jako\n\n\\[\nk = \\frac{v}{c}\n\\\
+    ]\n\ngdzie  \n\n* \\(v\\) – prędkość rozchodzenia się fali w danym medium (w kablu koncentrycznym),\
+    \  \n* \\(c\\) – prędkość światła w próżni \\((c \\approx 3\\times10^8\\;\\text{m/s})\\).\n\nDla kabla\
+    \ koncentrycznego \\(v < c\\), dlatego \\(k < 1\\).  \n\nPozostałe odpowiedzi:\n\n* **B** – to opisuje\
+    \ stosunek długości do średnicy (nie ma nic wspólnego z propagacją).\n* **C** – opisuje odporność\
+    \ na UV, czyli właściwość fizyczną izolacji, a nie charakterystykę propagacji sygnału.\n\nDlatego\
+    \ poprawna odpowiedź to **A**."
+- text: 58\. Jakie znaczenie ma liczba plam słonecznych w odniesieniu do propagacji KF?
   answers:
-  - wyższa liczba plam słonecznych generalnie wskazuje na większe prawdopodobieństwo
-    dobrej propagacji na wyższych częstotliwościach
-  - niższa liczba plam słonecznych ogólnie wskazuje na większe prawdopodobieństwo
-    wystąpienia sporadycznej propagacji przez warstwę E.
-  - zerowa liczba plam słonecznych oznacza, że propagacja radiowa nie jest możliwa
-    w żadnym paśmie
+  - wyższa liczba plam słonecznych generalnie wskazuje na większe prawdopodobieństwo dobrej propagacji
+    na wyższych częstotliwościach
+  - niższa liczba plam słonecznych ogólnie wskazuje na większe prawdopodobieństwo wystąpienia sporadycznej
+    propagacji przez warstwę E.
+  - zerowa liczba plam słonecznych oznacza, że propagacja radiowa nie jest możliwa w żadnym paśmie
   correct_index: 0
+  explanations:
+  - "### Gratulacje! \U0001F389  \n\n**Odpowiedź A** jest poprawna, ponieważ:\n\n- **Wzrost liczby plam\
+    \ słonecznych** → wyższa aktywność magnetyczna.  \n- Większa liczba plam → **większe pole magnetyczne**\
+    \ → wyższa **gęstość jonizacji** w warstwie **F**.  \n- Dzięki temu **schwytanie** i **wzmacnianie\
+    \ sygnałów** na wyższych częstotliwościach (np. 30 – 300 MHz) staje się bardziej prawdopodobne.\n\n\
+    ---\n\n**Dlaczego B i C są błędne?**\n\n| Odpowiedź | Dlaczego nie |\n|-----------|--------------|\n\
+    | **B** | Niska liczba plam obniża jonizację warstwy **E**; propagacja sporadyczna w tej warstwie\
+    \ jest rzadka. |\n| **C** | Nawet przy zerowej liczbie plam (okres „swiatła” – „solar minimum”) propagacja\
+    \ możliwa jest w niskich częstotliwościach (np. VHF, UHF) dzięki warstwie **E** oraz warstwie **D**\
+    \ (czasami zjawisko “D‑loss”). |\n\n---\n\n**W skrócie:** Większa liczba plam = lepsza propagacja\
+    \ na wyższych częstotliwościach. \U0001F680"
+  - "## Dlaczego odpowiedź **B** jest błędna\n\n| Poziom aktywności słonecznej | Efekt na warstwę **E**\
+    \ | Efekt na propagację **KF** |\n|------------------------------|-----------------------|---------------------------|\n\
+    | **Wysoka liczba plam słonecznych** | Większa jonizacja → **wyższa** gęstość jonów \U0001D45Bₑ |\
+    \ Umożliwia propagację na wyższych częstotliwościach (≈ 10 – 30 MHz). |\n| **Niska liczba plam słonecznych**\
+    \ | Mniejsza jonizacja → **niższa** gęstość jonów | Trudniejsze odbicie na wyższych częstotliwościach;\
+    \ ewentualnie sporadyczne odbicia w warstwie E, ale **nie** są one typowym skutkiem niskiej aktywności\
+    \ słonecznej. |\n\n### Kluczowy punkt\n- **Wysoka aktywność słoneczna** = większa jonizacja → lepsza\
+    \ propagacja na wyższych częstotliwościach (**odpowiedź A**).\n- **Niska aktywność słoneczna** → mniejsza\
+    \ jonizacja, co ogranicza propagację, a sporadyczne odbicia w warstwie E są **wyjątkowe**, a nie ogólne.\n\
+    \n---\n\n**Wniosek:**  \nOdpowiedź **A** jest poprawna, ponieważ wyższa liczba plam słonecznych zwiększa\
+    \ prawdopodobieństwo dobrej propagacji na wyższych częstotliwościach. Odpowiedź **B** pomija fakt,\
+    \ że niska liczba plam słonecznych zazwyczaj pogarsza propagację, a sporadyczne odbicia w warstwie\
+    \ E nie są dominującym zjawiskiem."
+  - "**Dlaczego odpowiedź C jest błędna**\n\n| Co mówi odpowiedź C | Dlaczego to nieprawda |\n|---------------------|----------------------|\n\
+    | „Zerowa liczba plam słonecznych oznacza, że propagacja radiowa nie jest możliwa w żadnym paśmie”\
+    \ | 1. **Ioniejonizacja nie zależy wyłącznie od plam słonecznych** – w okresie minima słonecznego\
+    \ (low‑sunspot number) jonizacja jonosfery jest nadal utrzymywana przez promieniowanie kosmiczne,\
+    \ promieniowanie UV oraz czynniki atmosferyczne.  <br>2. **Przebywanie na poziomie minimum słonecznym**\
+    \ sprzyja **większej propagacji w pasmach UHF/LW** (np. 50‑100 MHz), ponieważ warstwa F2 ma niższe\
+    \ nasycenie, a ścieżki przez warstwę E i D są mniej rozpraszające.  <br>3. **Wysokie częstotliwości\
+    \ (HF, VHF)** mogą doświadczać ograniczonej penetracji F2, ale **propagacja wciąż występuje** – np.\
+    \ sporadyczne „dobre” sygnały HF nawet w 10‑30 MHz. |\n\n**Krótka relacja z fizyki ionosfery**\n\n\
+    Głównym parametrem opisującym zdolność jonosfery do odbicia fal HF jest **krytyczna częstotliwość**\
+    \ \\(f_{0F2}\\):\n\n\\[\nf_{0F2} \\;=\\; 0.1\\,\\sqrt{N_{\\max}}\\;\\;\\text{[MHz]}\n\\]\n\ngdzie\
+    \ \\(N_{\\max}\\) to maksymalna liczba jonów (electron density) w warstwie F2.  \n\\(N_{\\max}\\)\
+    \ wzrasta wraz z intensywnością promieniowania słonecznego (więcej plam słonecznych → wyższa jonizacja).\
+    \  \nJednak przy \\(N_{\\max} \\approx 10^6\\)–\\(10^7\\,\\text{cm}^{-3}\\) (typowe dla minima słonecznego)\
+    \ otrzymujemy \\(f_{0F2} \\approx 5\\)–\\(8\\) MHz – wystarczająco wysokie, by propagować w pasmach\
+    \ HF i UHF.\n\n**Wniosek**\n\nBrak plam słonecznych nie wyklucza propagacji radiowej.  \nW okresie\
+    \ minima słonecznego:  \n- **HF (3–30 MHz)** – możliwa, choć mniej stabilna.  \n- **UHF/LW (30 MHz\
+    \ – 100 MHz)** – często lepsza propagacja.  \n\nDlatego poprawna odpowiedź to **A** – wyższa liczba\
+    \ plam słonecznych ogólnie sprzyja lepszej propagacji w wyższych częstotliwościach."
+  - "### Dlaczego **A** jest poprawne  \n\n1. **Większa aktywność słoneczna** (wyższa liczba plam słonecznych)\
+    \ → większa emisja promieniowania UV i X‑ray.  \n2. Zwiększone promieniowanie → **większe jonizowanie**\
+    \ warstw atmosfery (E‑ i F‑layer).  \n3. Wyższe stężenia jonów w **warstwie F** podnoszą jej **gęstość**\
+    \ i **wysokość**, co zwiększa **indeks refrakcji**  \n   \\[\n   n \\approx 1 - \\frac{N_e}{2N_{\\\
+    text{crit}}(f)} \\qquad (N_{\\text{crit}}(f) \\propto f^2)\n   \\]\n   gdzie \\(N_e\\) to gęstość\
+    \ elektronów, \\(f\\) – częstotliwość.  \n4. Im wyższa \\(N_e\\), tym **większa możliwość odbicia**\
+    \ fal w pasmach HF (3–30 MHz) i VHF.  \n\n#### Dlatego:\n- **Wyższa liczba plam** → lepsza propagacja\
+    \ na wyższych częstotliwościach.  \n- **Niższa liczba plam** sprzyja sporadicznej propagacji przez\
+    \ warstwę **E** (odpowiedź B), ale nie wpływa tak silnie na HF.  \n- Zera plam nie wyklucza propagacji\
+    \ w żadnym paśmie – odpowiedź C jest błędna."
 - text: 59\. Co oznacza skrót MUF?
   answers:
   - minimalna użyteczna częstotliwość dla komunikacji między dwoma punktami
   - maksymalna użyteczna częstotliwość do komunikacji między dwoma punktami
   - minimalna użyteczna częstotliwość na następne 24 godziny
   correct_index: 1
-- text: 60\. Ile mocy zostaje wypromieniowane przez antenę, jeśli miernik mocy podłączony
-    pomiędzy nadajnik a antenę wskazuje 100 W mocy padającej i 30 W mocy odbitej?
+  explanations:
+  - "## Dlaczego odpowiedź A jest błędna\n\n| Element | Co oznacza | Co się dzieje, jeśli wybierzesz A\
+    \ |\n|---------|------------|---------------------------------|\n| **MUF** | **Maximum Usable Frequency**\
+    \ – najwyższa częstotliwość, przy której sygnał może dotrzeć z punktu A do punktu B (lub odwrotnie)\
+    \ przez daną warstwę ionosfery. | Błąd logiczny: określasz *minimalną* częstotliwość, czyli najniższą,\
+    \ która *potrzebna* jest do łączności, co nie odpowiada definicji MUF. |\n\n### Krótkie wyjaśnienie\n\
+    \n- **MUF** = \\(\\displaystyle f_{\\text{max}}\\). Jest to **najwyższa** częstotliwość, przy której\
+    \ fala może być odbijana i przekazywać sygnał na określoną odległość.\n- **MF** (Minimum Usable Frequency)\
+    \ – to najniższa częstotliwość, przy której sygnał ma „bezpieczny” przejście.  \n- **UFM** – Minimum\
+    \ Usable Frequency over the next 24 h (UFM‑24h) – prognoza najniższej częstotliwości na najbliższe\
+    \ 24 h.\n\nZatem:\n- **A** (minimalna) odpowiadałaby **MF**.\n- **B** (maksymalna) to dokładna definicja\
+    \ **MUF**.\n- **C** (minimalna na następne 24 h) odpowiadałaby **UFM‑24h**.\n\nDlatego prawidłowa\
+    \ odpowiedź to **B. maksymalna użyteczna częstotliwość do komunikacji między dwoma punktami**."
+  - "Gratulacje!  \nOdpowiedź **B** jest poprawna – **MUF** to **Maximum Usable Frequency**, czyli maksymalna\
+    \ częstotliwość, przy której sygnał może być prawidłowo odbierany pomiędzy dwoma punktami przez ionosferę.\
+    \  \n\n---\n\n### Dlaczego tak jest?\n1. **Funkcja propagacji**  \n   Freq. propagacji zależy od gęstości\
+    \ elektronów w ionosferze. Największa częstotliwość, przy której fale mogą „pochylić się” i dotrzeć\
+    \ do punktu odbiorczego, to MUF.\n\n2. **Związek z krytyczną częstotliwością**  \n   \\[\n   f_c =\
+    \ 9\\,\\sqrt{N_{\\max}} \\quad (\\text{MHz}),\n   \\]\n   gdzie \\(N_{\\max}\\) to maksymalna liczba\
+    \ elektronów na cm\\(^3\\).  \n   MUF jest zazwyczaj wyrażona jako:\n   \\[\n   \\text{MUF} \\approx\
+    \ \\frac{f_c}{\\cos\\theta},\n   \\]\n   gdzie \\(\\theta\\) to kąt zbliżenia drogi promieniowania.\
+    \  \n\n3. **Interpretacja**  \n   - **Minimalna** częstotliwość potrzebna do komunikacji to **Minimum\
+    \ Usable Frequency (MUF)** (odpowiedź A – niepoprawna).  \n   - **Najwyższa** możliwa częstotliwość\
+    \ to właśnie MUF, dlatego odpowiedź **B** jest trafna.  \n   - Częstotliwość na „następne 24 godziny”\
+    \ (odpowiedź C) nie ma zastosowania w definicji MUF.\n\nZatem wybór **B** jest zgodny z definicją\
+    \ i praktyką w radiokomunikacji. \U0001F680"
+  - "**Co jest niepoprawne w odpowiedzi C?**  \n\n| Element | Co oznacza MUF | Dlaczego C jest błędne\
+    \ |\n|---------|---------------|------------------------|\n| **Definicja** | \\(\\text{MUF} = \\max\\\
+    ) częstotliwość, przy której dźwięk (falowa) może być przesyłany pomiędzy dwoma punktami przy danym\
+    \ poziomie nastroju ionosfery. | C opisuje *minimalną* częstotliwość, co jest sprzeczne z definicją.\
+    \ |\n| **Zakres** | Działa dla **dokładnego momentu** (lub krótkiego przedziału czasowego), ale jest\
+    \ to **maksymalna** częstotliwość użyteczna. | C sugeruje “na następne 24 godziny”, co odnosi się\
+    \ bardziej do **„MUF na następne 24 h”** – podstawa jest wciąż maksymalna, a nie minimalna. |\n| **Przykład**\
+    \ | Jeśli dla danej drogi \\(\\text{MUF}=10\\,\\text{MHz}\\), to wszystkie częstotliwości \\(\\le\
+    \ 10\\,\\text{MHz}\\) są dostępne, ale \\(\\ge 10\\,\\text{MHz}\\) – nie. | C mówi, że częstotliwość\
+    \ jest *minimalna*, co w praktyce oznacza bycie poniżej 10 MHz, a nie powyżej. |\n\n**Krótko:**  \n\
+    - MUF = **Maximum Usable Frequency** – najwyższa częstotliwość, którą można użyć.  \n- Odpowiedź C\
+    \ opisuje **Minimum Usable Frequency** (często nazywaną MUF *na następne 24 h*), co jest sprzeczne\
+    \ z definicją MUF.  \n\nDlatego poprawna odpowiedź to **B. maksymalna użyteczna częstotliwość do komunikacji\
+    \ między dwoma punktami**."
+  - "**MUF – Maximum Usable Frequency**  \nTo **MUF** (Maximum Usable Frequency) refers to the *highest*\
+    \ frequency that can still propagate between two points via the ionosphere under current conditions\
+    \ (day/night, distance, solar activity).  \n\n- **B** is correct: it is the upper limit of usable\
+    \ frequency for a given link.  \n- **A** (minimal) and **C** (next 24 h) describe other concepts (e.g.,\
+    \ **LMF** – lowest usable frequency or planned MUF forecast)."
+- text: 60\. Ile mocy zostaje wypromieniowane przez antenę, jeśli miernik mocy podłączony pomiędzy nadajnik
+    a antenę wskazuje 100 W mocy padającej i 30 W mocy odbitej?
   answers:
   - 130 W
   - 70 W
   - 30 W
   correct_index: 1
-- text: 61\. Jaka jest przewaga wektorowego analizatora antenowego (VNA) nad miernikiem
-    SWR (reflektometrem)?
+  explanations:
+  - "**Dlaczego A = 130 W jest błędne**\n\n| Zmienna | Co oznacza | Wartość |\n|---------|------------|--------|\n\
+    | \\(P_{\\text{inc}}\\) | moc padająca na antenę | 100 W |\n| \\(P_{\\text{ref}}\\) | moc odbita od\
+    \ anteny | 30 W |\n| \\(P_{\\text{rad}}\\) | moc wypromieniowana przez antenę | \\(P_{\\text{inc}}\
+    \ - P_{\\text{ref}}\\) |\n\n\\[\nP_{\\text{rad}} = P_{\\text{inc}} - P_{\\text{ref}}\n           \
+    \    = 100\\;\\text{W} - 30\\;\\text{W}\n               = 70\\;\\text{W}\n\\]\n\nMoc wypromieniowana\
+    \ to **różnica** między mocą padającą a mocą odbitą, a nie ich suma.  \nOpcja A sumuje \\(100\\;\\\
+    text{W} + 30\\;\\text{W}\\) i daje 130 W, co nie ma fizycznego sensu – nie można „wypromieniować”\
+    \ więcej mocy niż pada na antenę.\n\n**Podsumowanie**  \nPrawidłowa odpowiedź: **B. 70 W**."
+  - "Gratulacje!  \n\nMoc promieniowana przez antenę to różnica mocy padającej i odbitej  \n\n\\[\nP_{\\\
+    text{rad}} = P_{\\text{in}}-P_{\\text{ref}}\n\\]\n\nPodstawiając dane:  \n\n\\[\nP_{\\text{rad}} =\
+    \ 100\\,\\text{W} - 30\\,\\text{W} = 70\\,\\text{W}\n\\]\n\nDlatego poprawną odpowiedzią jest **B\
+    \ – 70 W**."
+  - "**Błąd w interpretacji danych**\n\n|  Co mierzy się? |  Co oznacza? |\n|----------------|--------------|\n\
+    | **Moc podłączona do anteny (mierzona)** | 100 W – moc *przychodząca* do anteny |\n| **Moc odbita\
+    \ (mierzona)** | 30 W – moc, która wraca do nadajnika i nie trafia na antenę |\n\nAntenę można przyjąć,\
+    \ że nie tracimy dalszych strat (idealny antena).  \nZatem moc, która rzeczywiście *trafi* na antenę\
+    \ i zostanie wypromieniowana, to różnica:\n\n\\[\nP_{\\text{radiated}} = P_{\\text{incident}} - P_{\\\
+    text{reflected}}\n                    = 100\\;\\text{W} - 30\\;\\text{W}\n                    = 70\\\
+    ;\\text{W}\n\\]\n\n**Dlaczego 30 W (odpowiedź C) jest niepoprawne?**  \n30 W to właśnie moc *odbita*,\
+    \ a nie moc wypromieniowana.  \n\nW skrócie:\n- **100 W** → moc przychodząca do anteny  \n- **30 W**\
+    \ → moc, która nie trafia na antenę  \n- **70 W** → moc, która zostaje wypromieniowana (poprawna odpowiedź\
+    \ B)."
+  - "**Rozwiązanie**\n\nMoc, która zostaje wypromieniowana przez antenę, jest różnicą mocy padającej (od\
+    \ nadajnika) i mocy odbitej (zwrotnej).  \n\\[\nP_{\\text{radiated}} = P_{\\text{incident}} - P_{\\\
+    text{reflected}}\n\\]\n\nZ podanych danych:\n\n- \\(P_{\\text{incident}} = 100 \\; \\text{W}\\)\n\
+    - \\(P_{\\text{reflected}} = 30 \\; \\text{W}\\)\n\n\\[\nP_{\\text{radiated}} = 100 \\; \\text{W}\
+    \ - 30 \\; \\text{W} = 70 \\; \\text{W}\n\\]\n\nDlatego moc wypromieniowana przez antenę wynosi **70\
+    \ W**, co odpowiada odpowiedzi **B. 70 W**."
+- text: 61\. Jaka jest przewaga wektorowego analizatora antenowego (VNA) nad miernikiem SWR (reflektometrem)?
   answers:
   - miernik SWR wymaga określonej częstotliwości do działania
-  - analizator nie potrzebuje dodatkowego zasilania zasilając się z sygnału w.cz z
-    nadajnika
-  - analizator jest w stanie wykazać składową indukcyjną lub pojemnościową badanej
-    anteny oraz określić miejsce rezonansu
+  - analizator nie potrzebuje dodatkowego zasilania zasilając się z sygnału w.cz z nadajnika
+  - analizator jest w stanie wykazać składową indukcyjną lub pojemnościową badanej anteny oraz określić
+    miejsce rezonansu
   correct_index: 2
-- text: '64\. Proces, który zachodzi w nieliniowym elemencie lub układzie elektronicznym,
-    kiedy składowe widma sygnału oddziałują na siebie tworząc fałszywe sygnały to:'
+  explanations:
+  - "**Dlaczego odpowiedź A jest błędna**\n\n|  | Miernik SWR | Wektorowy analizator antenowy (VNA) |\n\
+    |---|-------------|-------------------------------------|\n| **Zależność od częstotliwości** |  SWR\
+    \ można zmierzyć w dowolnym zakresie częstotliwości, pod warunkiem, że urządzenie jest w tym zakresie\
+    \ – nie wymaga on *określonej* częstotliwości do działania. |  Również może pracować w dowolnym zakresie\
+    \ częstotliwości, który jest programowany. |\n\n- **SWR** (Standing‑Wave Ratio) jest miarą współczynnika\
+    \ odbicia \\(\\Gamma\\) i jest obliczany jako \\(\\displaystyle \\text{SWR} = \\frac{1+|\\Gamma|}{1-|\\\
+    Gamma|}\\). Nie potrzebuje „określonej” częstotliwości, wystarczy, że sygnał znajduje się w paśmie\
+    \ pracy miernika.\n- W rzeczywistości **SWR** jest typowo mierzone w szerokim zakresie (np. 50 MHz‑1 GHz)\
+    \ i nie ogranicza się do jednej częstotliwości.  \n\n> **Wniosek**: stwierdzenie, że miernik SWR „wymaga\
+    \ określonej częstotliwości do działania”, jest nieprawdziwe – SWR można mierzyć w każdym punkcie\
+    \ spektrum, dla którego urządzenie jest przystosowane.  \n\nZatem odpowiedź A jest niepoprawna, natomiast\
+    \ odpowiedź C poprawnie podkreśla, że VNA potrafi wykrywać składowe indukcyjne/pojemnościowe oraz\
+    \ wskazać rezonans anteny."
+  - "**Dlaczego odpowiedź B jest błędna**\n\n> **B.** *„analizator nie potrzebuje dodatkowego zasilania,\
+    \ zasilając się z sygnału w.cz z nadajnika”*\n\nWektorowy analizator antenowy (VNA) **nie** korzysta\
+    \ z sygnału nadajnika do pomiarów.  \n- VNA ma własny generator sygnału (interny lub zewnętrzny),\
+    \ który emituje znany sygnał o kontrolowanej częstotliwości i mocy.  \n- Wymaga on stałego, precyzyjnego\
+    \ źródła, które nie zależy od sygnału nadajnika (który może być zbyt słaby, zmienny w częstotliwości,\
+    \ posiadać własne zniekształcenia).  \n- Sygnał z nadajnika nie daje gwarancji, że VNA otrzyma odpowiednią\
+    \ moc ani precyzyjną częstotliwość, co znacznie obniża jakość pomiaru.\n\nDlatego opcja **B** jest\
+    \ niepoprawna – VNA potrzebuje własnego zasilania i źródła sygnału, a nie polega na sygnale nadajnika."
+  - "Gratulacje!  \n\nOdpowiedź **C** jest poprawna, ponieważ VNA (vector network analyzer) pozwala na\
+    \ **mierzenie amplitudy i fazy współczynnika odbicia** \\(S_{11}\\) oraz **identyfikację charakterystycznych\
+    \ elementów składowych** (induktancji \\(L\\) i pojemności \\(C\\)) anteny. Dzięki analizie \\(S_{11}\\\
+    ) można wyznaczyć **miejsce rezonansu** (\\(f_{\\text{res}}\\)) oraz wyznaczyć **składowe pasywne**:\n\
+    \n\\[\nS_{11}(f)=\\frac{Z_L(f)-Z_0}{Z_L(f)+Z_0},\n\\]\n\ngdzie \\(Z_L(f)\\) zawiera zarówno część\
+    \ indukcyjną, jak i pojemnościową.  \n\nReflektometr (miernik SWR) mierzy tylko **amplitudę** odbicia\
+    \ i nie dostarcza informacji o fazie ani o szczegółowym rozkładzie impedancji. Dlatego VNA ma przewagę\
+    \ w diagnostyce anten."
+  - '**Odpowiedź**
+
+
+    VNA (Vector Network Analyzer) mierzy **wektorowy** charakter sygnału – zarówno jego amplitudę, jak
+    i fazę. Dzięki temu potrafi **rozszyfrować** składowe impedancji anteny:
+
+
+    - uzyskuje **$Z(\omega)$** = $R + jX$, co pozwala ocenić czy dany element jest indukcyjny czy pojemnościowy;
+
+    - dzięki analizie fazowej lokalizuje **pomiary rezonansu** (gdzie faza zmienia się o $90^{\circ}$,
+    a $X=0$);
+
+    - daje pełny wykres impedancji na całym zakresie częstotliwości.
+
+
+    SWR‑meter natomiast mierzy tylko **współczynnik odbicia** ($S_{11}$) bez informacji o fazie, co ogranicza
+    go do wyłącznie obliczania $|S_{11}|$ i nie pozwala określić składowych indukcyjnych/pojemnościowych
+    ani dokładnej lokalizacji rezonansu.'
+- text: '64\. Proces, który zachodzi w nieliniowym elemencie lub układzie elektronicznym, kiedy składowe
+    widma sygnału oddziałują na siebie tworząc fałszywe sygnały to:'
   answers:
   - demodulacja
   - powielanie
   - intermodulacja
   correct_index: 2
-- text: 73\. Czy prędkość fali elektromagnetycznej zależy od ośrodka, w którym się
-    rozchodzi?
+  explanations:
+  - "## Dlaczego „demodulacja” jest błędem\n\n| Proces | Definicja | Dlaczego nie pasuje |\n|--------|-----------|---------------------|\n\
+    | **Demodulacja** | Odtwarzanie sygnału bazowego z sygnału modulowanego (np. detekcja nasycenia, detektor\
+    \ koherentny). | Nie tworzy nowych „fałszywych” częstotliwości – po prostu usuwa nośnik. |\n| **Intermodulacja**\
+    \ | W wyniku nieliniowości układu (np. tranzystor, wzmacniacz) dwa lub więcej sygnałów **interagują**\
+    \ i generują nowe składniki częstotliwości: suma i różnica. | Zgodnie z treścią pytania: „składowe\
+    \ widma sygnału oddziałują na siebie tworząc fałszywe sygnały”. |\n\n---\n\n### Jak wygląda intermodulacja\n\
+    \nZałóżmy, że w układzie wejściowy podajemy dwa sygnały:\n\n\\[\nx(t)=A_1\\cos(\\omega_1 t), \\qquad\
+    \ y(t)=A_2\\cos(\\omega_2 t)\n\\]\n\nW nieliniowym elementem (np. gęstość prądu ~ \\(I\\propto V^2\\\
+    )) występuje iloczyn\n\n\\[\nx(t)\\,y(t)=A_1A_2\\cos(\\omega_1 t)\\cos(\\omega_2 t)\n\\]\n\nUżywając\
+    \ tożsamości trygonometrycznej\n\n\\[\n\\cos\\alpha\\cos\\beta=\n\\frac{1}{2}\\bigl[\\cos(\\alpha+\\\
+    beta)+\\cos(\\alpha-\\beta)\\bigr]\n\\]\n\notrzymujemy **nowe składniki**:\n\n\\[\nx(t)\\,y(t)=\\\
+    frac{A_1A_2}{2}\\bigl[\\cos((\\omega_1+\\omega_2)t)+\\cos((\\omega_1-\\omega_2)t)\\bigr]\n\\]\n\n\
+    Te częstotliwości \\(\\omega_1\\pm\\omega_2\\) nie były obecne na wejściu – to **fałszywe sygnały**\
+    \ (tzw. obrazy intermodulacyjne).\n\n---\n\n### Krótkie podsumowanie\n\n- **Demodulacja**: odczytanie\
+    \ sygnału bazowego z modulowanego – nie wprowadza nowych częstotliwości.  \n- **Intermodulacja**:\
+    \ mieszanie sygnałów w nieliniowym elemencie, tworzenie sum i różnic częstotliwości – dokładnie to,\
+    \ co opisano w pytaniu.\n\nDlatego poprawna odpowiedź to **C. intermodulacja**."
+  - "### Dlaczego odpowiedź **B – „powielanie”** jest błędna\n\n| Term | Co opisuje | Dlaczego nie pasuje\
+    \ do pytania |\n|------|------------|---------------------------------|\n| **Demodulacja** | Proces\
+    \ odzyskiwania sygnału bazowego z modulowanego nośnika (np. AM, FM). | Polega na **oddzielaniu** sygnału,\
+    \ a nie na jego wzmacnianiu czy mieszaniu. |\n| **Powielanie** | (w sensie „duplication”) tworzenie\
+    \ kopii sygnału – np. replikacja danych. | Nie wprowadza nowych częstotliwości ani nie powoduje „fałszywych”\
+    \ sygnałów. |\n| **Intermodulacja** | Wzajemne oddziaływanie dwóch lub więcej częstotliwości w nie‑linearnej\
+    \ układzie, prowadzące do pojawienia się nowych składowych na częstotliwościach:  \n  \\[\n  f_{\\\
+    text{new}} = n_1 f_1 \\pm n_2 f_2 \\pm \\dots\n  \\]  \n  (np. sumy i różnice harmonicznych). | To\
+    \ dokładnie opisuje „fałszywe sygnały” generowane w nie‑linearnych elementach. |\n\n#### Krótkie podsumowanie\n\
+    - **Intermodulacja** = tworzenie *nowych* częstotliwości w wyniku **nieliniowego** oddziaływania sygnałów\
+    \ – czyli „fałszywych” sygnałów.  \n- **Powielanie** to tylko kopiowanie, nie wprowadza nowych częstotliwości.\
+    \  \n- **Demodulacja** to usuwanie nośnika, nie generuje dodatkowych sygnałów.\n\nDlatego poprawną\
+    \ odpowiedzią jest **C. intermodulacja**."
+  - "### Gratulacje!  \n\nTwoja odpowiedź **C – intermodulacja** jest poprawna.  \n\nIntermodulacja to\
+    \ zjawisko, które występuje w **nieliniowych** elementach lub układach elektronicznych, kiedy dwa\
+    \ (lub więcej) sygnały o częstotliwościach \\(f_1\\), \\(f_2\\) oddziałują ze sobą i generują „fałszywe”\
+    \ sygnały o nowych częstotliwościach:  \n\n\\[\n\\begin{aligned}\nf_{\\text{sum}} &= f_1 + f_2,\\\\\
+    \nf_{\\text{diff}} &= |f_1 - f_2|,\\\\\nf_{3} &= 2f_1 \\pm f_2,\\; 2f_2 \\pm f_1,\\;\\text{itd.}\n\
+    \\end{aligned}\n\\]\n\nTe nowe częstotliwości pojawiają się w widmie sygnału i są klasycznym objawem\
+    \ intermodulacji.  \n\n**Dlatego** odpowiedź C jest właściwa. Powodzenia na egzaminie!"
+  - "**Intermodulacja** – to zjawisko, w którym dwie lub więcej sygnałów (często o różnych częstotliwościach)\
+    \ współdziałają w nieliniowym układzie, tworząc nowe „fałszywe” sygnały.  \n\nW nieliniowym elemencie\
+    \ (np. tranzystorze, układzie wzmacniacza) wyjściowy sygnał jest funkcją nieliniową wejścia. Jeśli\
+    \ na wejściu są dwa sygnały o częstotliwościach \\(f_1\\) i \\(f_2\\), w wyniku nieliniowości pojawiają\
+    \ się kombinacje częstotliwości:\n\n\\[\nf_{\\text{IM}} = m\\,f_1 \\pm n\\,f_2 \\qquad (m,n \\in \\\
+    mathbb{Z})\n\\]\n\ngdzie \\(m,n\\) są całkowitymi współczynnikami (np. \\(2f_1 - f_2\\), \\(3f_2 -\
+    \ f_1\\)).  \n\nTe dodatkowe częstotliwości – **sygnały intermodulacyjne** – są fałszywe, nie należą\
+    \ do pierwotnego zestawu, i mogą zakłócać odbiór lub powodować niepożądane efekty w systemach radiowych,\
+    \ telekomunikacyjnych i audio.  \n\nDlatego poprawna odpowiedź to **C. intermodulacja**."
+- text: 73\. Czy prędkość fali elektromagnetycznej zależy od ośrodka, w którym się rozchodzi?
   answers:
   - tak
   - nie zależy
   - zależy jedynie od temperatury ośrodka
   correct_index: 0
-- text: 89\. Ile oporników bezindukcyjnych o wartości 200 Ω należy połączyć równolegle
-    by uzyskać sztuczne obciążenie antenowe 50 Ω?
+  explanations:
+  - "**Gratulacje!**  \nTwoja odpowiedź **A. tak** jest poprawna.\n\n---\n\n### Dlaczego prędkość fali\
+    \ elektromagnetycznej zależy od ośrodka?\n\nW próżni:\n\\[\nv = c = 3\\times10^{8}\\,\\text{m/s}\n\
+    \\]\n\nW materiale:\n\\[\nv = \\frac{c}{\\sqrt{\\varepsilon_r\\,\\mu_r}}\n\\]\ngdzie  \n\\(\\varepsilon_r\\\
+    ) – względny współczynnik przenikania (dyspersja elektryczna)  \n\\(\\mu_r\\) – względny współczynnik\
+    \ przenikania magnetycznej.\n\nKażdy ośrodek ma swoje \\(\\varepsilon_r\\) i \\(\\mu_r\\), a więc\
+    \ prędkość \\(v\\) jest mniejsza od \\(c\\) i zmienia się w zależności od właściwości materiału. Temperatury\
+    \ wpływają na \\(\\varepsilon_r\\) i \\(\\mu_r\\), ale nie są jedynym czynnikiem.\n\n---\n\n**Podsumowując:**\
+    \ prędkość fali EM **zależy od ośrodka**, dlatego odpowiedź A jest właściwa."
+  - "**Dlaczego odpowiedź B („nie zależy”) jest błędna**\n\n1. **Zależność od ośrodka**  \n   Prędkość\
+    \ fali elektromagnetycznej w dielektryku (lub w próżni) jest dana przez\n\n   \\[\n   v=\\frac{c}{n},\n\
+    \   \\]\n\n   gdzie  \n   \\[\n   n=\\sqrt{\\varepsilon_{\\text{r}}\\mu_{\\text{r}}}\n   \\]\n\n \
+    \  – współczynnik załamania (liczba optyczna) ośrodka, a \\(c\\) to prędkość światła w próżni.  \n\
+    \   Gdy \\(n\\neq 1\\) (czyli w każdym materiale, który nie jest próżnią), prędkość \\(v\\) jest **mniejsza**\
+    \ niż \\(c\\). Dlatego prędkość fali **zależna jest od** ośrodka.\n\n2. **Co jest niewłaściwe w odpowiedzi\
+    \ C?**  \n   – Ośrodek może mieć inne właściwości niż tylko temperatura (np. stałe dielektryczne,\
+    \ przewodność, struktura krystaliczna).  \n   – Temperatury wpływają na \\(n\\), ale nie są jej jedynym\
+    \ czynnikiem.  \n\n3. **Dlaczego odpowiedź A jest prawidłowa?**  \n   – „Tak” wskazuje, że prędkość\
+    \ fali zmienia się w zależności od rodzaju ośrodka, co jest zgodne z równaniem \\(v = c/n\\).\n\n\
+    **Kluczowe wnioski**\n\n- Prędkość fali EM w próżni wynosi \\(c \\approx 3 \\times 10^{8}\\,\\text{m/s}\\\
+    ).  \n- W każdym innym ośrodku \\(n>1\\), więc \\(v < c\\).  \n- Zmiany temperatury wpływają na \\\
+    (n\\), ale nie są jego jedynym determinantem.  \n\nPodsumowując: **Odpowiedź B jest błędna, bo prędkość\
+    \ fali elektromagnetycznej zależy od ośrodka** – więc prawidłowa odpowiedź to **A. tak**."
+  - "### Dlaczego odpowiedź **C** jest błędna\n\nPrędkość fali elektromagnetycznej w ośrodku jest dana\
+    \ wzorem  \n\n\\[\nv = \\frac{c}{n},\n\\]\n\ngdzie  \n* \\(c\\) – prędkość światła w próżni,  \n*\
+    \ \\(n = \\sqrt{\\varepsilon_{r}\\,\\mu_{r}}\\) – współczynnik załamania (współczynnik refrakcji),\
+    \  \n  \\(\\varepsilon_{r}\\) – względna przenikalność elektryczna,  \n  \\(\\mu_{r}\\) – względna\
+    \ przenikalność magnetyczna.\n\nWzględne przenikalności zależą od **składu** i **struktur** materiału\
+    \ (np. czystość, związek chemiczny, struktura krystaliczna).  \nTemperatura wpływa na \\(\\varepsilon_{r}\\\
+    ) i \\(\\mu_{r}\\), ale jest **tylko jednym z wielu czynników**.  \n\nDlatego prędkość fali nie zależy\
+    \ *jedynie* od temperatury, lecz od właściwości samego medium (skład chemiczny, struktura, przewodność\
+    \ itp.).  \n\n> **Podsumowanie**  \n> Odpowiedź **A** („tak”) jest poprawna, ponieważ prędkość fali\
+    \ elektromagnetycznej zmienia się wraz z ośrodkiem, a nie tylko z temperaturą."
+  - "**Odpowiedź**  \nA – **tak**\n\n**Wyjaśnienie**  \nPrędkość fali elektromagnetycznej w ośrodku opisuje\
+    \ wzór\n\n\\[\nv = \\frac{c}{n},\n\\]\n\ngdzie  \n\\(c\\) – prędkość światła w próżni (≈ \\(3\\times10^8\\\
+    ) m/s),  \n\\(n\\) – współczynnik załamania (liczba właściwości ośrodka).  \n\nWartość \\(n\\) zależy\
+    \ od właściwości elektrycznych ośrodka, a więc od jego typu (przewodnik, dielektryk, gaz, itp.) oraz,\
+    \ w pewnych przypadkach, od temperatury. Dlatego prędkość fali elektromagnetycznej **zależna jest\
+    \ od ośrodka**, w którym się rozchodzi."
+- text: 89\. Ile oporników bezindukcyjnych o wartości 200 Ω należy połączyć równolegle by uzyskać sztuczne
+    obciążenie antenowe 50 Ω?
   answers:
   - 5 szt.
   - 2 szt.
   - 4 szt.
   correct_index: 2
-- text: '102\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego
-    FM na pasmo 144 MHz z podwójną przemianą częstotliwości, pracującego w kanałach
-    fonicznych, stabilizowany kwarcami. Blok 2 to:
+  explanations:
+  - "**Dlaczego odpowiedź A jest błędna**\n\nW obwodzie równoległym rezystancja sumaryczna \\(R_{\\text{tot}}\\\
+    ) oblicza się ze wzoru  \n\n\\[\nR_{\\text{tot}}=\\frac{R}{n}\n\\]\n\ngdzie  \n\\(R\\) – rezystancja\
+    \ pojedynczego elementu,  \n\\(n\\) – liczba równolegle połączonych elementów.\n\nDla rezystorów \\\
+    (R=200\\;\\Omega\\):\n\n\\[\n\\frac{200}{n}=50\n\\quad\\Longrightarrow\\quad\nn=\\frac{200}{50}=4\n\
+    \\]\n\n**Co daje konkretne liczby?**\n\n| \\(n\\) | \\(R_{\\text{tot}}\\) |\n|------|-------------------|\n\
+    | 2    | \\(200/2 = 100\\;\\Omega\\) |\n| **4** | \\(200/4 = 50\\;\\Omega\\) |\n| 5    | \\(200/5\
+    \ = 40\\;\\Omega\\) |\n\n- **5** rezystorów → 40 Ω (za mała rezystancja).  \n- **2** rezystory → 100 Ω\
+    \ (za duża rezystancja).  \n- **4** rezystory → 50 Ω (dokładnie to, czego potrzebujesz).\n\nDlatego\
+    \ poprawna odpowiedź to **C. 4 szt.**."
+  - "### Dlaczego odpowiedź B jest błędna  \n\nW obwodzie równoległym rezystancji \\(R_{\\text{eq}}\\\
+    ) jest dana wzorem  \n\n\\[\n\\frac{1}{R_{\\text{eq}}}= \\sum_{i=1}^{n}\\frac{1}{R_i}\n\\]\n\nDla\
+    \ równych rezystorów \\(R_i = R\\) mamy\n\n\\[\n\\frac{1}{R_{\\text{eq}}}= \\frac{n}{R}\\quad\\Longrightarrow\\\
+    quad\nR_{\\text{eq}}=\\frac{R}{n}\n\\]\n\n---\n\n#### Obliczenia\n\n* 200 Ω rezystor → \\(R = 200\\\
+    ;\\Omega\\)\n* Żądane obciążenie antenowe → \\(R_{\\text{eq}} = 50\\;\\Omega\\)\n\nZatem\n\n\\[\n\
+    n = \\frac{R}{R_{\\text{eq}}}= \\frac{200}{50}=4\n\\]\n\n### Co się stało przy wyborze „2 szt.”?\n\
+    \nDwóch rezystorów 200 Ω w połączeniu równoległym daje  \n\n\\[\nR_{\\text{eq}}=\\frac{200}{2}=100\\\
+    ;\\Omega\n\\]\n\nczyli dwa razy większe niż wymagane 50 Ω. Dlatego odpowiedź B jest niepoprawna.\n\
+    \n---\n\n**Poprawna odpowiedź: C – 4 szt.**"
+  - "Gratulacje!  \nOdpowiedź **C – 4 szt.** jest poprawna.\n\n**Jak to się liczy?**\n\nW układzie równoległym\
+    \ pojemności oporność totalna \\(R_{\\text{tot}}\\) wyznacza się ze wzoru  \n\n\\[\n\\frac{1}{R_{\\\
+    text{tot}}}=\\sum_{i=1}^{n}\\frac{1}{R_i}\n\\]\n\nDla równych oporników \\(R_i=200~\\Omega\\) mamy\
+    \  \n\n\\[\n\\frac{1}{R_{\\text{tot}}}=n\\cdot\\frac{1}{200}\n\\quad\\Longrightarrow\\quad\nR_{\\\
+    text{tot}}=\\frac{200}{n}\n\\]\n\nChcemy uzyskać \\(R_{\\text{tot}}=50~\\Omega\\):\n\n\\[\n50=\\frac{200}{n}\\\
+    ;\\;\\Longrightarrow\\;\\; n=\\frac{200}{50}=4\n\\]\n\nDlatego potrzebne są **4** oporniki 200 Ω podłączone\
+    \ równolegle."
+  - "Aby uzyskać rezystancję równoległą \\(R_{\\text{eq}}\\) z \\(n\\) identycznych oporników o wartości\
+    \ \\(R\\), stosujemy wzór  \n\n\\[\n\\frac{1}{R_{\\text{eq}}} = \\frac{1}{R} + \\frac{1}{R} + \\dots\
+    \ + \\frac{1}{R}\n\\quad\\Longrightarrow\\quad\n\\frac{1}{R_{\\text{eq}}} = \\frac{n}{R}\n\\]\n\n\
+    co daje  \n\n\\[\nR_{\\text{eq}} = \\frac{R}{n}.\n\\]\n\nPodane: \\(R = 200~\\Omega\\), \\(R_{\\text{eq}}\
+    \ = 50~\\Omega\\).  \nZatem\n\n\\[\n50 = \\frac{200}{n}\n\\quad\\Longrightarrow\\quad\nn = \\frac{200}{50}\
+    \ = 4.\n\\]\n\nWniosek: **4 oporniki 200 Ω połączone równolegle dają obciążenie 50 Ω**.  \n\nOdpowiedź:\
+    \ **C. 4 szt.**"
+- text: '102\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego FM na pasmo 144
+    MHz z podwójną przemianą częstotliwości, pracującego w kanałach fonicznych, stabilizowany kwarcami.
+    Blok 2 to:
 
     ![RADIOTECHNIKA question 102](assets/question_images/radiotechnika-q102.png)'
   answers:
@@ -149,20 +956,159 @@ questions:
   - I mieszacz
   - wzmacniacz II p.cz.
   correct_index: 1
-- text: 108\. Jaka jest horyzontalna charakterystyka promieniowania dipola półfalowego
-    zawieszonego poziomo?
+  explanations:
+  - "**Błąd w wyborze odpowiedzi:**  \nUżytkownik zaznaczył **A. wzmacniacz akustyczny** (akustyczny wzmacniacz\
+    \ jest **odpowiedzialny za wzmocnienie sygnału dźwiękowego** po demodulacji, tj. w końcowych etapach\
+    \ układu).  \nW schemacie **blok 2** znajduje się **po wejściu sygnału (1)** i **przed wzmocnieniem\
+    \ p.cz. (3)**. W odbiorniku superheterodynowym **pierwszy mieszacz (I mieszacz)** łączy sygnał wejściowy\
+    \ z sygnałem z oscylatora lokalnego (z bloku 10).  \n\n**Dlaczego B jest poprawne:**  \n- **I mieszacz\
+    \ (B)** przekształca sygnał RF (144 MHz) w częstotliwość pośrednią (p.cz.) poprzez mieszanie z oscylatorem\
+    \ lokalnym.  \n- Wzmacniacz akustyczny (A) **nie występuje w tej fazie** – działa dopiero po detekcji\
+    \ (np. w bloku 7 lub po nim).  \n\n**Kluczowe:**  \nW superheterodynie **mieszacz (1) → wzmocnienie\
+    \ p.cz. (2)**, a nie wzmocnienie akustyczne w etapie wczesnym.  \n**Poprawna odpowiedź: B. I mieszacz.**"
+  - "Prawidłowa odpowiedź to **B. I mieszacz**. W odbiorniku superheterodynowym z podwójną przemianą częstotliwości:\
+    \  \n- **Blok 1** to wzmacniacz RF (przyjmuje sygnał 144 MHz),  \n- **Blok 2** (zasilany przez **10.**\
+    \ – pierwszy generator lokalny) to **pierwszy mieszacz**, który przemienia sygnał RF na pierwszą częstotliwość\
+    \ pośrednią (IF).  \n- Następne bloki (3., 4., 5., 6.) odpowiadają wzmacniaczom i drugiemu mieszaczowi.\
+    \  \n- Odpowiedź **C** (wzmacniacz II p.cz.) dotyczy bloku 6, a **A** (wzmacniacz akustyczny) to zwykle\
+    \ ostatni etap przed głośnikiem (np. blok 8).  \n\nZatem **B** jest poprawne. \U0001F3AF"
+  - "Błąd polega na niezrozumieniu roli bloku 2 w schemacie odbiornika superheterodynowego. W odbiorniku\
+    \ **podwójnej przemiany częstotliwości**:\n- **Blok 1** to wzmacniacz sygnału wejściowego (RF).\n\
+    - **Blok 2** otrzymuje sygnał z bloku 1 **i** z bloku 10 (pierwszy oscylator lokalny). To **pierwszy\
+    \ mieszacz (I mieszacz)**, który łączy sygnał wejściowy z pierwszym oscylatorem lokalnym, tworząc\
+    \ pierwszą częstotliwość pośrednią (p.cz. I).  \n- **Wzmacniacz II p.cz. (C)** odnosi się do wzmacniania\
+    \ **drugiej** częstotliwości pośredniej, która występuje *po* drugim mieszaczu (np. blok 6 lub 7),\
+    \ a nie w bloku 2.\n\n**Dlaczego C jest błędne?**  \nWzmacniacz II p.cz. działa *po* drugim mieszaczu\
+    \ (nie w bloku 2), który przekształca pierwszą p.cz. w drugą. Blok 2 to pierwsza przemiana (mieszacz\
+    \ I), więc poprawna odpowiedź to **B. I mieszacz**.  \n\n**Kluczowa wskazówka**:  \nMieszacz zawsze\
+    \ łączy sygnał wejściowy **z oscylatorem lokalnym** (blok 10 w tym przypadku). W diagramie blok 2\
+    \ ma 2 wejścia (1 i 10) → to **mieszacz**."
+  - "**Odpowiedź:**  \nB. I mieszacz  \n\n**Wyjaśnienie:**  \nW odbiorniku superheterodynowym z podwójną\
+    \ przemianą częstotliwości:  \n- **Blok 1** to wzmacniacz RF (początkowy, przed pierwszą przemianą).\
+    \  \n- **Blok 2** łączy sygnał RF (z bloku 1) z oscylatorem lokalnym (blok 10), co wskazuje, że jest\
+    \ to **I mieszacz** (pierwsza przemiana na częstotliwość pośrednią).  \n- **Blok 3** i **4** to wzmacniacze\
+    \ pierwszej częstotliwości pośredniej (p.cz.), a **Blok 6** to wzmacniacz drugiej p.cz. (odpowiedź\
+    \ C dotyczy bloku 6, nie 2).  \n- Blok 7 to demodulator, a A (wzmacniacz akustyczny) znajduje się\
+    \ po demodulatorze.  \n\nZatem blok 2 to **I mieszacz** (B)."
+- text: 108\. Jaka jest horyzontalna charakterystyka promieniowania dipola półfalowego zawieszonego poziomo?
   answers:
   - dookólna
   - ósemkowa
   - kierunkowa w linii zawieszenia
   correct_index: 1
-- text: 109\. Jaka jest horyzontalna charakterystyka promieniowania pionowej anteny
-    ćwierćfalowej?
+  explanations:
+  - "**Dlaczego odpowiedź A („dookólna”) jest błędna?**\n\n| Kwestia | Co myślisz | Co jest prawdziwe\
+    \ |\n|---------|-----------|-------------------|\n| **Definicja pola pola** | Pole dipola byłoby **omnidirectional**\
+    \ – rozchodzi się równo we wszystkich kierunkach. | Dipol półfalowy **nie** ma pola równomiernego.\
+    \ W płaszczyźnie poziomej (tzw. **horyzontalna charakterystyka**) wykazuje charakter „figure‑eight”\
+    \ (ósemkowy). |\n| **Matematyka** | Brakuje funkcji opisującej kierunkowość. | Dla dipola o długości\
+    \ \\(l = \\lambda/2\\) i biegunie poziomym, pola elektrycznego w płaszczyźnie poziomej zależy od fazy\
+    \ \\(\\phi\\) według:  \\[\nE_{\\phi}(\\phi) \\propto \\cos \\phi\n\\] |\n| **Skutek** | Gdy \\(\\\
+    phi\\) zmienia się od \\(0\\) do \\(2\\pi\\), \\(\\cos\\phi\\) daje dwa maksima (at 0° i 180°) i dwa\
+    \ zera (at 90° i 270°). | **Ósemkowy wzór**: dwa „lomy” promieniowania (maksima) oraz dwie ścisłe\
+    \ null‑s (zryby), co daje wygląd ósemki. |\n\n---\n\n### Krótki opis pola dipola półfalowego\n\n1.\
+    \ **Długość dipola**: \\(l = \\lambda/2\\).  \n2. **Rozkład pola**: W płaszczyźnie poziomej (θ = 90°)\
+    \ rozkład pola elektrycznego względem azymutu \\(\\phi\\) jest opisany przez:\n   \\[\n   E_{\\phi}(\\\
+    phi) \\propto \\frac{\\sin \\left(\\frac{kl}{2}\\cos\\phi\\right)}{\\cos\\phi}\n   \\]\n   Przy \\\
+    (l = \\lambda/2\\) i w płaszczyźnie poziomej (θ = 90°) to upraszcza się do:\n   \\[\n   E_{\\phi}(\\\
+    phi) \\propto \\cos \\phi\n   \\]\n3. **Konsekwencje**:\n   - **Maksima**: \\(\\phi = 0^\\circ, 180^\\\
+    circ\\) → silne promieniowanie wzdłuż osi dipola.  \n   - **Zera**: \\(\\phi = \\pm 90^\\circ\\) →\
+    \ brak promieniowania prostopadle do osi dipola.  \n   - **Całość**: Wzór wygląda jak figura ósemkowa\
+    \ („figure‑eight”) w płaszczyźnie poziomej.\n\n---\n\n### Dlaczego „dookólna” nie pasuje\n\n- **Dookolne\
+    \ pole** oznaczałoby, że intensywność promieniowania jest stała we wszystkich kierunkach (np. antena\
+    \ typu *monopole* nad powierzchnią płaską przy długim przewodzie).  \n- Dipol półfalowy ma **kierunkowość**\
+    \ – promieniowanie jest znacznie silniejsze w pewnych kierunkach i zerowe w innych.  \n- Wzorzec \"\
+    ósemkowy\" jest charakterystyczny właśnie dla dipoli, a nie dla anten dookólnych.\n\n---\n\n## Wniosek\n\
+    \nOdpowiedź **B – ósemkowa** jest poprawna, ponieważ dipol półfalowy w płaszczyźnie poziomej ma charakterystykę\
+    \ „figure‑eight”, a nie równomierne (dookolne) pole."
+  - "**Gratulacje! \U0001F389**  \n\nOdpowiedź **B – „ósemkowa”** jest poprawna, ponieważ promieniowanie\
+    \ dipola półfalowego (wysokości λ/2) zawieszonego poziomo tworzy charakterystyczny wzór **figure‑8**.\
+    \  \n\n- **Dookolna** (A) nie opisuje właściwości dipola, bo promieniowanie w płaszczyźnie poziomej\
+    \ ma dwa maksima i dwa minima, a nie równomierny rozkład.  \n- **Kierunkowa w linii zawieszenia**\
+    \ (C) odnosi się do dipola pionowego, gdzie wzdłuż osi dipola promieniowanie jest minimalne.  \n\n\
+    Matematycznie, gęstość mocy w płaszczyźnie poziomej opisuje się wzorem  \n\n\\[\nP(\\theta) \\propto\
+    \ \\sin^{2}\\!\\theta\n\\]\n\ngdzie \\(\\theta\\) to kąt od osi dipola. Funkcja \\(\\sin^{2}\\!\\\
+    theta\\) daje dwa maksima w \\( \\theta = 90^\\circ \\) i dwa minimum w \\( \\theta = 0^\\circ, 180^\\\
+    circ \\), co odpowiada kształtowi „ósemki”.  \n\nDlatego poprawna odpowiedź to **B. ósemkowa**."
+  - "**Dlaczego odpowiedź „kierunkowa w linii zawieszenia” jest błędna?**\n\n| Element | Co mówi odpowiedź\
+    \ C? | Co faktycznie dzieje się? |\n|---------|----------------------|--------------------------|\n\
+    | **Kierunek promieniowania** | „W linii zawieszenia” – promieniowanie skierowane wzdłuż osi drgań\
+    \ dipola. | Dipol półfalowy **nie** promieniuje wzdłuż swojej osi. W tej linii (tzw. **osie pola**)\
+    \ występuje **null** (brak sygnału). |\n| **Wzór promieniowania** | Nie podany. | Intensywność promieniowania\
+    \ w płaszczyźnie poziomej opisuje się przez \\(\\displaystyle I(\\theta) \\propto \\sin^2 \\theta\\\
+    ), gdzie \\(\\theta\\) to kąt między kierunkiem obserwacji a osią dipola. |\n| **Płaszczyzna pozioma**\
+    \ | Część „kierunkowa” sugeruje, że w płaszczyźnie poziomej uzyskujemy jedynie **płaski** wzór. |\
+    \ W płaszczyźnie poziomej \\(\\theta = 90^\\circ\\), więc \\(\\sin^2 90^\\circ = 1\\). Największa\
+    \ intensywność jest tam, a wzdłuż osi ( \\(\\theta = 0^\\circ\\) i \\(180^\\circ\\) ) jest zero. Powstaje\
+    \ „donut” (dough‑nut) – znany również jako **ósemkowa** charakterystyka. |\n\n**Kluczowa różnica**\
+    \  \n- **Ósemkowa (dough‑nut)**: maksymalne promieniowanie w płaszczyźnie poziomej, nul wzdłuż osi\
+    \ dipola.  \n- **Kierunkowa w linii zawieszenia**: nie istnieje – wzdłuż osi nie ma promieniowania.\n\
+    \n---\n\n### Dlaczego odpowiedź B jest poprawna?\n\n1. **Analiza pola**  \n   Dipol półfalowy ma długość\
+    \ \\(\\lambda/2\\). W płaszczyźnie poziomej (kąt \\(\\theta = 90^\\circ\\)) funkcja pola ma postać\
+    \  \n   \\[\n   E(\\theta) = E_0 \\sin\\theta \\;\\;\\Longrightarrow\\;\\; I(\\theta) \\propto \\\
+    sin^2\\theta\n   \\]\n   co daje maksymalną intensywność przy \\(\\theta = 90^\\circ\\).\n\n2. **Forma\
+    \ charakterystyki**  \n   Wizualnie w płaszczyźnie poziomej promieniowanie tworzy **dough‑nut** (wymagający\
+    \ „ósemkowego” kształtu), z **nullami** wzdłuż osi dipola.\n\n3. **Zgodność z praktyką**  \n   W zastosowaniach\
+    \ (np. anteny radiowe) dipol poziomy emituje moc w kierunkach poziomych, a wzdłuż osi (w pionie) sygnał\
+    \ jest praktycznie zerowy.\n\n---\n\n#### Podsumowanie\n\nOdpowiedź **C** („kierunkowa w linii zawieszenia”)\
+    \ sugeruje, że najsilniejsze promieniowanie występuje wzdłuż osi dipola, co jest sprzeczne z fizyką\
+    \ pola elektromagnetycznego. Dipol półfalowy **nie** promieniuje wzdłuż osi, lecz w płaszczyźnie poziomej,\
+    \ tworząc **ósemkową** charakterystykę. Dlatego poprawną odpowiedzią jest **B. ósemkowa**."
+  - "**Wyjaśnienie – horyzontalna charakterystyka dipola półfalowego**\n\nDipol półfalowy (długość \\\
+    (L=\\lambda/2\\)) jest najczęściej zasilany w środkowym punkcie i posiada symetrię linii zasilania.\
+    \  \nW odległej dziedzinie (dziedzinie pola zdalnego) natężenie pola promieniującego zależy od kąta\
+    \ \\(\\theta\\) pomiędzy biegunem dipola a wektorem obserwacji.  \n\n\\[\nE_\\theta(\\theta) \\;\\\
+    propto\\; \\frac{\\cos\\!\\left(\\tfrac{\\pi}{2}\\cos\\theta\\right)}{\\sin\\theta}\n\\]\n\n* **Maximum**:\
+    \ osiągane, gdy \\(\\theta = 90^\\circ\\) (pole prostopadłe do osi dipola).  \n* **Null**: przy \\\
+    (\\theta = 0^\\circ, 180^\\circ\\) (wzdłuż osi dipola).\n\nW płaszczyźnie poziomej (horyzontalnej)\
+    \ patrzymy na dipol w linii pionowej.  Największe natężenie promieniowania występuje w dwóch przeciwnych\
+    \ kierunkach, prostopadle do osi dipola, a wzdłuż osi jest nullem.  Zbiór tych dwóch lobe tworzy wzór\
+    \ **figurę ośmiokąta** (figure‑8).\n\nDlatego poprawna odpowiedź to **B – ósemkowa**."
+- text: 109\. Jaka jest horyzontalna charakterystyka promieniowania pionowej anteny ćwierćfalowej?
   answers:
   - dookólna
   - kierunkowa
   - w kształcie koniczyny
   correct_index: 0
+  explanations:
+  - "**Gratulacje!**  \nOdpowiedź **A – „dookólna”** jest poprawna.\n\n---\n\n### Dlaczego?\n\n- Pionowa\
+    \ antena ćwierćfalowa (\\(\\lambda/4\\)) ma symetryczny podział pola wokół osi anteny.  \n- W płaszczyźnie\
+    \ horyzontalnej (kąt \\(\\phi\\)) jego natężenie jest równe dla wszystkich kątów:  \n\n\\[\n|E(\\\
+    phi)| = \\text{const}, \\qquad 0^\\circ \\le \\phi < 360^\\circ\n\\]\n\n- W rezultacie powstaje charakterystyka\
+    \ **dookólna** (omnidirectional), czyli „kula” w układzie współrzędnych 3‑D.\n\n---\n\n**Podsumowując:**\
+    \ w horyzontalnej płaszczyźnie antena \\(\\lambda/4\\) emituje równe pola w każdym kierunku, stąd\
+    \ odpowiedź A. \U0001F680"
+  - "**Dlaczego odpowiedź B jest błędna**\n\n| Element | Krótkie wyjaśnienie |\n|---------|---------------------|\n\
+    | **Kierunek anteny** | Pionowa (vertikalna) czwórfalowa (λ/4) to element dipolowy, którego promieniowanie\
+    \ w płaszczyźnie poziomej jest **symetryczne wokół osi**. |\n| **Moc promieniowania** | Dla dipola\
+    \ w płaszczyźnie poziomej (θ = 90°) intensywność promieniowania wynosi  \n\\[\nI(\\theta)=I_0\\sin^2\\\
+    theta \\;\\;\\Longrightarrow\\;\\; I(90^\\circ)=I_0\n\\]  \nco oznacza stałą wartość dla **każdego**\
+    \ kąta azymutalnego φ. |\n| **Wzorzec** | Z powodu braku zależności od φ wzorzec wygląda jak pierścień\
+    \ – **dookólny** (omnidirectional). |\n| **Co to znaczy „kierunkowa”?** | Termin „kierunkowa” odnosi\
+    \ się do wzorców z wyraźnym wierzchołkiem (np. cardioid, dwumiejscowy). Pionowy λ/4 nie tak ma; ma\
+    \ jednolitą emisję w poziomie. |\n\n**Podsumowanie**  \nPionowa antena ćwierćfalowa (lub jej odbicie\
+    \ od płaskiego podłoża) ma w poziomie charakterystykę **dookólną** – wszystkie azymuty emitują równe\
+    \ sygnały. Dlatego poprawna odpowiedź to **A. dookólna**."
+  - "### Dlaczego odpowiedź **C** („w kształcie koniczyny”) jest błędna  \n\n| Kwestia | Poprawne wyjaśnienie\
+    \ | Dlaczego C jest niepoprawne |\n|---------|----------------------|-----------------------------|\n\
+    | **Typ anteny** | Antena **ćwierćfalowa** (λ/4) – element **pionowy** | Kształt pola promieniowania\
+    \ zależy od typu anteny. |\n| **Charakterystyka pozioma** | **Dookolna**: sygnał jest emitowany równomiernie\
+    \ we wszystkich kierunkach w płaszczyźnie poziomej. | Matematykowo: pola wzdłuż osi głównej (π/2)\
+    \ i wzdłuż osi bocznej (π) mają tę samą amplitudę. |\n| **Kształt „koniczyny”** | Typowy dla anten\
+    \ typu **duplex** (np. anteny dipolowe lub Yagi‑Uda) w niektórych konfiguracjach, gdzie pola wzdłuż\
+    \ osi głównej i bocznej są wyraźnie rozróżnione. | Nie występuje w standardowej, pionowej antenie\
+    \ ćwierćfalowej. |\n| **Schemat pola** | ![Omnidirectional pattern](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Omnidirectional_pattern.svg/320px-Omnidirectional_pattern.svg.png)\
+    \ | Kształt „koniczyny” (np. `θ = 0` oraz `θ = π/2`) **nie** odpowiada tej charakterystyce. |\n\n\
+    > **Krótko**: Pionowa antena ćwierćfalowa ma *dookolne* pola promieniowania w płaszczyźnie poziomej.\
+    \ Kształt „koniczyny” pojawia się przy innych typach anten i w innych konfiguracjach, dlatego nie\
+    \ jest poprawnym opisem pola dla tego pytania."
+  - "## Krótkie wyjaśnienie\n\nPionowa antena ćwierćfalowa (quarter‑wave dipole) ma **horyzontalną charakterystykę\
+    \ dookólną**.\n\n- Antena składa się z jednej „półfalowej” sekcji w pionie; w płaszczyźnie horyzontalnej\
+    \ (azymut) nie występują żadne fazy rozchodzące się w różnych kierunkach.  \n- Rozkład pola w płaszczyźnie\
+    \ horyzontalnej jest równy dla wszystkich kątów azymutowych \\(\\phi\\):\n\n\\[\nE_\\phi(\\phi) \\\
+    propto \\text{const}\\qquad (\\text{dla } 0^\\circ \\le \\phi < 360^\\circ)\n\\]\n\n- W praktyce oznacza\
+    \ to „doughnut‑shape” (tor) – silniejsze promieniowanie po przekątnej dookoła anteny, a bardzo małe\
+    \ w osi pionowej.\n\nDlatego odpowiedź **A. dookólna** jest poprawna."
 - text: '110\. Na rysunku przedstawiona jest antena typu Yagi-Uda. Element 1 to:
 
     ![RADIOTECHNIKA question 110](assets/question_images/radiotechnika-q110.png)'
@@ -171,6 +1117,31 @@ questions:
   - wibrator
   - I direktor
   correct_index: 0
+  explanations:
+  - "**Prawidłowa odpowiedź: A. reflektor**  \nW antenie Yagi-Uda **reflektor** jest najdłuższym elementem,\
+    \ umieszczonym *za* elementem wibrującym (zasilanym), w kierunku *przeciwnym* do kierunku promieniowania\
+    \ (strzałka wskazuje główny kierunek). Element 1 znajduje się po lewej stronie zasilanego elementu\
+    \ (pomiędzy 1 a 2 widoczny jest zasilacz), a ponieważ strzałka wskazuje w prawo, reflektor musi być\
+    \ po lewej. To potwierdza, że element 1 to reflektor.  \n\n$\\boxed{A}$"
+  - "Błąd polega na mylnym przypisaniu elementu 1 do **wibratora (dipola)**. W antenie Yagi-Uda:  \n-\
+    \ **Reflektor** (najdłuższy element) znajduje się **za** wibratorem (element 1).  \n- **Wibrator (dipol)**\
+    \ (element zasilany) jest **drugim** od lewej (element 2).  \n- **Direktory** (krótsze elementy) są\
+    \ **przód** wibratora (elementy 3, 4).  \n\nUżytkownik pomylił numerację: element 1 to **reflektor**\
+    \ (A), a nie wibrator (B).  \n\n$$\n\\text{Poprawna kolejność: } 1. \\text{ reflektor} \\rightarrow\
+    \ 2. \\text{ wibrator} \\rightarrow 3.,4. \\text{ direktory}\n$$"
+  - "**Błąd w odpowiedzi:**  \nElement 1 jest **najdłuższym elementem** i znajduje się **za** wibratorem\
+    \ (przewodem zasilającym). W antenie Yagi-Uda:  \n- **Reflektor** (najdłuższy element) odbija sygnał\
+    \ w kierunku promieniowania (w stronę strzałki).  \n- **Direktor** (najkrótsze elementy) są umieszczone\
+    \ **przed** wibratorem.  \n\nPonieważ **element 1 jest po lewej stronie wibratora** i **najdłuższy**,\
+    \ to **reflektor** (A). Odpowiedź C (\"I direktor\") odnosi się do elementów **przed** wibratorem\
+    \ (np. 2, 3, 4), nie do 1.  \n\n**Poprawna logika:**  \n1. Reflektor (najdłuższy) → **po lewej** (A).\
+    \  \n2. Wibrator (zasilany) → pośrodku (B).  \n3. Direktorzy (najkrótsze) → po prawej (C).  \n\n**Uwaga:**\
+    \ \"I direktor\" to błędna forma (prawdopodobnie literówka), ale nawet przy prawidłowej nazwie – **element\
+    \ 1 nie jest director**."
+  - "W antenie Yagi-Uda elementy są ułożone w kolejności: **reflektor** (najdłuższy), **wibrator** (przewód\
+    \ zasilający), **directory** (krótsze, przed wibratorem). Element 1 jest najdłuższy i znajduje się\
+    \ z tyłu, zatem to **reflektor**.  \n\nPoprawna odpowiedź: **A. reflektor**.  \n\n$$\n\\text{Reflektor}\
+    \ \\quad \\rightarrow \\quad \\text{Najdłuższy element, z tyłu anteny}\n$$"
 - text: '111\. Na rysunku przedstawiona jest antena typu Yagi-Uda. Element 2 to:
 
     ![RADIOTECHNIKA question 111](assets/question_images/radiotechnika-q111.png)'
@@ -179,6 +1150,32 @@ questions:
   - II direktor
   - reflektor
   correct_index: 0
+  explanations:
+  - "**Gratulacje!**  \nOdpowiedź **A. wibrator** jest poprawna.  \n\nW antenie Yagi-Uda:  \n- **Wibrator**\
+    \ (element **2**) to **uzwojenie zasilane** (drganie napędzane przez sygnał), do którego podłączony\
+    \ jest kabel (w diagramie – pionowa linia zasilająca).  \n- Element **1** to **reflektor** (najdłuższy,\
+    \ za wibratorem).  \n- Elementy **3. i 4.** to **dyrektory** (krótsze, przed wibratorem).  \n\nElement\
+    \ **2** jest **jedynym** połączonym z zasilaniem – dlatego jest wibratorem. ✅"
+  - "**Błąd**: Użytkownik pomylił *wibrator* z *direktorami*.  \nW antenie Yagi-Uda:  \n- **Element 1**\
+    \ (najdłuższy) to **reflektor** (C).  \n- **Element 2** (pomiędzy reflektorem a direktorami) to **wibrator**\
+    \ (A) – element zasilany.  \n- Elementy 3 i 4 to **direktory** (3. = I direktor, 4. = II direktor).\
+    \  \n\n**Dlaczego B jest błędne?**  \nElement 2 nie jest *II direktorem* – to **wibrator** (pierwszy\
+    \ element po reflektorze). II direktor to *element 4* (najkrótszy).  \n\n**Poprawna odpowiedź**: A.\
+    \ wibrator.  \n$$\n\\text{Schemat: } \\underbrace{1}_{\\text{reflektor}} \\rightarrow \\underbrace{2}_{\\\
+    text{wibrator}} \\rightarrow \\underbrace{3}_{\\text{I direktor}} \\rightarrow \\underbrace{4}_{\\\
+    text{II direktor}}\n$$"
+  - "**Błąd**: Użytkownik mylnie zidentyfikował element 2 jako **reflektor** (C), lecz **wibrator** (A)\
+    \ to element **zasilany** (połączony z linią zasilającą). W antenie Yagi-Uda:  \n- **Reflektor** (najdłuższy)\
+    \ znajduje się **po lewej** (za wibratorem),  \n- **Wibrator** (zasilany) to element **połączony z\
+    \ linią zasilającą** (element 2),  \n- **Direktory** (krótsze) są **po prawej** (w kierunku strzałki).\
+    \  \n\n**Uwaga**: Element 2 jest wibratorem, nie reflektorem (element 1).  \n$$\n\\boxed{A}\n$$"
+  - "**Odpowiedź:**  \nElement 2 to **wibrator** (A), ponieważ jest to **element zasilany** (driven element),\
+    \ do którego podłączony jest przewód zasilający (wizualnie widoczny jako pionowy przewód z połączeniem\
+    \ do elementu 2). W antenie Yagi-Uda:  \n- **Reflektor** (C) – najdłuższy element za wibratorem (nie\
+    \ jest to element 2).  \n- **Directory** (B) – krótsze elementy przed wibratorem (elementy 3 i 4).\
+    \  \n\nWibrator jest jedynym elementem **aktywnym**, który bezpośrednio przesyła/odbiera sygnał. \
+    \ \n\n**Uwaga:** W polskiej terminologii antenowej \"wibrator\" oznacza *driven element* (zasilany\
+    \ element)."
 - text: '112\. Na rysunku przedstawiona jest antena typu Yagi-Uda. Element 3 to:
 
     ![RADIOTECHNIKA question 112](assets/question_images/radiotechnika-q112.png)'
@@ -187,6 +1184,30 @@ questions:
   - I direktor
   - II direktor
   correct_index: 1
+  explanations:
+  - "W antenie Yagi-Uda:  \n- **Wibrator (A)** to **element podłączony do zasilania** (tu **2.**), nie\
+    \ 3.  \n- Elementy **przed wibratorem** są **directory** (1. – reflektor, 3. – I direktor, 4. – II\
+    \ direktor).  \n\nBłąd: Użytkownik pomylił **wibrator** (2.) z **I direktorem** (3.). Poprawna odpowiedź\
+    \ to **B. I direktor**.  \n\n$$\n\\boxed{B}\n$$"
+  - "Pogratuluj! Odpowiedź **B. I direktor** jest poprawna.  \n\nW antenie Yagi-Uda:  \n- Element **1**\
+    \ to **reflektor** (najdłuższy, za wibrator).  \n- Element **2** to **wibrator** (driven element,\
+    \ zasilany, łączony z linią zasilającą).  \n- Element **3** to **I direktor** (pierwszy director,\
+    \ znajdujący się przed wibratorem).  \n- Element **4** to **II direktor** (drugi director).  \n\n\
+    Zgodnie z rysunkiem, element 3 jest pierwszym direktorem (pierwszym elementem przed wibratorem w kierunku\
+    \ promieniowania), więc poprawna odpowiedź to **B**.  \n\n**Wzór:**  \n- Kierunek promieniowania:\
+    \ $ \\rightarrow $ (elementy 3, 4 są directorami).  \n- Sekwencja: **reflektor (1) → wibrator (2)\
+    \ → I direktor (3) → II direktor (4)**."
+  - "**Błąd:** Element 3 to **pierwszy direktor (I direktor)**, nie \"II direktor\".  \nW antenie Yagi-Uda:\
+    \  \n- **1.** to **reflektor** (najdłuższy element),  \n- **2.** to **wibrator** (element zasilany),\
+    \  \n- **3.** to **I direktor** (najbliższy wibratorowi),  \n- **4.** to **II direktor** (dalszy).\
+    \  \n\n**Dlaczego C jest niepoprawne?**  \nUżytkownik pomylił kolejność: element 3 to **pierwszy**\
+    \ (najbliższy wibratorowi), a nie drugi direktor. Poprawna odpowiedź to **B. I direktor**.  \n\n$$\n\
+    \\boxed{B}\n$$"
+  - "W antenie Yagi-Uda elementy są ułożone w kolejności: **reflektor** (najdalszy od kierunku promieniowania),\
+    \ **wibrator** (pobudzany, połączony z linią zasilającą), **dyrektory** (najbliższy wibratorowi to\
+    \ **I dyrektor**).  \n\nNa rysunku:  \n- Element **2** to **wibrator** (połączony z linią zasilającą),\
+    \  \n- Element **3** to **I dyrektor** (pierwszy dyrektor w kierunku promieniowania).  \n\nZatem poprawna\
+    \ odpowiedź to **B. I direktor**.  \n\n$$\n\\boxed{B}\n$$"
 - text: '113\. Na rysunku przedstawiona jest antena typu Yagi-Uda. Element 4 to:
 
     ![RADIOTECHNIKA question 113](assets/question_images/radiotechnika-q113.jpg)'
@@ -195,66 +1216,601 @@ questions:
   - II direktor
   - wibrator
   correct_index: 1
+  explanations:
+  - "**Dlaczego odpowiedź A jest błędna?**\n\n| Element | Rola w Yagi‑Uda | Numer na rysunku |\n|---------|-----------------|------------------|\n\
+    | 1 | **Reﬂector** (zazwyczaj długość ≈ 1.2 λ) | 1 |\n| 2 | **Driven element** (zasilany) | 2 |\n\
+    | 3 | **I direktor** (pierwszy direktor) | 3 |\n| 4 | **II direktor** (drugi direktor) | 4 |\n\n*W\
+    \ antenie Yagi‑Uda „directors” są kolejno oznaczane „I direktor”, „II direktor”, „III direktor”…*\
+    \  \nElement **4** jest drugim w kolejności direktorem, więc **II direktor**.  \nOdpowiedź **A** (I\
+    \ direktor) dotyczyłaby elementu **3**.\n\n---\n\n### Krótka definicja elementów\n\n- **Reﬂector**:\
+    \ odbija falę radiową, zwiększając kierunkowość.  \n- **Driven element**: element, do którego podłączamy\
+    \ źródło sygnału.  \n- **Directors**: elementy po obu stronach driven elementu, które skupiają falę\
+    \ w jedną stronę.  \n- **Wibrator**: to nie element antenowy, lecz oscylator/emitująca część nadajnika\
+    \ – w kontekście Yagi‑Uda nie występuje.\n\n---\n\n> **Podsumowanie**  \n> Element 4 w układzie Yagi‑Uda\
+    \ jest **II direktor** (drugi direktor), a nie **I direktor** ani wibrator.  \n\n\\[\n\\text{Element\
+    \ 4} \\;=\\; \\text{II direktor}\n\\]"
+  - "# \U0001F389 Gratulacje!  \n\n**Odpowiedź B: “II direktor”** jest poprawna.  \n\n---\n\n## Dlaczego?\n\
+    \nW układzie Yagi‑Uda kolejność elementów jest następująca:  \n\n| Numer | Rola w układzie | Krótka\
+    \ charakterystyka |\n|-------|-----------------|------------------------|\n| 1     | **Działa** (driven)\
+    \ | Źródło sygnału |\n| 2     | **Reflektor** (I direktor) | Krótszy, umieszczony przed elementem\
+    \ 1 |\n| 3, 4, … | **Direktory** | Dłuższe, umieszczone po stronie wyjściowej |\n\nElement 4 to trzecia\
+    \ „dłuższa” część, czyli **drugi director** w sekwencji. Dlatego oznaczenie **II direktor** jest trafne.\
+    \  \n\n---\n\n> \\[\n> \\text{Element }4 = \\text{II direktor}\n> \\]"
+  - "**Dlaczego „wibrator” jest błędną odpowiedzią?**\n\n| Element w antenie Yagi‑Uda | Rola |\n|---------------------------|------|\n\
+    | **1** | *Driven element* (długość ≈ λ/2, podłączony do nadajnika) |\n| **2** | *Reflector* (dłuższy,\
+    \ ≈ 1,1 λ/2) – odbija falę w kierunku anteny |\n| **3** | *Pierwszy director* (krótszy, ≈ 0,9 λ/2)\
+    \ – podsyca promieniowanie w przednie półkule |\n| **4** | **Drugi director** – kolejny, krótki element\
+    \ zwiększający kierunkowość i zysk |\n\n**Wariant „wibrator”** (z greckiego *vibrātōr*, „drgający”)\
+    \ jest terminem z innego obszaru – zwykle używanym np. w akustyce czy w medycynie – i nie ma zastosowania\
+    \ w opisach anten Yagi‑Uda. W tym typie konstrukcji nie występują elementy „wibratory”; wszystkie\
+    \ są pasywnymi odłamkami (directory, reflector, driven element).  \n\n**Dlatego prawidłowa odpowiedź\
+    \ to B – „II direktor”.**"
+  - "**Wyjaśnienie**\n\nW antenie typu Yagi‑Uda elementy są zwykle numerowane kolejno od strony z tyłu:\n\
+    \n| Numer | Nazwa elementu | Funkcja |\n|-------|----------------|---------|\n| 1     | Reflektor\
+    \      | Odbija fale i zwiększa kierunkowość |\n| 2     | Element sterujący (driven element) | Emituje\
+    \ sygnał |\n| 3     | Pierwszy dyrektor | Pomaga kierować wiązkę |\n| 4     | **Drugi dyrektor** |\
+    \ Dalsze wzmacnianie kierunkowości i redukcja strumienia bocznego |\n\nDlatego **element 4** jest\
+    \ **drugi dyrektor** (II direktor).  \nDyrektorzy (ang. *directors*) są krótsze niż reflektor i zwykle\
+    \ umieszczane są po stronie nadającej, aby skupić falę w kierunku przedniego boku anteny."
 - text: 114\. W jakim przypadku powstaje w linii przesyłowej w.cz. fala stojąca?
   answers:
   - kiedy kabel nie jest ułożony prosto
   - kiedy obok kabla koncentrycznego przechodzi inny kabel
   - kiedy impedancja obciążenia nie jest zgodna z impedancją falową kabla
   correct_index: 2
-- text: '117\. Niesymetryczny kabel koncentryczny 50 Ω do symetrycznej anteny o oporności
-    falowej 50 Ω najlepiej połdączyć za pomocą:'
+  explanations:
+  - "## Dlaczego odpowiedź **A** jest błędna  \n\n| Kryterium | Co mówi odpowiedź A? | Dlaczego to nie\
+    \ wystarcza |\n|-----------|----------------------|--------------------------|\n| **Definicja fali\
+    \ stojącej** | „kiedy kabel nie jest ułożony prosto” | Fala stojąca powstaje **przez interferencję**\
+    \ fali napływającej i odbitej. Gdy te dwie fale mają różne fazy, na linii pojawiają się wzniesienia\
+    \ i wklęsłości, które nie przemieszczają się wzdłuż kabla. |\n| **Co faktycznie ją wywołuje?** | \
+    \ | 1. **Zachwyt falowy** – różnica między impedancją obciążenia \\(Z_L\\) a impedancją falową kabla\
+    \ \\(Z_0\\). <br>2. **Odbicie** – wynikające z powyższej różnicy. <br>3. **Interferencja** – superpozycja\
+    \ fal napływającej i odbitej. |\n| **Rola geometryczna kabla** |  | Geometryczne zmiany (pęknięcie,\
+    \ zakrzywienie) mogą wprowadzać niewielkie straty czy opóźnienia, ale **nie** tworzą one mechanizmu,\
+    \ który powoduje, że fala odbija się i powstaje interferencja. Zmiana kształtu nie zmienia wartości\
+    \ \\(Z_0\\) (do pewnego stopnia) i nie generuje „nieliniowych” odbić, które prowadziłyby do fali stojącej.\
+    \ |\n\n## Prawidłowy mechanizm\n\nFala stojąca pojawia się wtedy, gdy:\n\\[\n\\Gamma = \\frac{Z_L\
+    \ - Z_0}{Z_L + Z_0} \\neq 0\n\\]\ngdzie  \n- \\(Z_0\\) – impedancja falowa kabla (zwykle stała dla\
+    \ danej linii, np. 50 Ω, 75 Ω, 150 Ω, itp.),  \n- \\(Z_L\\) – impedancja obciążenia (np. transformator,\
+    \ urządzenie końcowe, itp.).  \n\nGdy \\(Z_L = Z_0\\), \\(\\Gamma = 0\\) – nie ma odbicia, a więc\
+    \ nie ma fali stojącej.  \n\n### Przykład\n*Kabel 50 Ω jest podłączony do obciążenia 150 Ω:*\n\\[\n\
+    \\Gamma = \\frac{150-50}{150+50} = \\frac{100}{200}=0.5\n\\]\nOdbicie wynosi 50 %, co skutkuje wyraźną\
+    \ falą stojącą.\n\n## Dlaczego „kabel nie jest ułożony prosto” nie wystarcza\n\n- **Brak zależności**:\
+    \ Falę stojącą nie wyznacza geometrię kabla. Błąd geometryczny może wprowadzać jedynie **straty**\
+    \ (rura, zjawisko radiacji), ale nie **odbicie**.\n- **Przykład**: Jeśli kabel jest zakrzywiony, ale\
+    \ kończy się na impedancji pasującej do \\(Z_0\\), \\(\\Gamma = 0\\) i nie ma fali stojącej – mimo\
+    \ że kabel jest „nietrawy”.\n- **Zjawiska radiacyjne**: Pęknięcie lub zakrzywienie może prowadzić\
+    \ do emisji pola radiacyjnego, ale to **zewnętrzna strata**, a nie **falowanie** w linii.\n\n## Podsumowanie\n\
+    \n- **Prawidłowa odpowiedź**: **C** – „kiedy impedancja obciążenia nie jest zgodna z impedancją falową\
+    \ kabla”.\n- **Błąd w odpowiedzi A**: Zakłada, że kształt kabla bezpośrednio wywołuje falę stojącą,\
+    \ co nie ma podstaw fizycznych.  \n- **Kluczowe pojęcie**: **refleksja** (\\(\\Gamma\\)) – tylko zjawisko,\
+    \ które prowadzi do fali stojącej.\n\nPamiętaj: *fale stojące powstają przez **odbicie** fali na linii,\
+    \ a nie przez geometryczne wady kabla.*"
+  - "**Dlaczego odpowiedź B jest błędna**\n\n| Punkt | Co sugeruje odpowiedź | Co faktycznie powoduje\
+    \ falę stojącą |\n|-------|-----------------------|------------------------------------|\n| **B**\
+    \ | *„kiedy obok kabla koncentrycznego przechodzi inny kabel”* | Występuje, gdy **impedancja obciążenia**\
+    \ \\(Z_L\\) nie jest równa **impedancji charakterystycznej** \\(Z_0\\) kabla. |\n| **C** | *„kiedy\
+    \ impedancja obciążenia nie jest zgodna z impedancją falową kabla”* | To jest właśnie warunek tworzenia\
+    \ się fal refleksyjnych, które interferują ze sobą i tworzą **falę stojącą**. |\n\n---\n\n### Dlaczego\
+    \ bliskość innego kabla nie tworzy fali stojącej\n\n- **Przebieg kabla** (nieprosty) oraz **poprzeczne\
+    \ pola** od sąsiadującego kabla mogą wprowadzać dodatkowe **parasitics** (oporność, pojemność), ale\
+    \ nie generują **odbijających się fal** w tej linii.\n- Falę stojącą wytwarza **odbijanie sygnału**\
+    \ na **krawędzi** linii – to właśnie **mismatch impedancji**. Wzór na współczynnik odbicia (\\(\\\
+    Gamma\\)):\n  \\[\n  \\Gamma = \\frac{Z_L - Z_0}{Z_L + Z_0}\n  \\]\n  i na współczynnik odbijania\
+    \ stojącego (SWR):\n  \\[\n  \\text{SWR} = \\frac{1+|\\Gamma|}{1-|\\Gamma|}\n  \\]\n- Gdy \\(\\Gamma\
+    \ \\neq 0\\) (czyli \\(Z_L \\neq Z_0\\)), część sygnału jest odbijana, a w linii pojawia się **interferencja\
+    \ sygnałów naprzód i wstecz**, tworząc **falę stojącą**.\n\n**Podsumowanie**  \nOdpowiedź **C** jest\
+    \ poprawna, ponieważ tylko niezgodność impedancji obciążenia i charakterystycznej powoduje fale stojące.\
+    \ Bliskość innego kabla (B) i niewłaściwy kształt linii (A) nie są bezpośrednimi przyczynami tego\
+    \ zjawiska."
+  - "**Gratulacje!**  \n\nOdpowiedź **C** jest poprawna, ponieważ:\n\n- Fala stojąca powstaje, gdy sygnał\
+    \ odbija się od końców linii o **nierównym dopasowaniu impedancji**.\n- Różnica pomiędzy impedancją\
+    \ obciążenia \\(Z_L\\) a impedancją falową kabla \\(Z_0\\) powoduje niepełne przeniesienie mocy i\
+    \ wytwarzanie się czołowisk oraz wzmocnionych pól (fale stojące).  \n  \\[\n  \\Gamma = \\frac{Z_L\
+    \ - Z_0}{Z_L + Z_0}\n  \\]\n  \\(\\Gamma\\) (współczynnik odbicia) różny od zera → fala stojąca.\n\
+    \nPozostałe opcje (niewłaściwe ułożenie kabla, obecność innego kabla) nie powodują samego powstawania\
+    \ fali stojącej.  \n\n**Zatem prawidłowy wybór to C.**"
+  - "**Dlaczego odpowiedź C jest poprawna**\n\n- **Zjawisko**: Fala stojąca powstaje, gdy **falę napływającą**\
+    \ na linię przesyłową odbija się w jej końcu, a odbita część interferuje z falą nadchodzącą.  \n-\
+    \ **Powód odbicia**: Różnica impedancji w końcowym obciążeniu (\\(Z_L\\)) od impedancji przewodu (\\\
+    (Z_0\\)).  \n  \\[\n  \\Gamma = \\frac{Z_L - Z_0}{Z_L + Z_0}\n  \\]\n  \\(\\Gamma\\) – współczynnik\
+    \ odbicia. Gdy \\(|\\Gamma| \\neq 0\\), część sygnału jest odbijana.  \n- **Efekt**: Interferencja\
+    \ odbitej i nadchodzącej fali tworzy wzór stojący, którego współczynnik (VSWR) wynosi  \n  \\[\n \
+    \ \\text{VSWR} = \\frac{1+|\\Gamma|}{1-|\\Gamma|}\n  \\]\n\n**Dlaczego pozostałe odpowiedzi są nieprawidłowe**\n\
+    \n| Opcja | Powód |\n|-------|-------|\n| A. kabel nie jest ułożony prosto | Geometryczne zakłócenia\
+    \ wpływają na rozkład pola, ale nie powodują odbicia fali. |\n| B. obok kabla przechodzi inny kabel\
+    \ | Sygnał międzykablowy (parasitny) może się pojawić, ale nie generuje fali stojącej w danym kablu.\
+    \ |\n\nDlatego **jedynie niedopasowanie impedancji** prowadzi do powstania fali stojącej w linii przesyłowej."
+- text: '117\. Niesymetryczny kabel koncentryczny 50 Ω do symetrycznej anteny o oporności falowej 50 Ω
+    najlepiej połdączyć za pomocą:'
   answers:
   - ununa 9:1
   - baluna 1:1 (symetryzatora)
   - baluna 1:2
   correct_index: 1
+  explanations:
+  - "## Dlaczego **A** („ununa 9:1”) jest błędne\n\n| Co trzeba zrobić | Dlaczego | Co się dzieje przy 9:1\
+    \ |\n|------------------|----------|------------------------|\n| **Przekształcić sygnał z przewodu\
+    \ nie‑symetrycznego (ununa) na sygnał równoległy (balun)** | 50 Ω ununa → 50 Ω symetryczna antena\
+    \ | 9:1 ununa zmienia impedancję 50 Ω na 450 Ω (9 × 50 Ω) i pozostawia sygnał nie‑balansowany. |\n\
+    | **Zapobiec „unbalancing”** | Antena 50 Ω jest symetryczna (balansowa). Bez baluna dochodzi do rozchodzenia\
+    \ się pola nie‑symetrycznego, co zniekształca charakterystykę anteny i zmniejsza efektywność. | 9:1\
+    \ ununa nie usuwa asymetrii – sygnał nadal ma różne poziomy na dwóch przewodach. |\n\n**Poprawne rozwiązanie**\
+    \  \nUżyj baluna **1:1** (symetryzator).  \n- Nie zmienia on impedancji (50 Ω → 50 Ω).  \n- Zamienia\
+    \ sygnał z ununa na sygnał równoległy, eliminując asymetrię.  \n- Zapewnia maksymalny transfer mocy\
+    \ do anteny symetrycznej.\n\n---\n\n**W skrócie:**  \n*9:1 ununa* służy do dopasowania impedancji,\
+    \ **nie** do przekształcenia sygnału z nie‑symetrycznego na równoległy.  \n*Balun 1:1* to odpowiedni\
+    \ element, który jednocześnie zachowuje impedancję i konwertuje sygnał na balansowany."
+  - "**Gratulacje!**  \n\nOdpowiedź **B – balun 1:1 (symetryzator)** jest poprawna, ponieważ:\n\n| Element\
+    \ | Wartość | Dlaczego pasuje |\n|---------|---------|------------------|\n| **Balun 1:1** | $\\displaystyle\
+    \ \\frac{Z_{\\text{antena}}}{Z_{\\text{coax}}}=1$ | Przekazuje sygnał z koaksialnego kabla 50 Ω do\
+    \ anteny symetrycznej 50 Ω bez zmiany impedancji. |\n| **Balun 9:1** | $\\displaystyle \\frac{Z_{\\\
+    text{antena}}}{Z_{\\text{coax}}}=9$ | Zmieniłby impedancję na 450 Ω, co powoduje duży odbieg. |\n\
+    | **Balun 1:2** | $\\displaystyle \\frac{Z_{\\text{antena}}}{Z_{\\text{coax}}}=0.5$ | Zmieniłby impedancję\
+    \ na 25 Ω, co również spowoduje dużą niezgodność. |\n\nW praktyce balun 1:1 zapewnia idealne dopasowanie\
+    \ impedancyjne i równomierne przeniesienie sygnału między linią koaksialną a anteną symetryczną."
+  - "**Dlaczego „balun 1:2” jest błędnym wyborem?**\n\n| Co jest podłączane? |  Typ kabla |  Typ anteny\
+    \ |  Potrzebne cechy baluna |\n|----------------------|------------|-------------|-------------------------|\n\
+    | **Koaksialny** 50 Ω | **Nie‑symetryczny** | **Symetryczna** 50 Ω | 1) **Ujednolicenie** (zrównoważone\
+    \ ↔ nierównoważne)  <br>2) **Dobranie impedancji** (50 Ω ↔ 50 Ω)  |\n\n### Dlaczego **balun 1:1**\
+    \ (symetryzator) jest właściwy\n- **Balun 1:1** to transformator o współczynniku 1:1 – nie zmienia\
+    \ wartości impedancji.  \n- Działa jako **symetryzator**, czyli konwertuje sygnał z nierównoważnego\
+    \ (koaksialnego) na zrównoważony (antena) i odwrotnie.  \n- Dzięki temu sygnał trafia na antenę z\
+    \ **prawidłową impedancją** (50 Ω ↔ 50 Ω), co minimalizuje straty.\n\n### Dlaczego **balun 1:2** jest\
+    \ błędny\n- Transformator 1:2 **zwiększa impedancję** o czynnik 2:  \n  \\[\n  Z_{\\text{out}} = 2\
+    \ \\times Z_{\\text{in}} = 2 \\times 50\\ \\Omega = 100\\ \\Omega\n  \\]\n- Takie 100 Ω nie odpowiada\
+    \ charakterystycznej impedancji anteny 50 Ω – powoduje dużą niezgodność i znaczne utraty sygnału.\n\
+    \n### Dlaczego **balun 9:1** również nie pasuje\n- Balun 9:1 służy do **step‑up/step‑down** między\
+    \ bardzo różnymi impedancjami (np. 50 Ω ↔ 450 Ω) oraz nie zapewnia symetryzacji.  \n- Nie jest potrzebny,\
+    \ gdy obie strony mają taką samą impedancję 50 Ω.\n\n---\n\n**Podsumowanie**  \nDo połączenia koaksialnego\
+    \ 50 Ω z symetryczną anteną 50 Ω używa się **baluna 1:1** (symetryzatora).  \nBalun 1:2 zmienia impedancję\
+    \ na 100 Ω, a balun 9:1 służy innym celom – dlatego są błędne odpowiedzi C i A."
+  - "**Dlaczego 1:1 balun?**\n\n- **Coaxialny kabel** – to układ *unbalanced* (jedna przewodząca, jedna\
+    \ masa).  \n- **Symetryczna antena** – to układ *balanced* (dwóch równych przewodów, różnica potencjałów\
+    \ między nimi).\n\nAby podłączyć je bezpośrednio, konieczne jest zamienienie układu unbalanced → balanced\
+    \ oraz dopasowanie impedancji.  \nNajprostszym rozwiązaniem jest **balun 1:1** (symetryzator), czyli\
+    \ transformator, w którym liczba zwojów na obu uzwojeniach jest równa:\n\n\\[\nN_1 = N_2 \\;\\;\\\
+    Longrightarrow\\;\\; Z_{\\text{in}} = Z_{\\text{out}} = 50\\,\\Omega\n\\]\n\nDzięki temu:\n\n| Źródło\
+    \ | Układ | Impedancja |\n|--------|-------|-----------|\n| Coax | unbalanced | \\(50\\,\\Omega\\\
+    ) |\n| Antena | balanced | \\(50\\,\\Omega\\) |\n\nBalun 1:1 zapewnia:\n\n1. **Dopasowanie impedancji**\
+    \ (brak odbić sygnału).  \n2. **Symetryzację sygnału** (usunięcie potencjału przeciwnej linii).\n\n\
+    ---\n\n### Dlaczego 9:1 i 1:2 nie są odpowiednie?\n\n- **9:1** i **1:2** to *step‑up/step‑down* baluny.\
+    \ Ich zadaniem jest zmiana napięcia, a nie bezpośrednie dopasowanie impedancji 50 Ω do 50 Ω.  \n-\
+    \ Użycie ich skutkowałoby błędną impedancją na wejściu anteny (np. 9:1 dałoby ≈ \\(50/9 \\approx 5.6\\\
+    ,\\Omega\\) na antenie), co prowadzi do silnych odbić i zniekształceń sygnału.\n\n---\n\n**Podsumowanie**\n\
+    \nNajlepszym wyborem jest **balun 1:1 (symetryzator)** – zapewnia równowagę napięć i dokładne dopasowanie\
+    \ impedancji 50 Ω między coax a symetryczną anteną."
 - text: 118\. Czy stan jonosfery ma wpływ na rozchodzenie się fal krótkich?
   answers:
   - słaby
   - tylko okresowo, w dzień
   - ma bardzo duży wpływ
   correct_index: 2
+  explanations:
+  - "## Dlaczego odpowiedź A jest błędna\n\n| Element | Ocena |\n|--------|-------|\n| **Zmienność jonosfery**\
+    \ | Jonosfera zmienia się w ciągu dnia i w zależności od długości fali. |\n| **Reakcja fal krótkich**\
+    \ | Fale krótkie (2–30 MHz) są silnie odbijane przez jonosferę, a ich rozchodzenie się jest w dużej\
+    \ mierze zależne od stanu jonosfery (np. poziom ionizacji, faza 12‑godzinna). |\n| **Efekt praktyczny**\
+    \ | Zmiana stanu jonosfery (np. w nocy, w czasie świtu) może zwiększyć lub zmniejszyć zasięg, kierunek\
+    \ odbicia, a nawet zablokować odbicie. |\n\n### Dlatego\n- **\"słaby\"** (A) nie oddaje skali wpływu.\
+    \  \n- **\"tylko okresowo, w dzień\"** (B) pomija ważne czynniki (np. nocny składowy „D‑layer”). \
+    \ \n- **\"ma bardzo duży wpływ\"** (C) jest zgodne z obserwacjami i teorią propagacji fal w jonosferze.\n\
+    \n> **Podsumowanie:** stan jonosfery jest kluczowym czynnikiem determinującym propagację fal krótkich\
+    \ – wpływ jest duży, a nie słaby."
+  - "**Dlaczego odpowiedź B („tylko okresowo, w dzień”) jest niepoprawna**\n\n| Element | Wpływ jonosfery\
+    \ | Krótki opis |\n|---------|-----------------|-------------|\n| **D‑warstwa** | Zwiększa absorpcję\
+    \ fal HF (10–20 MHz) w ciągu dnia (większa \\(N_e\\)). | W nocy D‑warstwa zanika → mniejsza absorpcja,\
+    \ ale nie znika całkowicie. |\n| **E‑warstwa** | Odbija fale HF (do ~ 12 MHz). | Obecna zarówno w\
+    \ dzień, jak i w nocy, lecz jej warstwa D‑warstwa w ciągu dnia zmniejsza odbicie. |\n| **F‑warstwa**\
+    \ (F1 + F2) | Najważniejsza warstwa odbijająca i przewodząca fale HF. | F1 znika w nocy; F2 pozostaje\
+    \ aktywna zarówno w dzień, jak i w nocy, choć jego gęstość elektronowa jest mniejsza. |\n\n### Matematyczne\
+    \ wyjaśnienie\n\nRefrakcyjność jonosfery jest opisana przez współczynnik refrakcji:\n\n\\[\nn^2 =\
+    \ 1 - \\frac{f_p^2}{f^2} + \\frac{f_p^2 f_c^2}{f^2(f^2 - f_c^2)},\n\\]\n\ngdzie  \n\\(f\\) – częstotliwość\
+    \ fali,  \n\\(f_p = 9\\sqrt{N_e}\\) – częstotliwość plazmy,  \n\\(f_c\\) – częstotliwość gyro‑plazmy.\
+    \  \n\nJeśli \\(f < f_p\\), fala jest odbijana; jeśli \\(f > f_p\\), przechodzi przez warstwę. W ciągu\
+    \ dnia \\(N_e\\) rośnie, więc \\(f_p\\) rośnie, co pozwala na odbicie fal o wyższych częstotliwościach.\
+    \ W nocy \\(N_e\\) maleje, ale wciąż występuje odbicie, zwłaszcza przez warstwę F2.\n\n### Kluczowe\
+    \ wnioski\n\n1. **Wpływ jest duży** – zmienia się zarówno w dzień, jak i w nocy, dlatego opis „tylko\
+    \ okresowo, w dzień” jest niekompletny.  \n2. **Zmiany w ciągu doby** – najważniejsze zmiany dotyczą\
+    \ natężenia \\(N_e\\) i obecności warstw, ale jonosfera wpływa na propagację fal HF przez całą dobę.\
+    \  \n3. **Zależność od częstotliwości** – na wyższych częstotliwościach (np. > 15 MHz) wpływ jest\
+    \ mniejszy, ale nadal istotny.\n\nDlatego prawidłowa odpowiedź to **C. ma bardzo duży wpływ**."
+  - "\U0001F389 **Gratulacje!**  \nUżytkownik poprawnie wybrał **C. ma bardzo duży wpływ**.\n\n---\n\n\
+    ### Dlaczego odpowiedź jest prawidłowa?\n\n1. **Jony i fale elektromagnetyczne**  \n   W jonosferze\
+    \ znajdują się wolne elektrony i jony, które tworzą przewodzące medium. Dla fal krótkich (20–30 MHz)\
+    \ długość fali \\(\\lambda \\approx 10\\)–15 km, a ich rozchodzenie zależy od gęstości elektronów\
+    \ \\(N_e\\).\n\n2. **Prawo refrakcyjne**  \n   Refraction index \\(n\\) dla fal EM w medium jonizowanym\
+    \ jest opisane przez **prawo Drude’ego**:\n   \\[\n   n^2 \\;=\\; 1 \\;-\\; \\frac{N_e e^2}{\\varepsilon_0\
+    \ m_e \\omega^2}\n   \\]\n   gdzie \\(\\omega = 2\\pi f\\).  \n   Gdy \\(N_e\\) wzrasta, \\(n\\) odchyla\
+    \ się od 1 i fala jest odbijana (efekt „efekt dopplerowy” w kontekście radio).\n\n3. **Zależność od\
+    \ czasu**  \n   - **Dzień**: intensywniejsze zjawisko jonizacji (słońce).  \n   - **Noc**: mniejsza\
+    \ jonizacja, ale nadal występuje warstwa \\(D\\) i \\(E\\).  \n   Zmiana \\(N_e\\) o kilka razy zmienia\
+    \ długość propagacji i kąt odbicia.\n\n4. **Praktyczne konsekwencje**  \n   - **Doświadczalne zmiany**\
+    \ w długości dróg radioowych (np. 15 MHz).  \n   - **Przerwy w transmisji** w nocy, **większa zasięg**\
+    \ w ciągu dnia.\n\n---\n\n**Podsumowując**: Jonosfera, poprzez zmienną gęstość elektronów, kontroluje\
+    \ refrakcję i odbicie fal krótkich, co w praktyce oznacza, że jej stan **ma bardzo duży wpływ** na\
+    \ ich propagację.  \n\n\U0001F31F **Dobra robota!**"
+  - "## Odpowiedź\n\n**C. ma bardzo duży wpływ**\n\nIonosfera jest kluczowym medium dla propagacji fal\
+    \ krótkich (3‑30 MHz).  \n\n- **Refleksja i refrakcja**: Na poziomach **D, E, F** z gęstością elektronową\
+    \ \\(N_e\\) falę odłamuje, a jeśli jej częstotliwość jest mniejsza od *critical frequency* \\(f_c=\\\
+    frac{1}{2\\pi}\\sqrt{\\frac{e^2 N_e}{\\varepsilon_0 m_e}}\\), to zostaje ona odwrócona z powrotem\
+    \ do Ziemi.  \n- **Zmienność**: \\(N_e\\) zmienia się w ciągu dnia (światło słoneczne), sezonowo oraz\
+    \ w cyklu słonecznym, co wpływa na wysokość odbicia i zasięg fal.  \n- **Efekt na zasięg**: Bez ionosfery\
+    \ fale krótkie przemijają w próżni z szybkością \\(c\\) i nie osiągają dalszych punktów, natomiast\
+    \ dzięki odbiciu można pokonywać terytorium Ziemi na setki‑tysięcy km.\n\nDlatego stan ionosfery ma\
+    \ **bardzo duży** wpływ na propagację fal krótkich."
 - text: '119\. Około 11-letnie cykle zmian propagacji związane są z:'
   answers:
   - cyklem słonecznym
   - cyklem przebiegunowania Ziemi
   - fluktuacjami średniego poziomu morza
   correct_index: 0
+  explanations:
+  - "**Gratulacje!** ✅  \n\nOdpowiedź **A – cykl słoneczny** jest poprawna.  \n\n---\n\n### Dlaczego właśnie\
+    \ cykl słoneczny?\n\n- **Cykle 11‑letnie** (tzw. cykl Schwabe’a) opisują okres zmian liczby i intensywności\
+    \ białych plam na Słońcu.  \n- Wzrost aktywności słonecznej zwiększa emisję promieniowania ultrafioletowego\
+    \ oraz cząstek wysokiej energii, co bezpośrednio wpływa na warunki propagacji fal radiowych w ionosferze.\
+    \  \n- W trakcie maksymalnego słonecznego (maks) występuje zwiększone zróżnicowanie warstw ionosfery,\
+    \ co polepsza (lub w niektórych warunkach pogarsza) możliwości odbioru fal **HF, VHF** i **UHF**.\
+    \  \n\n---\n\n> **Podsumowanie:**  \n> Cykle 11‑letnie słoneczne to główny czynnik zewnętrzny regulujący\
+    \ zmienność propagacji radiowej.  \n> Zmiany w intensywności promieniowania UV i cząstek energetycznych\
+    \ wpływają na wysokość i gęstość jonizacji, co bezpośrednio przekłada się na jakość i zasięg sygnałów\
+    \ radiowych.  \n\nJeszcze raz serdeczne gratulacje! \U0001F680"
+  - "**Co poszło nie tak?**  \n- **Cykl przebiegunowania Ziemi** (B) dotyczy zmiany biegunów magnetycznych\
+    \ (≈ $10^5$‑$10^6$ lat). Nie ma on żadnego bezpośredniego związku z krótkoterminowymi zmianami propagacji\
+    \ fal radiowych.  \n- **Cykl słoneczny** (A) to okres około 11‑latowy widać w intensywności promieniowania\
+    \ słonecznego, liczbie plam słonecznych, fluktuacjach pola magnetycznego oraz emisji jonizującego\
+    \ promieniowania. Wpływa on na jonosferę (np. podwyższenie $F_2$‑plamy), co bezpośrednio zmienia warunki\
+    \ propagacji fal wysokiej częstotliwości (HF).  \n\n**Dlatego prawidłowa odpowiedź** to **A** – krótkoterminowe\
+    \ cykle propagacji są głównie kontrolowane przez cykl słoneczny, a nie przez przebiegunowanie Ziemi."
+  - "**Dlaczego odpowiedź C jest błędna?**\n\n| Część pytania | Co oznacza? | Dlaczego nie pasuje? |\n\
+    |----------------|-------------|---------------------|\n| **11‑letni cykle zmian propagacji** | Okres\
+    \ około 11 lat obserwowany w zjawiskach radio‑propagacji (np. zmiany w warunkach ionosfery, skoki\
+    \ w przepuszczalności). | Taki okres jest charakterystyczny dla **cyklu słonecznego** – cyklu aktywności\
+    \ słonecznej (słońce‑niewidzialne). |\n| **C. fluktuacje średniego poziomu morza** | Zmiany poziomu\
+    \ morza, które występują w skali kilkudziesięciu‑setnych lat (np. cykle El Niño, zmiany klimatyczne).\
+    \ | Skala czasowa ~ 10‑s l. jest zbyt krótka, a mechanizm niezwiązany z ionosferą i propagacją fal\
+    \ radiowych. |\n| **B. cykl przebiegunowania Ziemi** | Odwracanie biegunów magnetycznych Ziemi (okres\
+    \ ~ 100 000‑200 000 lat). | Skala milionów lat, nie 11‑letnia. |\n\n---\n\n### Krótkie podsumowanie\n\
+    \n- **Cykl słoneczny (≈ 11 lat)** → zmiany w liczbie ciał aktywnych, promieniowania X‑ray i cząstek,\
+    \ które bezpośrednio wpływają na **ionosferę** i tym samym na **propagację fal radiowych**.  \n- **Fluktuacje\
+    \ poziomu morza** i **przebiegunowanie Ziemi** mają zupełnie inne skale czasowe i mechanizmy, nie\
+    \ oddziałują na propagację fal radiowych w okresie 11‑letnim.\n\nDlatego poprawna odpowiedź to **A.\
+    \ cyklem słonecznym**."
+  - "**Odpowiedź: A. cyklem słonecznym**\n\nKrótka wyjaśnienie  \n- **Cykle słoneczne** (około 11‑letni\
+    \ okres aktywności Słońca) powodują zmiany w intensywności promieniowania UV i w pole magnetycznym\
+    \ Słońca.  \n- Te zmiany wpływają na **ionosferę** – warstwę atmosfery ziemskiej, w której odbywa\
+    \ się propagacja fal radiowych.  \n- W rezultacie częstotliwości i charakter propagacji fal (np. F2‑layer,\
+    \ sporadyczne połączenia) zmieniają się cyklicznie w czasie trwania cyklu słonecznego.  \n\nInne proponowane\
+    \ czynniki (przebiegunowanie Ziemi, zmiany poziomu morza) nie występują w skali 11‑letniej ani nie\
+    \ mają tak silnego wpływu na propagację radiową."
 - text: 120\. Co to jest zasięg horyzontalny na UKF?
   answers:
   - zasięg wyznaczony linią horyzontu radiowego
   - zasięg obliczony z mocy promieniowanej e.i.r.p.
   - zasięg teoretyczny nadajnika
   correct_index: 0
+  explanations:
+  - "**Gratulacje!**  \n\nOdpowiedź **A** jest poprawna.  \n\nZasięg horyzontalny (ang. *horizontal range*)\
+    \ na UKF to odległość, na jaką sygnał radiowy może się rozprzestrzeniać w linii horyzontu między nadajnikiem\
+    \ a odbiornikiem.  \nZależy ona wyłącznie od wysokości anten (`h₁`, `h₂`) i geometrii ziemi, a nie\
+    \ od mocy nadajnika ani innych parametrów.  \n\nW przybliżeniu (dla krzywizny Ziemi) :\n\n\\[\nR \\\
+    approx \\sqrt{2h_1 R_{\\text{Ziemi}}} + \\sqrt{2h_2 R_{\\text{Ziemi}}}\n\\]\n\ngdzie \\(R_{\\text{Ziemi}}\\\
+    ) to promień Ziemi.  \n\nDlatego właśnie definiuje się zasięg horyzontalny właśnie jako „zasięg wyznaczony\
+    \ linią horyzontu radiowego”."
+  - "**Dlaczego odpowiedź B jest błędna**\n\n- **Zasięg horyzontalny** (UKF – *Unmanned Kinetic Flight*)\
+    \ to odległość, na jaką sygnał może dotrzeć, przy czym zakłada się, że odbiornik i nadajnik znajdują\
+    \ się na tej samej wysokości i w tym samym otoczeniu geograficznym.  \n- Definicja to *zasięg wyznaczony\
+    \ linią horyzontu radiowego*, czyli odległość ograniczona przez geometryczną linię horyzontu (zależną\
+    \ od wysokości nadajnika, masztu, teren itp.).  \n- **Moc promieniowana (EIRP)** określa **siłę sygnału**\
+    \ w jednostce pola natężenia, ale nie mówi nic o geometrii pola ani o ograniczeniach horyzontu.  \n\
+    - Dlatego obliczanie zasięgu wyłącznie na podstawie EIRP (B) nie uwzględnia ograniczenia horyzontu\
+    \ i jest niewłaściwe.\n\n---\n\n### Krótkie wzory ilustrujące różnicę\n\n1. **Zasięg horyzontu** \
+    \ \n   \\[\n   d_{\\text{horyzont}} \\approx 3.57\\,\\sqrt{h_{\\text{m}}\\!+\\!h_{\\text{r}}}\n  \
+    \ \\]\n   gdzie \\(h_{\\text{m}}\\) – wysokość nadajnika, \\(h_{\\text{r}}\\) – wysokość odbiornika,\
+    \ \\(d_{\\text{horyzont}}\\) w kilometrach.\n\n2. **Zasięg teoretyczny na podstawie mocy**  \n   \\\
+    [\n   P_{\\text{rx}} = \\frac{P_{\\text{tx}}\\cdot G_{\\text{tx}}\\cdot G_{\\text{rx}}\\lambda^{2}}{(4\\\
+    pi d)^{2}\\,L}\n   \\]\n   gdzie \\(P_{\\text{tx}}\\) – moc nadawcza, \\(G\\) – wzmocnienia anten,\
+    \ \\(\\lambda\\) – długość fali, \\(L\\) – straty, a \\(d\\) to odległość.  \n   Wzór ten daje **potencjalny**\
+    \ zasięg przy danej mocy, ale nie uwzględnia horyzontu.\n\n---\n\n**Podsumowując**: Zasięg horyzontalny\
+    \ definiuje się przez linię horyzontu radiowego, a nie przez moc promieniowaną. Dlatego poprawna odpowiedź\
+    \ to **A**."
+  - '### Dlaczego odpowiedź **C** jest błędna
+
+
+    |  | Definicja | Co to nie jest |
+
+    |---|---|---|
+
+    | **Zasięg horyzontalny (UKF)** | Odległość, na której sygnał radiowy jest widoczny w linii horyzontu
+    pomiędzy nadajnikiem a odbiornikiem. | Teoretyczny zasięg nadajnika (np. wyliczony z mocy EIRP). |
+
+
+    #### Dlaczego linia horyzontu jest kluczowa?
+
+
+    - **Line‑of‑sight** to najkrótsza droga między nadajnikiem a odbiornikiem, ograniczona przez zakrzywienie
+    ziemi i przeszkody.
+
+    - Wzór na zasięg horyzontalny przyjmujący zakrzywienie ziemi:
+
+
+    \[
+
+    d \approx 3,57\,\sqrt{h_t} + 3,57\,\sqrt{h_r}
+
+    \]
+
+
+    gdzie \(d\) – zasięg w kilometrach, \(h_t\) i \(h_r\) – wysokości nadajnika i odbiornika w metrach.
+
+
+    #### Dlaczego teoretyczny zasięg nadajnika (C) nie wystarcza?
+
+
+    - Obliczany na podstawie mocy EIRP i czułości odbiornika, nie uwzględnia zakrzywienia ziemi ani przeszkód.
+
+    - Może wskazywać odległość większą niż rzeczywista droga widoczna w linii horyzontu.
+
+
+    ---
+
+
+    **Wniosek:** Zasięg horyzontalny UKF to *odległość wyznaczona linią horyzontu radiowego* – odpowiedź
+    **A**.'
+  - "**Zasięg horyzontalny na UKF**  \n> Zasięg określany jest na podstawie **linii horyzontu radiowego**\
+    \ (czyli najdłuższej drogi, jaką promień świetlny może pokonać wzdłuż krzywizny Ziemi).  \n\n---\n\
+    \n### Dlaczego „horyzont”?\n\n- Radiowe fale w trybie **względnego otwarcia** (UKF – *Urzędowa Krótkofalowa\
+    \ Fala*) przemieszczają się w linii prostej, ale krzywizna Ziemi ogranicza ich zasięg.\n- Najdłuższy\
+    \ odcinek, na którym odbiornik i nadajnik mogą „widzieć” się nawzajem, to długość linii horyzontu.\n\
+    \n### Wzór (dla pojedynczego odbiornika)\n\nDla anteny o wysokości \\(h\\) (m) nad poziomem morza,\
+    \ odległość horyzontu \\(d\\) (km) przybliżona jest wzorem:\n\n\\[\nd \\approx \\sqrt{2 R_{\\text{E}}\\\
+    , h}\n\\]\n\ngdzie  \n\\(R_{\\text{E}} \\approx 6371\\) km – promień Ziemi.\n\nJeśli chcemy uwzględnić\
+    \ wysokość obu urządzeń (nadajnik \\(h_t\\) i odbiornik \\(h_r\\)), zasięg horyzontalny \\(D\\) to\
+    \ suma odległości horyzontu obydwu anten:\n\n\\[\nD \\approx \\sqrt{2 R_{\\text{E}}\\, h_t} + \\sqrt{2\
+    \ R_{\\text{E}}\\, h_r}\n\\]\n\n---\n\n### Dlaczego pozostałe odpowiedzi są niepoprawne?\n\n- **B**\
+    \ – moc promieniowana (EIRP) wpływa na **siłę sygnału**, a nie na **geograficzny zasięg** ograniczony\
+    \ przez horyzont.\n- **C** – „zasięg teoretyczny nadajnika” to pojęcie ogólne, które może uwzględniać\
+    \ wiele czynników (moc, antena, atmosfera), ale nie jest zdefiniowane jednoznacznie w kontekście UKF.\n\
+    \n---\n\n**Podsumowanie**: Na UKF zasięg horyzontalny to maksymalna odległość pomiędzy nadajnikiem\
+    \ a odbiornikiem, obliczana na podstawie linii horyzontu radiowego, zgodnie z powyższym wzorem."
 - text: '122\. Skrót EME oznacza łączności:'
   answers:
   - z wykorzystaniem odbicia sygnału od Księżyca
   - wykorzystaniem do łączności siły elektromotorycznej SEM
   - za pomocą elektromagnetycznej emisji EME na UKF
   correct_index: 0
+  explanations:
+  - "**Gratulacje!**  \n\nOdpowiedź **A** jest poprawna.  \n\n**EME** („Earth‑Moon‑Earth”) to technika\
+    \ łączności, w której sygnał radiowy nadawany z Ziemi odbija się na powierzchni Księżyca i zostaje\
+    \ odbity z powrotem do Ziemi. Jest to klasyczny przykład „passive relay” i nie wymaga żadnej aktywnej\
+    \ emisji elektromagnetycznej na układzie komórkowym.  \n\nPozostałe warianty (B i C) nie odzwierciedlają\
+    \ rzeczywistego znaczenia skrótu w kontekście łączności satelitarnej i kosmicznej.  \n\nPowodzenia\
+    \ na egzaminie!"
+  - "**Dlaczego odpowiedź B jest błędna**\n\n| Pozycja | Co oznacza | Dlaczego to jest mylne |\n|--------|------------|------------------------|\n\
+    | **A**  | **Earth‑Moon‑Earth** – sygnał odbijany od Księżyca | To właśnie jest definicja skrótu **EME**\
+    \ w radiolibertyzmie. |\n| **B**  | „wykorzystaniem do łączności siły elektromotorycznej SEM” |  Siła\
+    \ elektromotoryczna (SEM) to **zasilanie** układu (np. bateria). Nie ma związku z radiową łącznością.\
+    \ W skrócie **SEM** pojawia się w kontekście *Siła Elektromotoryczna*, a nie *Earth‑Moon‑Earth*. |\n\
+    | **C**  | „za pomocą elektromagnetycznej emisji EME na UKF” |  Tu występuje samo słowo *EME*, ale\
+    \ nie opisuje konkretnego typu łączności.  |\n\n### Krótkie przypomnienie\n\n\\[\n\\text{EME} \\;=\\\
+    ; \\underbrace{\\text{Earth}}_{\\text{nadawca}}\n\\;\\xrightarrow{\\text{odbicie na Księżycu}}\\;\n\
+    \\underbrace{\\text{Moon}}_{\\text{odbicie}}\n\\;\\xrightarrow{\\text{powrót na Ziemię}}\\;\n\\underbrace{\\\
+    text{Earth}}_{\\text{odbiorca}}\n\\]\n\nW praktyce oznacza to, że sygnał radiowy wysyłany z bazy na\
+    \ Ziemię odbija się od Księżyca i wraca do innej bazy na Ziemi. Nie ma tu udziału „siły elektromotorycznej”\
+    \ – to zupełnie inna dziedzina fizyki. \n\n**Podsumowanie**  \nOdpowiedź **A** jest poprawna, ponieważ\
+    \ opisuje prawidłowy sens skrótu EME. Odpowiedź **B** odwołuje się do innego pojęcia (SEM – siła elektromotoryczna)\
+    \ i dlatego jest błędna."
+  - "**Dlaczego odpowiedź C jest błędna?**\n\n| Element | Co oznacza w kontekście pytania | Dlaczego jest\
+    \ niepoprawny |\n|---------|--------------------------------|---------------------------|\n| **EME**\
+    \ | **E**m**e****m** (ang. *Electromagnetic Emission*) – technika komunikacji, w której sygnał radiowy\
+    \ jest odbijany od powierzchni Księżyca (tzw. „lunar bounce”). | EME nie jest częstotliwością ani\
+    \ metodą emisji „na UKF”. Jest to *sposób* transmisji, a nie „na” konkretną częstotliwość. |\n| **UKF**\
+    \ | W skrócie może odnosić się do **U**ltra‑**K**ilohertz **F**requency (częstotliwości ultra‑niskie).\
+    \ | W komunikacji EME wykorzystuje się zazwyczaj **MW/CM** (megahertze / centymetrowe) lub **HF**\
+    \ (20‑30 MHz), a nie ultra‑niskie pasma.  |\n| **Odpowiedź C** | „za pomocą elektromagnetycznej emisji\
+    \ EME na UKF” | łączy dwa nieodpowiednie pojęcia: EME (sposób odbicia sygnału) i UKF (pasmo, które\
+    \ w praktyce nie jest używane w EME).  |\n\n### Krótkie podsumowanie\n\n- **EME** = *emission* → **odbicie\
+    \ sygnału** od Księżyca.  \n- **UKF** (ultra‑niskie pasmo) nie jest częścią tej techniki.  \n\nZatem\
+    \ poprawna odpowiedź to **A**: **„z wykorzystaniem odbicia sygnału od Księżyca”**."
+  - "**EME – Electromagnetic Echo**  \nEME to technika łączności radio‑falowej polegająca na odbiciu sygnału\
+    \ od ciała niebieskiego (najczęściej Księżyca).  \n\n- **A** – *z wykorzystaniem odbicia sygnału od\
+    \ Księżyca* – **poprawna**.  \n- **B** – *wykorzystaniem siły elektromotorycznej SEM* – nie ma takiej\
+    \ pojęcia w łączności radio‑falowej.  \n- **C** – *za pomocą elektromagnetycznej emisji EME na UKF*\
+    \ – UKF to jednostka wojskowa; technika EME nie obejmuje emisji „na UKF”.  \n\nZatem odpowiedź A jest\
+    \ jedyną poprawną."
 - text: 124\. Jakim przyrządem mierzymy dopasowanie anteny do nadajnika?
   answers:
   - miernikiem zniekształceń nieliniowych
   - sprawdzeniem czy kabel się nie grzeje
   - za pomocą reflektometru
   correct_index: 2
-- text: 126\. Jeżeli nadajnik amatorski powoduje zakłócenia, to jakie elementy sprawdzamy
-    w pierwszej kolejności?
+  explanations:
+  - "**Dlaczego odpowiedź A jest błędna?**  \nMiernik zniekształceń nieliniowych (np. **\\( \\Delta S_{21}\
+    \ \\)**) służy do badania, czy sygnał przechodzi przez układ bez zniekształceń, ale **nie** mierzy\
+    \ dopasowania impedancji. Dopasowanie mierzy się poprzez stosunek sygnału odbitego do sygnału nadawanego.\n\
+    \n**Dlaczego odpowiedź C jest poprawna?**  \nReflektometr (np. **\\(VSWR\\)**) bezpośrednio mierzy\
+    \ współczynnik odbicia:\n\n\\[\n\\Gamma = \\frac{V_{\\text{ref}}}{V_{\\text{inc}}},\\qquad\nVSWR =\
+    \ \\frac{1+|\\Gamma|}{1-|\\Gamma|}\n\\]\n\nDzięki temu możemy ocenić dopasowanie anteny do nadajnika.\
+    \  \n\n---\n\nKrótko: **A** dotyczy zniekształceń sygnału, a **C** mierzy współczynnik odbicia, który\
+    \ opisuje dopasowanie."
+  - "**Dlaczego odpowiedź B jest błędna**\n\n| Co się mierzy | Jak to się robi? | Co *nie* jest metodą?\
+    \ |\n|---------------|------------------|-----------------------|\n| Dopasowanie anteny do nadajnika\
+    \ | **Reflektor** (ang. *reflectometer*) mierzy *VSWR* (Voltage Standing Wave Ratio). | Sprawdzanie,\
+    \ czy kabel się nie grzeje – to tylko oznakowanie uszkodzenia, a nie pomiar dopasowania. |\n\n###\
+    \ Krótkie wyjaśnienie\n\n- **VSWR** opisuje, jaką część sygnału jest odbijana z powrotem do nadajnika:\
+    \  \n  \\[\n  \\text{VSWR} = \\frac{1+\\Gamma}{1-\\Gamma},\n  \\]\n  gdzie \\(\\Gamma\\) to współczynnik\
+    \ odbicia.\n- Reflektor (np. *antenna tuner*, *directional coupler*) podłącza się między nadajnikiem\
+    \ a kablem i mierzy \\(\\Gamma\\), a więc VSWR.  \n- Idealne dopasowanie → VSWR = 1.  \n- Wysokie\
+    \ VSWR powoduje przegrzewanie kablem, ale sam fakt „grzanie się kabla” nie daje informacji o dopasowaniu\
+    \ – może być spowodowane innymi czynnikami (np. zbyt silny sygnał, uszkodzony kabel).\n\nDlatego poprawna\
+    \ odpowiedź to **C. za pomocą reflektometru**.  \nOdpowiedź B opisuje jedynie symptom (przegrzewanie),\
+    \ a nie metodę pomiaru dopasowania."
+  - "**Gratulacje!**  \nOdpowiedź **C. „za pomocą reflektometru”** jest poprawna, ponieważ:\n\n- Reflektometr\
+    \ mierzy **współczynnik odbicia** (Γ) na linii anteny, co bezpośrednio wyznacza dopasowanie impedancyjne.\
+    \  \n- Wzór na współczynnik odbicia:  \n\n\\[\n\\Gamma = \\frac{Z_{\\text{ant}}-Z_0}{Z_{\\text{ant}}+Z_0}\n\
+    \\]\n\n  gdzie \\(Z_{\\text{ant}}\\) to impedancja anteny, a \\(Z_0\\) charakterystyczna impedancja\
+    \ kabla (zwykle 50 Ω).  \n- Jeśli \\(|\\Gamma| \\approx 0\\), antena jest dobrze dopasowana; większe\
+    \ wartości wskazują na odległość od idealnego dopasowania.  \n- Reflektometry mierzą zarówno **amplitudę**,\
+    \ jak i **fazy odbicia**, co pozwala na precyzyjną korektę zewnętrznych impedancji (np. przystawki,\
+    \ kabla).\n\nPozostałe opcje (miernik zniekształceń nieliniowych i obserwacja grzania kabla) nie pozwalają\
+    \ na bezpośrednie i precyzyjne określenie dopasowania.  \n\nŚwietnie sobie radzisz! \U0001F680"
+  - "**Odpowiedź:**  \nC. **Za pomocą reflektometru.**\n\n**Dlaczego?**\n\n| Co mierzy | Jak to działa\
+    \ |\n|-----------|--------------|\n| **Współczynnik odbicia** \\(\\Gamma\\) | Reflektometr podaje\
+    \ sygnał przychodzący do anteny i mierzy sygnał zwrotny. |\n| **Impedancja wejściowa anteny** | Z\
+    \ \\(\\Gamma\\) można wyliczyć impedancję \\(Z_a\\) z równania: \\(\\displaystyle \\Gamma = \\frac{Z_a-Z_0}{Z_a+Z_0}\\\
+    ) |\n| **VSWR (Voltage Standing Wave Ratio)** | \\(\\displaystyle \\text{VSWR} = \\frac{1+|\\Gamma|}{1-|\\\
+    Gamma|}\\) |\n| **Zwracana moc** | \\(\\displaystyle \\text{Return Loss (dB)} = -20\\log_{10}|\\Gamma|\\\
+    ) |\n\nReflektometr pozwala na szybką, precyzyjną ocenę dopasowania (czy istnieje minimalny odbijany\
+    \ sygnał) i jest standardowym narzędziem w inżynierii radiowej.  \n\n**Podsumowanie** – do pomiaru\
+    \ dopasowania anteny używa się reflektometru, który bezpośrednio mierzy współczynnik odbicia i pozwala\
+    \ obliczyć VSWR oraz impedancję anteny."
+- text: 126\. Jeżeli nadajnik amatorski powoduje zakłócenia, to jakie elementy sprawdzamy w pierwszej
+    kolejności?
   answers:
   - prawidłowe działanie mikrofonu
   - blokadę szumów odbiornika
   - liniowość stopnia mocy (PA), filtr wyjściowy, uziemienie radiostacji
   correct_index: 2
-- text: 164\. W tranzystorowym wzmacniaczu mocy który element jest niezbędny aby nie
-    generować zakłóceń harmonicznych?
+  explanations:
+  - "## Dlaczego odpowiedź **A** jest błędna\n\n| Co sprawdzamy | Dlaczego ma znaczenie | Dlaczego mikrofon\
+    \ nie jest pierwszym krokiem |\n|---------------|-----------------------|----------------------------------------------|\n\
+    | **Linearność PA** (stopień mocy) | Nie‑linearna wzmacniacz generuje harmoniczne, które odbijają\
+    \ się na inne nadajniki i odbiorniki. | Mikrofon jest wejściem audio – jego stan nie powoduje zakłóceń\
+    \ radiowych, a jedynie zniekształca dźwięk. |\n| **Filtr wyjściowy** | Ogranicza szerokość pasma emisji\
+    \ i usuwa harmoniczne oraz harmoniki. | Brak filtru → większa szansa, że harmoniki przekroczą dopuszczalne\
+    \ pasmo. |\n| **Uziemienie radiostacji** | Dobre uziemienie zapobiega powstawaniu zakłóceń pola elektromagnetycznego\
+    \ (EMI) i redukuje szumy. | Nieprawidłowe uziemienie prowadzi do „flicker” i „glitchy” sygnału. |\n\
+    \n---\n\n### Krótka wskazówka\nKiedy odczuwasz zakłócenia od nadajnika amatorskiego, najpierw sprawdź:\n\
+    \n1. Czy **PA** działa w sposób liniowy?  \n2. Czy w obwodzie znajduje się **filtr wyjściowy** i czy\
+    \ jest on poprawnie ustawiony?  \n3. Czy **radiostacja** ma prawidłowe uziemienie?\n\nJeśli te elementy\
+    \ są w porządku, wtedy można przejść do sprawdzania mikrofonu oraz innych komponentów wejściowych.\n\
+    \n> **Dlatego prawidłowa odpowiedź to C**.  \n> Mikrofon (A) jest ważny dla jakości audio, ale **nie**\
+    \ jest przyczyną zakłóceń radiowych."
+  - '## Dlaczego odpowiedź **B** jest niepoprawna
+
+
+    | Element | Rola w transceiverze | Dlaczego nie sprawdzamy go najpierw? |
+
+    |---------|----------------------|-------------------------------------|
+
+    | **Blokadę szumów odbiornika** | Redukuje szum w recepcji (np. filtr wejściowy, układ stabilizacji
+    częstotliwości). | Zakłócenia generowane przez nadajnik **nie** wynikają z szumów odbiornika. Jeśli
+    nadajnik jest poprawny, odbiornik może nadal pracować normalnie – szumy odbiornika nie wpływają na
+    „zakłócenia z nadajnika”. |
+
+    | **Liniowość stopnia mocy (PA)** | Zapewnia, że modulacja jest liniowa i nie wprowadza spłaszczeń/zakłóceń.
+    | Jeśli PA jest nie‑liniowy, tworzy się harmonikalia i zakłócenia (np. w postaci spłaszczeń). To najczęstsza
+    przyczyna problemów. |
+
+    | **Filtr wyjściowy** | Usuwa niepożądane harmoniczne oraz zabezpiecza przed przesyłem sygnału poza
+    pasmo pracy. | Bez odpowiedniego filtra, sygnał może „przesiąknąć” na inne pasmo i powodować zakłócenia.
+    |
+
+    | **Uziemienie radiostacji** | Zapobiega napięciom różnicowym i interfejsowi zakłóceń. | Niewłaściwe
+    uziemienie skutkuje napięciami spowodowanymi przez sygnał wyjściowy, które pojawiają się jako zakłócenia.
+    |
+
+
+    ### Dlaczego opcja C jest poprawna
+
+    Pierwsze sprawdzenie linowości PA, filtrów wyjściowych i uziemienia eliminuje najczęstsze źródła zakłóceń
+    w nadajniku. Gdy te elementy działają prawidłowo, nie ma potrzeby diagnozowania szumów odbiornika
+    – to nie jest przyczyną zakłóceń od nadajnika.
+
+
+    > **W skrócie**: szumy odbiornika nie wpływają na zakłócenia „od nadajnika”; najpierw sprawdza się,
+    czy nadajnik sam w sobie nie generuje szumów poprzez sprawdzenie PA, filtrów i uziemienia.'
+  - "**Gratulacje!**  \nTwoja odpowiedź C jest poprawna – w pierwszej kolejności należy sprawdzić:\n\n\
+    | Element | Dlaczego jest kluczowy |\n|---------|------------------------|\n| **Liniowość stopnia\
+    \ mocy (PA)** | Zapewnia, że sygnał nie jest zniekształcany; brak zniekształceń oznacza mniejsze emisje\
+    \ harmonicznych, np. \\(\\;f_k = k\\,f_{\\text{carrier}}\\). |\n| **Filtr wyjściowy** | Blokuje harmoniki\
+    \ oraz inne transiencje poza pasmem, ograniczając emisję „outside‑band”. |\n| **Uziemienie radiostacji**\
+    \ | Eliminuje pętle ziemne i szumy powstające przy nieprawidłowym uziemieniu, które mogą skutkować\
+    \ zakłóceniami. |\n\nSprawdzenie tych trzech elementów pozwala szybko wyeliminować najczęstsze źródła\
+    \ zakłóceń i przywrócić prawidłową pracę nadajnika. \U0001F680"
+  - "### Odpowiedź na pytanie 126\n\n**Poprawna odpowiedź: C.**  \nW przypadku zakłóceń generowanych przez\
+    \ nadajnik amatorski najważniejsze są:\n\n1. **Liniowość stopnia mocy (PA)** – nieliniowe elementy\
+    \ w PA mogą wywoływać harmoniczne i intermodulację, które przekładają się na zakłócenia w sieci. \
+    \ \n2. **Filtr wyjściowy** – służy do usuwania harmoników i nadmiarowych sygnałów. Jeśli filtr jest\
+    \ uszkodzony lub niewłaściwie dobrany, pozwala na emisję niepożądanych częstotliwości.  \n3. **Uziemienie\
+    \ radiostacji** – niewłaściwe uziemienie prowadzi do zakłóceń elektromagnetycznych oraz zasilania,\
+    \ co może zmieniać charakterystykę pracy PA i filtrów.\n\nInne elementy (mikrofon, szumy odbiornika)\
+    \ mogą być czynnikiem, ale **nie** są pierwszym miejscem, które należy sprawdzić przy analizie zakłóceń\
+    \ nadajnika.  \n\n> **Podsumowanie:**  \n> Zakłócenia w nadajniku pochodzą głównie z nieliniowości\
+    \ i filtrów, a ich kontrola zaczyna się od sprawdzenia **linowości PA, filtrów wyjściowych** oraz\
+    \ **uziemienia** radiostacji."
+- text: 164\. W tranzystorowym wzmacniaczu mocy który element jest niezbędny aby nie generować zakłóceń
+    harmonicznych?
   answers:
   - filtr dolnoprzepustowy
   - przełącznik nadawanie-odbiór
   - układ dopasowania bazy tranzystora
   correct_index: 0
-- text: '192\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego
-    FM na pasmo 144 MHz z podwójną przemianą częstotliwości, pracującego w kanałach
-    fonicznych, stabilizowany kwarcami. Blok 1 to:
+  explanations:
+  - "\U0001F389 **Gratulacje!**  \n\nOdpowiedź **A. filtr dolnoprzepustowy** jest poprawna.  \n\nW tranzystorowym\
+    \ wzmacniaczu mocy sygnał mocy przechodzi przez element **filtr dolnoprzepustowy** (np. dławik + kondensator).\
+    \  \nJego zadaniem jest:\n\n- **Ograniczenie** szerokości pasma przepływającego sygnału,  \n- **Usuń**\
+    \ niepożądane składowe wysokich częstotliwości, które powstają podczas wzmocnienia (harmoniczne).\
+    \  \n\nBez tego filtru, harmoniczne generowane przez tranzystor będą wydostawać się na wyjście i powodować\
+    \ zakłócenia w sygnale mocy.  \n\nZatem odpowiedź **A** jest właściwa.  \n\nPowodzenia na egzaminie!\
+    \ \U0001F680"
+  - '### Dlaczego odpowiedź **B** jest błędna
+
+
+    | Element | Rola w obwodzie | Czy eliminuje harmoniczne? |
+
+    |---------|-----------------|---------------------------|
+
+    | **B. przełącznik nadawanie‑odbiór** | Przełącza połączenie tranzystora między trybem wyjścia a bazą/emitorem
+    w obwodach z klatkowo‑przewodnikowymi warstwami (np. w zasilaczach impulsowych). | Nie – przełącznik
+    sam w sobie nie filtruje sygnału. Jego zadaniem jest jedynie zmiana połączeń, więc nie redukuje harmonicznych
+    generowanych przez tranzystor. |
+
+    | **A. filtr dolnoprzepustowy** | Składa się z rezystorów, kondensatorów i/lub induktorów, które przepuszczają
+    niskie częstotliwości, a tłumią wyższe harmoniczne. | Tak – dzięki oporowi i impedancji zmieniającym
+    się z częstotliwością, filtr usunuje lub znacznie zredukował zniekształcenia harmoniczne, zapewniając
+    czystszy sygnał wyjściowy. |
+
+    | **C. układ dopasowania bazy tranzystora** | Dopasowuje impedancję wejściową i wyjściową do obciążenia.
+    | Nie – choć poprawia efektywność i stabilność pracy tranzystora, nie eliminuje harmonicznych. |
+
+
+    ### Kluczowy punkt
+
+
+    **Filtr dolnoprzepustowy (A)** jest niezbędny, aby wyeliminować harmoniczne, ponieważ tłumi częstotliwości
+    powyżej zadanej granicy. Przełącznik nadawanie‑odbiór (B) oraz układ dopasowania bazy (C) nie pełnią
+    tej funkcji.'
+  - "### Dlaczego „C – układ dopasowania bazy tranzystora” jest błędne  \n\n| Element | Rola w układzie\
+    \ | Czy redukuje harmoniczne? |\n|---------|-----------------|---------------------------|\n| **A.\
+    \ filtr dolnoprzepustowy** | Usuwa częstotliwości powyżej granicy przenoszenia (zwykle kilka kHz‑MHz)\
+    \ | **Tak** – przycina szczytowe skoki napięcia i prądu, co eliminuje wyższe harmoniczne |\n| **B.\
+    \ przełącznik nadawanie‑odbiór** | Służy do włączania/wyłączania pracy | Nie ma wpływu na spektrum\
+    \ harmoniczne |\n| **C. układ dopasowania bazy tranzystora** | Dopasowuje impedancję bazową do źródła\
+    \ sygnału | Nie eliminuje szeregów harmonicznych, tylko poprawia efektywność i stabilność pracy |\n\
+    \n> **Podstawowy problem**  \n> Harmoniczne powstają, gdy tranzystor przechodzi w obszar nieliniowy\
+    \ (przeciążenie, zbyt wysokie napięcie bazowe, itp.).  Układ dopasowania bazy jedynie zmienia impedancję\
+    \ wejściową; nie ogranicza amplitudy ani nie „przepusza” tylko dolnych częstotliwości.  \n\n> **Dlatego**:\
+    \ aby „nie generować” lub minimalizować harmoniczne, należy zastosować **filtr dolnoprzepustowy**,\
+    \ który wycina niepożądane wysokie częstotliwości i pozostawia jedynie sygnał z niskim poziomem zniekształceń.\
+    \  \n\n---\n\n**Krótki wzór**:  \nJeśli sygnał wyjściowy \\( v_{\\text{out}}(t) \\) ma postać  \n\\\
+    [\nv_{\\text{out}}(t)=A_1\\sin(\\omega t)+\\sum_{k=2}^{\\infty}A_k\\sin(k\\omega t)\n\\]\nfiltr dolnoprzepustowy\
+    \ usunie składniki \\( A_k\\ (k\\ge2) \\).  \nW rezultacie zostaje jedynie sinusoidalne \\( A_1\\\
+    sin(\\omega t) \\)."
+  - "**Wyjaśnienie**\n\nW tranzystorowym wzmacniaczu mocy sygnał zasilany jest przez tranzystor, który\
+    \ generuje **harmoniki** (części o częstotliwościach wyższych niż częstotliwość nośna).  \nAby ograniczyć\
+    \ te niepożądane składniki i uzyskać czysty dźwięk, stosuje się filtr **dolnoprzepustowy** (LPF).\
+    \  \n\n- LPF przepuszcza tylko częstotliwości w paśmie sygnału (np. 20 Hz–20 kHz), a wyższe harmoniczne\
+    \ są tłumione.  \n- W ten sposób redukuje się wyjściowy sygnał na poziomie wyjścia, minimalizując\
+    \ zakłócenia i poprawiając jakość dźwięku.\n\nPozostałe odpowiedzi:\n- **B. przełącznik nadawanie‑odbiór**\
+    \ – nie filtruje harmonicznych, a jedynie zmienia stan połączenia.  \n- **C. układ dopasowania bazy\
+    \ tranzystora** – służy do odpowiedniego podłączenia wejścia, ale nie usuwa wysokich częstotliwości.\n\
+    \nDlatego poprawną odpowiedzią jest **A. filtr dolnoprzepustowy**."
+- text: '192\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego FM na pasmo 144
+    MHz z podwójną przemianą częstotliwości, pracującego w kanałach fonicznych, stabilizowany kwarcami.
+    Blok 1 to:
 
     ![RADIOTECHNIKA question 192](assets/question_images/radiotechnika-q192.png)'
   answers:
@@ -262,9 +1818,9 @@ questions:
   - wzmacniacz akustyczny
   - detektor FM
   correct_index: 0
-- text: '193\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego
-    FM na pasmo 144 MHz z podwójną przemianą częstotliwości, pracującego w kanałach
-    fonicznych, stabilizowany kwarcami. Blok 3 to:
+- text: '193\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego FM na pasmo 144
+    MHz z podwójną przemianą częstotliwości, pracującego w kanałach fonicznych, stabilizowany kwarcami.
+    Blok 3 to:
 
     ![RADIOTECHNIKA question 193](assets/question_images/radiotechnika-q193.png)'
   answers:
@@ -272,9 +1828,9 @@ questions:
   - wzmacniacz I pośredniej cz. 10,7 MHz
   - I heterodyna
   correct_index: 1
-- text: '194\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego
-    FM na pasmo 144 MHz z podwójną przemianą częstotliwości, pracującego w kanałach
-    fonicznych, stabilizowany kwarcami. Blok 4 to:
+- text: '194\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego FM na pasmo 144
+    MHz z podwójną przemianą częstotliwości, pracującego w kanałach fonicznych, stabilizowany kwarcami.
+    Blok 4 to:
 
     ![RADIOTECHNIKA question 194](assets/question_images/radiotechnika-q194.png)'
   answers:
@@ -282,9 +1838,9 @@ questions:
   - blokada szumów
   - II mieszacz
   correct_index: 2
-- text: '195\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego
-    FM na pasmo 144 MHz z podwójną przemianą częstotliwości, pracującego w kanałach
-    fonicznych, stabilizowany kwarcami. Blok 5 to:
+- text: '195\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego FM na pasmo 144
+    MHz z podwójną przemianą częstotliwości, pracującego w kanałach fonicznych, stabilizowany kwarcami.
+    Blok 5 to:
 
     ![RADIOTECHNIKA question 195](assets/question_images/radiotechnika-q195.png)'
   answers:
@@ -292,9 +1848,9 @@ questions:
   - wzmacniacz II p.cz. 455 kHz
   - detektor FM
   correct_index: 1
-- text: '196\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego
-    FM na pasmo 144 MHz z podwójną przemianą częstotliwości, pracującego w kanałach
-    fonicznych, stabilizowany kwarcami. Blok 6 to:
+- text: '196\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego FM na pasmo 144
+    MHz z podwójną przemianą częstotliwości, pracującego w kanałach fonicznych, stabilizowany kwarcami.
+    Blok 6 to:
 
     ![RADIOTECHNIKA question 196](assets/question_images/radiotechnika-q196.png)'
   answers:
@@ -302,9 +1858,9 @@ questions:
   - wzmacniacz akustyczny
   - II heterodyna stała
   correct_index: 0
-- text: '197\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego
-    FM na pasmo 144 MHz z podwójną przemianą częstotliwości, pracującego w kanałach
-    fonicznych, stabilizowany kwarcami. Blok 7 to:
+- text: '197\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego FM na pasmo 144
+    MHz z podwójną przemianą częstotliwości, pracującego w kanałach fonicznych, stabilizowany kwarcami.
+    Blok 7 to:
 
     ![RADIOTECHNIKA question 197](assets/question_images/radiotechnika-q197.png)'
   answers:
@@ -312,9 +1868,9 @@ questions:
   - wzmacniacz akustyczny
   - detektor FM
   correct_index: 1
-- text: '198\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego
-    FM na pasmo 144 MHz z podwójną przemianą częstotliwości, pracującego w kanałach
-    fonicznych, stabilizowany kwarcami. Blok 8 to:
+- text: '198\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego FM na pasmo 144
+    MHz z podwójną przemianą częstotliwości, pracującego w kanałach fonicznych, stabilizowany kwarcami.
+    Blok 8 to:
 
     ![RADIOTECHNIKA question 198](assets/question_images/radiotechnika-q198.png)'
   answers:
@@ -322,9 +1878,9 @@ questions:
   - blokada szumów
   - detektor FM
   correct_index: 1
-- text: '199\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego
-    FM na pasmo 144 MHz z podwójną przemianą częstotliwości, pracującego w kanałach
-    fonicznych, stabilizowany kwarcami. Blok 9 to:
+- text: '199\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego FM na pasmo 144
+    MHz z podwójną przemianą częstotliwości, pracującego w kanałach fonicznych, stabilizowany kwarcami.
+    Blok 9 to:
 
     ![RADIOTECHNIKA question 199](assets/question_images/radiotechnika-q199.png)'
   answers:
@@ -332,9 +1888,9 @@ questions:
   - blokada szumów
   - II heterodyna stała
   correct_index: 2
-- text: '200\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego
-    FM na pasmo 144 MHz z podwójną przemianą częstotliwości, pracującego w kanałach
-    fonicznych, stabilizowany kwarcami. Blok 10 to:
+- text: '200\. Na rysunku przedstawiono schemat blokowy odbiornika superheterodynowego FM na pasmo 144
+    MHz z podwójną przemianą częstotliwości, pracującego w kanałach fonicznych, stabilizowany kwarcami.
+    Blok 10 to:
 
     ![RADIOTECHNIKA question 200](assets/question_images/radiotechnika-q200.png)'
   answers:
@@ -342,44 +1898,42 @@ questions:
   - wzmacniacz akustyczny
   - detektor FM
   correct_index: 0
-- text: 211\. Jak zmienia się impedancja dipola półfalowego, gdy obniżamy wysokość
-    jego zawieszenia?
+- text: 211\. Jak zmienia się impedancja dipola półfalowego, gdy obniżamy wysokość jego zawieszenia?
   answers:
   - rośnie.
   - maleje.
   - nie ulega zmianie.
   correct_index: 1
-- text: 212\. Zysk anteny kierunkowej wyrażony jest w dBi. Względem jakiego źródła
-    jest określony?
+- text: 212\. Zysk anteny kierunkowej wyrażony jest w dBi. Względem jakiego źródła jest określony?
   answers:
   - dipola pomiarowego
   - źródła izotropowego
   - innej anteny kierunkowej
   correct_index: 1
-- text: 213\. Jaka jest różnica pomiędzy efektywną mocą promieniowaną e.r.p. a efektywną
-    mocą promieniowaną izotropowo e.i.r.p?
+- text: 213\. Jaka jest różnica pomiędzy efektywną mocą promieniowaną e.r.p. a efektywną mocą promieniowaną
+    izotropowo e.i.r.p?
   answers:
   - e.i.r.p. jest większe o 2,15 dB od e.r.p.
   - e.i.r.p. jest mniejsze o 2,15 dB od e.r.p.
   - nie ma różnicy
   correct_index: 0
-- text: 214\. Antena kierunkowa daje napięcie 4 razy większe, niż dipol półfalowy
-    zawieszony w tym samym miejscu. Jaki zysk ma antena kierunkowa?
+- text: 214\. Antena kierunkowa daje napięcie 4 razy większe, niż dipol półfalowy zawieszony w tym samym
+    miejscu. Jaki zysk ma antena kierunkowa?
   answers:
   - 6 dBd
   - 4 dBd
   - 12 dBd
   correct_index: 2
-- text: 215\. Kabel koncentryczny o długości 100m, przy częstotliwości 144MHz wprowadza
-    tłumienie 12dB. Długość kabla pomiędzy nadajnikiem 100 W a anteną wynosi 50 m.
-    Jaka część tej mocy zostanie doprowadzona do anteny?
+- text: 215\. Kabel koncentryczny o długości 100m, przy częstotliwości 144MHz wprowadza tłumienie 12dB.
+    Długość kabla pomiędzy nadajnikiem 100 W a anteną wynosi 50 m. Jaka część tej mocy zostanie doprowadzona
+    do anteny?
   answers:
   - 25%
   - 50%
   - 75%
   correct_index: 1
-- text: '217\. Propagacja jonosferyczna latem, w dzień, pasma radioamatorskiego 20
-    m, najczęściej odbywa się przez odbicie od warstwy:'
+- text: '217\. Propagacja jonosferyczna latem, w dzień, pasma radioamatorskiego 20 m, najczęściej odbywa
+    się przez odbicie od warstwy:'
   answers:
   - D
   - E
@@ -391,15 +1945,14 @@ questions:
   - o maksymalnej częstotliwości do łączności na danej trasie
   - o zaniku łączności w danym kierunku
   correct_index: 1
-- text: '232\. Jeżeli składowa elektryczna fali jest prostopadła do ziemi, to fala
-    ma polaryzację:'
+- text: '232\. Jeżeli składowa elektryczna fali jest prostopadła do ziemi, to fala ma polaryzację:'
   answers:
   - poziomą
   - pionową
   - nie da się tego stwierdzić bez znajomości ułożenia składowej magnetycznej
   correct_index: 1
-- text: '263\. Skrzynka antenowa w układzie T, gdzie szeregowo włączone są kondensatory,
-    a równolegle cewka, jest:'
+- text: '263\. Skrzynka antenowa w układzie T, gdzie szeregowo włączone są kondensatory, a równolegle
+    cewka, jest:'
   answers:
   - filtrem dolnoprzepustowym
   - filtrem górnoprzepustowym
@@ -441,15 +1994,14 @@ questions:
   - dipol półfalowy
   - rezonator całofalowy
   correct_index: 1
-- text: 282\. Antena Yagi-Uda z wibratorem skierowanym równolegle do ziemi będzie
-    miała polaryzację
+- text: 282\. Antena Yagi-Uda z wibratorem skierowanym równolegle do ziemi będzie miała polaryzację
   answers:
   - poziomą
   - pionową
   - lewoskrętną na półkuli południowej i prawoskrętną na północnej
   correct_index: 0
-- text: 283\. Amatorskie radiolatarnie w paśmie 144 MHz pracują w polaryzacji poziomej.
-    Czy można sygnał takiej radiolatarni odbierać anteną o polaryzacji pionowej?
+- text: 283\. Amatorskie radiolatarnie w paśmie 144 MHz pracują w polaryzacji poziomej. Czy można sygnał
+    takiej radiolatarni odbierać anteną o polaryzacji pionowej?
   answers:
   - tak, nie ma przeciwwskazań
   - tak choć sygnał będzie znacznie słabszy niż przy zgodnej polaryzacji
@@ -461,16 +2013,15 @@ questions:
   - Anteny izotropowej
   - Anteny pionowej ćwierćfalowej
   correct_index: 1
-- text: 285\. Antena kierunkowa w kierunku wiązki głównej wytwarza pole EM o natężeniu
-    4 razy większym, niż dipol półfalowy zawieszony w tym samym miejscu. Jaki zysk
-    ma antena?
+- text: 285\. Antena kierunkowa w kierunku wiązki głównej wytwarza pole EM o natężeniu 4 razy większym,
+    niż dipol półfalowy zawieszony w tym samym miejscu. Jaki zysk ma antena?
   answers:
   - 6 dBd
   - 4 dBd
   - 12 dBd
   correct_index: 0
-- text: '286\. Na paśmie 5 MHz w Polsce można nadawać maksymalną mocą 15 W EIRP, a
-    zatem do dipola na to pasmo można doprowadzić moc około:'
+- text: '286\. Na paśmie 5 MHz w Polsce można nadawać maksymalną mocą 15 W EIRP, a zatem do dipola na
+    to pasmo można doprowadzić moc około:'
   answers:
   - 5 W
   - 15 W
@@ -488,18 +2039,16 @@ questions:
   - EIRP jest mniejsze o 2,15 dB od ERP
   - Nie ma różnicy
   correct_index: 0
-- text: 289\. Mamy antenę kierunkową A o zysku 3 dBi i antenę kierunkową B o zysku
-    6 dBi. Do każdej z nich podano sygnał o mocy 100 W. Ile całkowitej mocy wypromieniowała
-    każda antena?
+- text: 289\. Mamy antenę kierunkową A o zysku 3 dBi i antenę kierunkową B o zysku 6 dBi. Do każdej z
+    nich podano sygnał o mocy 100 W. Ile całkowitej mocy wypromieniowała każda antena?
   answers:
   - A - 100 W, B - 100 W
   - A - 200 W, B - 400 W
   - A - 100 W, B - 200 W
   correct_index: 0
-- text: 290\. Współczynnik tył/przód (F/B ratio) pewnej anteny kierunkowej wynosi
-    19 dB a jej zysk 10,5 dBd. Czy w sytuacji awarii rotora antenowego lepiej będzie
-    nadawać "tyłem anteny" korzystając z jej listka tylnego czy też przełączyć się
-    na dipol półfalowy w tej samej polaryzacji?
+- text: 290\. Współczynnik tył/przód (F/B ratio) pewnej anteny kierunkowej wynosi 19 dB a jej zysk 10,5
+    dBd. Czy w sytuacji awarii rotora antenowego lepiej będzie nadawać "tyłem anteny" korzystając z jej
+    listka tylnego czy też przełączyć się na dipol półfalowy w tej samej polaryzacji?
   answers:
   - przełączyć się na dipol
   - pozostać przy antenie kierunkowej
@@ -511,40 +2060,35 @@ questions:
   - najmocniej w płaszczyźnie prostopadłej do osi zawieszenia dipola
   - najwięcej wzdłuż osi zawieszenia dipola
   correct_index: 1
-- text: 292\. Zamierzasz zrobić łączność z kolegą znajdującym się we Włoszech przy
-    pomocy dipola półfalowego na paśmie 20 m. W jakim kierunku najlepiej powiesić
-    tę antenę?
+- text: 292\. Zamierzasz zrobić łączność z kolegą znajdującym się we Włoszech przy pomocy dipola półfalowego
+    na paśmie 20 m. W jakim kierunku najlepiej powiesić tę antenę?
   answers:
   - na osi północ-południe
   - na osi wschód-zachód
-  - nie użyję dipola, gdyż łączność będzie trudno nawiązać bez anteny kierunkowej
-    Yagi- Uda
+  - nie użyję dipola, gdyż łączność będzie trudno nawiązać bez anteny kierunkowej Yagi- Uda
   correct_index: 1
-- text: 294\. Kabel koncentryczny po przytrzaśnięciu oknem uległ spłaszczeniu. Jak
-    można go naprawić?
+- text: 294\. Kabel koncentryczny po przytrzaśnięciu oknem uległ spłaszczeniu. Jak można go naprawić?
   answers:
   - należy zabezpieczyć uszkodzony fragment taśmą izolacyjną
-  - należy zastosować ekran miedziany na uszkodzonym fragmencie w celu zapobiegania
-    wycieko wi w.cz
-  - ten fragment kabla nie nadaje się do użytku, można wyciąć uszkodzony fragment
-    oraz wykorzystać pozostałe odcinki przewodu
+  - należy zastosować ekran miedziany na uszkodzonym fragmencie w celu zapobiegania wycieko wi w.cz
+  - ten fragment kabla nie nadaje się do użytku, można wyciąć uszkodzony fragment oraz wykorzystać pozostałe
+    odcinki przewodu
   correct_index: 2
-- text: '295\. Nadajnik połączono kablem koncentrycznym ze sztucznym obciążeniem.
-    Prąd płynący w ekranie kabla koncentrycznego ma wartość:'
+- text: '295\. Nadajnik połączono kablem koncentrycznym ze sztucznym obciążeniem. Prąd płynący w ekranie
+    kabla koncentrycznego ma wartość:'
   answers:
   - zerową
   - niemożliwą do oszacowania
   - taką samą, jak prąd płynący w środkowej żyle
   correct_index: 2
-- text: 296\. Pomiar SWR przy nadajniku wskazał wartość 1:1,5, ale mamy podejrzenie,
-    że dopasowanie anteny jest niewłaściwe. Co może być przyczyną?
+- text: 296\. Pomiar SWR przy nadajniku wskazał wartość 1:1,5, ale mamy podejrzenie, że dopasowanie anteny
+    jest niewłaściwe. Co może być przyczyną?
   answers:
   - poziom zakłóceń lokalnych
   - tłumienie linii zasilającej
   - podejrzenie jest błędne, dopasowanie jest poprawne
   correct_index: 1
-- text: '297\. Nadajnik został dołączony do anteny fiderem o całkowitym tłumieniu
-    5dB. Co wówczas zaobserwujemy:'
+- text: '297\. Nadajnik został dołączony do anteny fiderem o całkowitym tłumieniu 5dB. Co wówczas zaobserwujemy:'
   answers:
   - stratę 50% mocy nadajnika, brak wpływu na odbiór
   - stratę 5% mocy nadajnika, zmianę SWR
@@ -562,11 +2106,10 @@ questions:
   - dla danego nadajnika
   - dla każdego krótkofalowca
   correct_index: 0
-- text: 308\. Pewien krótkofalowiec zawsze kiedy wyjeżdżał na działkę pod Radomiem
-    zawieszał w tym samym miejscu dipol półfalowy na wysokości 15 m nad poziomem gruntu.
-    Niestety pewnego razu ze względu na uszkodzenie drabiny udało mu się powiesić
-    go tylko na wysokości 3m. Zauważył że słyszy znacznie lepiej stacje polskie ale
-    niestety przestał słyszeć stacje francuskie. Czym spowodowane było to zjawisko?
+- text: 308\. Pewien krótkofalowiec zawsze kiedy wyjeżdżał na działkę pod Radomiem zawieszał w tym samym
+    miejscu dipol półfalowy na wysokości 15 m nad poziomem gruntu. Niestety pewnego razu ze względu na
+    uszkodzenie drabiny udało mu się powiesić go tylko na wysokości 3m. Zauważył że słyszy znacznie lepiej
+    stacje polskie ale niestety przestał słyszeć stacje francuskie. Czym spowodowane było to zjawisko?
   answers:
   - Spowodowane jest to zmianą kątów promieniowania anteny
   - Spowodowane jest to zmianą ogniskowej anteny
@@ -578,16 +2121,16 @@ questions:
   - wielokrotnym odbiciu fal pomiędzy ziemią i troposferą
   - prowadzeniu fal przez dukty powstałe z warstw ciepłego i zimnego powietrza
   correct_index: 2
-- text: '312\. Pewnego dnia krótkofalowiec w paśmie 50 MHz usłyszał stacje z południa
-    Europy. Mogło się to zdarzyć:'
+- text: '312\. Pewnego dnia krótkofalowiec w paśmie 50 MHz usłyszał stacje z południa Europy. Mogło się
+    to zdarzyć:'
   answers:
   - zimą z racji na lokalne zanieczyszczenie powietrza
   - głównie latem, dzięki propagacji w warstwie sporadycznej E
   - latem z uwagi na mniejszą wilgotność powietrza
   correct_index: 1
-- text: 313\. Pewnego dnia po wysokiej aktywności słonecznej pewien krótkofalowiec
-    usłyszał w paśmie 144 MHz kilka mocno zniekształconych sygnałów dalekich stacji.
-    z trudem odebrał wywołanie “CQ aurora” z czym miał do czynienia?
+- text: 313\. Pewnego dnia po wysokiej aktywności słonecznej pewien krótkofalowiec usłyszał w paśmie 144
+    MHz kilka mocno zniekształconych sygnałów dalekich stacji. z trudem odebrał wywołanie “CQ aurora”
+    z czym miał do czynienia?
   answers:
   - rosyjskie zawody z okazji wybuchu rewolucji październikowej
   - łącznościami z wykorzystaniem zorzy polarnej
@@ -605,56 +2148,51 @@ questions:
   - na falach ultrakrótkich przy pomocy anten kierunkowych
   - nie można, jest to zabronione
   correct_index: 1
-- text: '320\. Antena na pasmo 2m została dołączona popularnym kablem koncentrycznym
-    RG-58 o długości 100m. Dlaczego krótkofalowiec nie uważa takiej instalacji za
-    optymalną:'
+- text: '320\. Antena na pasmo 2m została dołączona popularnym kablem koncentrycznym RG-58 o długości
+    100m. Dlaczego krótkofalowiec nie uważa takiej instalacji za optymalną:'
   answers:
   - Z racji na duże straty mocy w linii zasilającej
   - Kabel RG-58 ma niewłaściwą impedancję
   - Z racji na to, że kabel ten był używany w instalacjach CB Radio
   correct_index: 0
-- text: '321\. Stacja o mocy 100 W na paśmie 20 m jest odbierana z siłą sygnału S9.
-    W przerwach emisji słychać także jej korespondenta o sile sygnału S4. Co się stanie
-    jeśli stacja ta zmniejszy moc nadawania do 10 W:'
+- text: '321\. Stacja o mocy 100 W na paśmie 20 m jest odbierana z siłą sygnału S9. W przerwach emisji
+    słychać także jej korespondenta o sile sygnału S4. Co się stanie jeśli stacja ta zmniejszy moc nadawania
+    do 10 W:'
   answers:
   - nie usłyszymy jej w ogóle, 10 W to za mało na taką łączność
   - poprawi się jej modulacja
   - będziemy ją nadal słyszeć, być może z nieco większym szumem
   correct_index: 2
-- text: 329\. Co pokazuje reflektometr dołączony między wyjście nadajnika a kabel
-    antenowy?
+- text: 329\. Co pokazuje reflektometr dołączony między wyjście nadajnika a kabel antenowy?
   answers:
   - dopasowanie linii zasilającej
   - rezonans anteny
   - dostrojenie nadajnika
   correct_index: 0
-- text: '331\. Ręczny radiotelefon niskiej jakości został dołączony do zewnętrznej
-    anteny i słyszalność stacji uległa znacznemu pogorszeniu. Jakie zjawisko może
-    być tego przyczyną:'
+- text: '331\. Ręczny radiotelefon niskiej jakości został dołączony do zewnętrznej anteny i słyszalność
+    stacji uległa znacznemu pogorszeniu. Jakie zjawisko może być tego przyczyną:'
   answers:
   - brak odpowiedniego przedwzmacniacz a w.cz .
   - blokowanie odbiornika przez bardzo silne sygnały, także spoza pasm amatorskich
-  - uszkodzenie odbiornika spowodowane sygnałem pobliskiego przemiennika w paśmie
-    2 m
+  - uszkodzenie odbiornika spowodowane sygnałem pobliskiego przemiennika w paśmie 2 m
   correct_index: 1
-- text: '333\. Jeśli wzmacniacz mocy nie posiada pomiędzy ostatnim stopniem wzmocnienia
-    a wyjściem antenowym filtru dolnoprzepustowego to:'
+- text: '333\. Jeśli wzmacniacz mocy nie posiada pomiędzy ostatnim stopniem wzmocnienia a wyjściem antenowym
+    filtru dolnoprzepustowego to:'
   answers:
   - może zniekształcać sygnał wyjściowy na częstotliwości roboczej
   - może wprowadzać zakłócenia spowodowane przez nieodfiltrowane harmoniczne
   - ma optymalną konstrukcję
   correct_index: 1
-- text: '334\. Odbiornik został uszkodzony przez silny sygnał z anteny, pochodzący
-    z pracującego w bezpośredniej bliskości nadajnika dużej mocy. Przyczyną uszkodzenia
-    mogło być:'
+- text: '334\. Odbiornik został uszkodzony przez silny sygnał z anteny, pochodzący z pracującego w bezpośredniej
+    bliskości nadajnika dużej mocy. Przyczyną uszkodzenia mogło być:'
   answers:
   - wyindukowanie silnego sygnału w.cz. w antenie odbiorczej
   - złe dostrojenie nadajnika
   - przeniesienie sygnału w.cz. po kablu zasilającym przez złe zasilanie odbiornika
   correct_index: 0
-- text: 336\. Krótkofalowiec zbudował skrzynkę antenową, ale przy pracy z tą skrzynką
-    obserwuje słabe świecenie nie zasilanej świetlówki, które nie występuje po odłączeniu
-    skrzynki. Co może wykonać, by to zjawisko wyeliminować?
+- text: 336\. Krótkofalowiec zbudował skrzynkę antenową, ale przy pracy z tą skrzynką obserwuje słabe
+    świecenie nie zasilanej świetlówki, które nie występuje po odłączeniu skrzynki. Co może wykonać, by
+    to zjawisko wyeliminować?
   answers:
   - wprowadzić ekranowanie skrzynki, na przykład w postaci szczelnej, metalowej obudowy
   - poprawić dopasowanie stopnia końcowego

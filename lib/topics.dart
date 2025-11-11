@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:gpt_markdown/gpt_markdown.dart';
 import 'package:intl/intl.dart';
 import 'package:yaml/yaml.dart';
 
@@ -337,24 +337,8 @@ class TopicCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.asset(
-                  topic.imageAsset,
-                  width: 72,
-                  height: 72,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) => Container(
-                    width: 72,
-                    height: 72,
-                    color: Colors.grey.shade200,
-                    alignment: Alignment.center,
-                    child: const Icon(Icons.image_not_supported),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -562,41 +546,55 @@ class _StatsQuestionMarkdown extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final titleStyle = theme.textTheme.titleMedium;
-    final bodyStyle = theme.textTheme.bodyMedium;
-    return MarkdownBody(
-      data: text,
-      shrinkWrap: true,
-      listItemCrossAxisAlignment: MarkdownListItemCrossAxisAlignment.start,
-      styleSheet: MarkdownStyleSheet.fromTheme(theme).copyWith(
-        p: titleStyle,
-        listBullet: bodyStyle,
-        h1: titleStyle,
-        h2: titleStyle,
-        h3: titleStyle,
-      ),
-      sizedImageBuilder: (config) {
-        final uri = config.uri;
-        final width = config.width;
-        final height = config.height;
-        if (uri.scheme.isEmpty || uri.scheme == 'asset') {
-          final path = uri.scheme == 'asset' ? uri.path : uri.toString();
-          return ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
-              path,
-              width: width,
-              height: height,
-              fit: BoxFit.contain,
-            ),
-          );
+    return GptMarkdown(
+      _sanitizeEscapes(text),
+      style: titleStyle ?? theme.textTheme.bodyMedium,
+      textAlign: TextAlign.start,
+      textScaler: MediaQuery.textScalerOf(context),
+      useDollarSignsForLatex: true,
+      imageBuilder: (ctx, url) => _buildMarkdownImage(url),
+    );
+  }
+
+  String _sanitizeEscapes(String input) {
+    if (input.isEmpty) return input;
+    final buffer = StringBuffer();
+    for (var i = 0; i < input.length; i++) {
+      final char = input[i];
+      if (char == '\\' && i + 1 < input.length) {
+        final next = input[i + 1];
+        if (next == '.') {
+          buffer.write('.');
+          i++;
+          continue;
         }
-        return Image.network(
-          uri.toString(),
-          width: width,
-          height: height,
-          fit: BoxFit.contain,
-        );
-      },
+      }
+      buffer.write(char);
+    }
+    return buffer.toString();
+  }
+
+  Widget _buildMarkdownImage(String rawUrl) {
+    final trimmed = rawUrl.trim();
+    if (trimmed.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    Uri? uri;
+    try {
+      uri = Uri.parse(trimmed);
+    } catch (_) {
+      uri = null;
+    }
+    final isAsset = uri == null || uri.scheme.isEmpty || uri.scheme == 'asset';
+    final path = uri == null
+        ? trimmed
+        : (uri.scheme == 'asset' || uri.scheme.isEmpty ? uri.path : trimmed);
+    final image = isAsset
+        ? Image.asset(path, fit: BoxFit.contain)
+        : Image.network(trimmed, fit: BoxFit.contain);
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: image,
     );
   }
 }

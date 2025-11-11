@@ -323,6 +323,12 @@ abstract class AppLocalizations {
   /// **'Your answer'**
   String get quizYourAnswerLabel;
 
+  /// No description provided for @quizAutoAdvanceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Advancing in {seconds}s - tap anywhere to keep reading'**
+  String quizAutoAdvanceHint(Object seconds);
+
   /// No description provided for @quizLearningCompleteTitle.
   ///
   /// In en, this message translates to:

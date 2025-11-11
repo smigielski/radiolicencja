@@ -156,6 +156,11 @@ class AppLocalizationsPl extends AppLocalizations {
   String get quizYourAnswerLabel => 'Twoja odpowiedź';
 
   @override
+  String quizAutoAdvanceHint(Object seconds) {
+    return 'Przechodzę dalej za ${seconds}s - stuknij, aby zatrzymać';
+  }
+
+  @override
   String get quizLearningCompleteTitle => 'Zakończono naukę!';
 
   @override

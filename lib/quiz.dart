@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:gpt_markdown/gpt_markdown.dart';
 import 'package:yaml/yaml.dart';
 
 import 'l10n/app_localizations.dart';
@@ -33,6 +33,7 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
+  static const Duration _learningAutoAdvanceDuration = Duration(seconds: 5);
   late final List<QuizQuestion> _questions;
   late final int _totalQuestions;
   final Set<int> _masteredQuestionIds = <int>{};
@@ -51,6 +52,10 @@ class _QuizScreenState extends State<QuizScreen> {
   final TextEditingController _openAnswerController = TextEditingController();
   final FocusNode _openAnswerFocus = FocusNode();
   final Random _random = Random();
+  Timer? _autoAdvanceTimer;
+  bool _autoAdvancePaused = false;
+  bool _usedIDontKnow = false;
+  int? _lastMatchedOpenAnswerIndex;
 
   @override
   void initState() {
@@ -88,17 +93,40 @@ class _QuizScreenState extends State<QuizScreen> {
 
   @override
   void dispose() {
+    _cancelAutoAdvanceTimer();
     _openAnswerController.dispose();
     _openAnswerFocus.dispose();
     super.dispose();
+  }
+
+  void _handleUserInteraction() {
+    if (!_isAutoAdvancePauseAvailable) return;
+    setState(() {
+      _autoAdvancePaused = true;
+    });
+    _cancelAutoAdvanceTimer();
+  }
+
+  bool get _isAutoAdvancePauseAvailable {
+    return widget.mode == QuizMode.learning &&
+        !_autoAdvancePaused &&
+        (_autoAdvanceTimer?.isActive ?? false);
+  }
+
+  void _cancelAutoAdvanceTimer() {
+    _autoAdvanceTimer?.cancel();
+    _autoAdvanceTimer = null;
   }
 
   void _selectAnswer(QuizAnswer answer) {
     if (_selectedAnswer != null || _showSummary) return;
     final questionIndex = _currentQuestionIndex;
     final question = _questions[questionIndex];
+    final answeredIDontKnow = identical(answer, _iDontKnowAnswer);
     setState(() {
       _selectedAnswer = answer;
+      _usedIDontKnow = answeredIDontKnow;
+      _lastMatchedOpenAnswerIndex = null;
       if (answer.isCorrect) {
         _score++;
       }
@@ -114,10 +142,13 @@ class _QuizScreenState extends State<QuizScreen> {
     if (_openAnswerCorrect != null || _showSummary) return;
     final response = _openAnswerController.text.trim();
     if (response.isEmpty) return;
-    final isCorrect = question.matchesOpenResponse(response);
+    final matchIndex = question.acceptedAnswerIndexFor(response);
+    final isCorrect = matchIndex != null;
     final questionIndex = _currentQuestionIndex;
     setState(() {
       _openAnswerCorrect = isCorrect;
+      _lastMatchedOpenAnswerIndex = matchIndex;
+      _usedIDontKnow = false;
       if (isCorrect) {
         _score++;
       }
@@ -136,6 +167,8 @@ class _QuizScreenState extends State<QuizScreen> {
       if (_openAnswerCorrect != null) return;
       setState(() {
         _openAnswerCorrect = false;
+        _usedIDontKnow = true;
+        _lastMatchedOpenAnswerIndex = null;
       });
       _openAnswerFocus.unfocus();
       _recordAnswerResult(question, false);
@@ -146,9 +179,11 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   void _goToNextStep() {
+    _cancelAutoAdvanceTimer();
     if (widget.mode == QuizMode.learning) {
       final wasCorrect = _currentQuestionWasAnsweredCorrectly;
       setState(() {
+        _autoAdvancePaused = false;
         _advanceLearningQueue(wasCorrect);
       });
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -158,6 +193,9 @@ class _QuizScreenState extends State<QuizScreen> {
     }
     if (_currentQuestionIndex >= _questions.length - 1) {
       setState(() {
+        _autoAdvancePaused = false;
+        _usedIDontKnow = false;
+        _lastMatchedOpenAnswerIndex = null;
         _showSummary = true;
       });
     } else {
@@ -166,6 +204,9 @@ class _QuizScreenState extends State<QuizScreen> {
         _selectedAnswer = null;
         _openAnswerCorrect = null;
         _openAnswerController.clear();
+        _autoAdvancePaused = false;
+        _usedIDontKnow = false;
+        _lastMatchedOpenAnswerIndex = null;
       });
     }
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -193,6 +234,8 @@ class _QuizScreenState extends State<QuizScreen> {
     if (_questions.isEmpty) {
       return;
     }
+    _cancelAutoAdvanceTimer();
+    _autoAdvancePaused = false;
     final question = _questions.removeAt(_currentQuestionIndex);
     if (!answeredCorrect) {
       final insertIndex =
@@ -206,6 +249,7 @@ class _QuizScreenState extends State<QuizScreen> {
       _selectedAnswer = null;
       _openAnswerCorrect = null;
       _openAnswerController.clear();
+      _lastMatchedOpenAnswerIndex = null;
       _showSummary = true;
       return;
     }
@@ -215,9 +259,28 @@ class _QuizScreenState extends State<QuizScreen> {
     _selectedAnswer = null;
     _openAnswerCorrect = null;
     _openAnswerController.clear();
+    _usedIDontKnow = false;
+    _lastMatchedOpenAnswerIndex = null;
   }
 
   void _scheduleAdvanceAfterCorrect(int questionIndex) {
+    if (widget.mode == QuizMode.learning) {
+      _cancelAutoAdvanceTimer();
+      if (mounted) {
+        setState(() {
+          _autoAdvancePaused = false;
+        });
+      } else {
+        _autoAdvancePaused = false;
+      }
+      _autoAdvanceTimer = Timer(_learningAutoAdvanceDuration, () {
+        if (!mounted || _showSummary || _autoAdvancePaused) return;
+        if (_currentQuestionIndex != questionIndex) return;
+        _autoAdvanceTimer = null;
+        _goToNextStep();
+      });
+      return;
+    }
     Future.delayed(const Duration(milliseconds: 500), () {
       if (!mounted || _showSummary) return;
       if (_currentQuestionIndex != questionIndex) return;
@@ -268,9 +331,14 @@ class _QuizScreenState extends State<QuizScreen> {
       appBar: AppBar(
         title: Text(widget.topicTitle),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: _showSummary ? _buildSummary(context) : _buildQuestionView(context),
+      body: Listener(
+        onPointerDown: (_) => _handleUserInteraction(),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: _showSummary
+              ? _buildSummary(context)
+              : _buildQuestionView(context),
+        ),
       ),
     );
   }
@@ -327,9 +395,25 @@ class _QuizScreenState extends State<QuizScreen> {
     QuizQuestion question,
   ) {
     final l10n = AppLocalizations.of(context)!;
+    final isLearningMode = widget.mode == QuizMode.learning;
     final nextButtonLabel = _currentQuestionIndex == _questions.length - 1
         ? l10n.quizButtonSeeScore
         : l10n.quizButtonNextQuestion;
+    Widget? explanationSection;
+    if (isLearningMode && _selectedAnswer != null) {
+      final explanationText = _resolveExplanation(
+        question: question,
+        selectedAnswer: _selectedAnswer,
+      );
+      if (explanationText != null) {
+        explanationSection = _ExplanationCard(
+          text: explanationText,
+          showAutoAdvanceHint:
+              _shouldShowAutoAdvanceHint(_selectedAnswer?.isCorrect ?? false),
+          autoAdvanceSeconds: _learningAutoAdvanceDuration.inSeconds,
+        );
+      }
+    }
     return Column(
       children: [
         ...question.answers.map(
@@ -351,7 +435,9 @@ class _QuizScreenState extends State<QuizScreen> {
           ),
         ],
         const SizedBox(height: 16),
-        if (_selectedAnswer != null && !_selectedAnswer!.isCorrect) ...[
+        if (explanationSection != null) ...[
+          explanationSection,
+        ] else if (_selectedAnswer != null && !_selectedAnswer!.isCorrect) ...[
           Text(
             l10n.quizCorrectAnswerLabel(
               question.correctAnswer.label,
@@ -362,6 +448,9 @@ class _QuizScreenState extends State<QuizScreen> {
                 .bodyMedium
                 ?.copyWith(color: Colors.green[700]),
           ),
+        ],
+        if (_selectedAnswer != null &&
+            (isLearningMode || !_selectedAnswer!.isCorrect)) ...[
           const SizedBox(height: 16),
           SizedBox(
             width: double.infinity,
@@ -377,9 +466,25 @@ class _QuizScreenState extends State<QuizScreen> {
 
   Widget _buildOpenQuestion(BuildContext context, QuizQuestion question) {
     final l10n = AppLocalizations.of(context)!;
+    final isLearningMode = widget.mode == QuizMode.learning;
     final nextButtonLabel = _currentQuestionIndex == _questions.length - 1
         ? l10n.quizButtonSeeScore
         : l10n.quizButtonNextQuestion;
+    Widget? explanationSection;
+    if (isLearningMode && _openAnswerCorrect != null) {
+      final explanationText = _resolveExplanation(
+        question: question,
+        openAnswerCorrect: _openAnswerCorrect,
+      );
+      if (explanationText != null) {
+        explanationSection = _ExplanationCard(
+          text: explanationText,
+          showAutoAdvanceHint:
+              _shouldShowAutoAdvanceHint(_openAnswerCorrect == true),
+          autoAdvanceSeconds: _learningAutoAdvanceDuration.inSeconds,
+        );
+      }
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -405,12 +510,16 @@ class _QuizScreenState extends State<QuizScreen> {
           child: ElevatedButton(
             onPressed: _openAnswerCorrect == null
                 ? () => _submitOpenAnswer(question)
-                : (_openAnswerCorrect! ? null : _goToNextStep),
+                : (_openAnswerCorrect! && !isLearningMode)
+                    ? null
+                    : _goToNextStep,
             child: Text(
               _openAnswerCorrect == null
                   ? l10n.quizButtonCheckAnswer
                   : (_openAnswerCorrect!
-                      ? l10n.quizButtonCorrect
+                      ? (isLearningMode
+                          ? nextButtonLabel
+                          : l10n.quizButtonCorrect)
                       : nextButtonLabel),
             ),
           ),
@@ -442,6 +551,10 @@ class _QuizScreenState extends State<QuizScreen> {
             style: Theme.of(context).textTheme.bodyMedium,
           ),
         ],
+        if (explanationSection != null) ...[
+          const SizedBox(height: 16),
+          explanationSection,
+        ],
       ],
     );
   }
@@ -452,6 +565,76 @@ class _QuizScreenState extends State<QuizScreen> {
       return _openAnswerCorrect == null;
     }
     return _selectedAnswer == null;
+  }
+
+  bool _shouldShowAutoAdvanceHint(bool answeredCorrect) {
+    if (!answeredCorrect) return false;
+    if (widget.mode != QuizMode.learning) return false;
+    if (_autoAdvancePaused) return false;
+    return _autoAdvanceTimer?.isActive ?? false;
+  }
+
+  String? _resolveExplanation({
+    required QuizQuestion question,
+    QuizAnswer? selectedAnswer,
+    bool? openAnswerCorrect,
+  }) {
+    final explanations = question.explanations;
+    if (explanations.isEmpty) {
+      return null;
+    }
+    final answerCountForExplanation = question.isOpen
+        ? question.acceptedAnswers.length
+        : question.answers.length;
+
+    if (_usedIDontKnow) {
+      return explanations.last;
+    }
+    if (selectedAnswer != null) {
+      final answerIndex = question.answers.indexOf(selectedAnswer);
+      if (answerIndex >= 0) {
+        final mappedIndex = _answerExplanationIndex(
+          attemptIndex: answerIndex,
+          answersCount: answerCountForExplanation,
+          explanationsLength: explanations.length,
+        );
+        if (mappedIndex >= 0 && mappedIndex < explanations.length) {
+          return explanations[mappedIndex];
+        }
+      }
+    }
+    if (question.isOpen && openAnswerCorrect == true) {
+      final matchedIndex = _lastMatchedOpenAnswerIndex ?? 0;
+      final mappedIndex = _answerExplanationIndex(
+        attemptIndex: matchedIndex,
+        answersCount: answerCountForExplanation,
+        explanationsLength: explanations.length,
+      );
+      if (mappedIndex >= 0 && mappedIndex < explanations.length) {
+        return explanations[mappedIndex];
+      }
+    }
+    return null;
+  }
+
+  int _answerExplanationIndex({
+    required int attemptIndex,
+    required int answersCount,
+    required int explanationsLength,
+  }) {
+    if (explanationsLength == 0) return -1;
+    var maxIndexForAnswers = explanationsLength - 1;
+    if (answersCount > 0 && explanationsLength > answersCount) {
+      maxIndexForAnswers = explanationsLength - 2;
+    }
+    if (maxIndexForAnswers < 0) {
+      maxIndexForAnswers = 0;
+    }
+    if (attemptIndex < 0) return 0;
+    if (attemptIndex > maxIndexForAnswers) {
+      return maxIndexForAnswers;
+    }
+    return attemptIndex;
   }
 
   Widget _buildSummary(BuildContext context) {
@@ -533,6 +716,52 @@ class _AnswerOption extends StatelessWidget {
   }
 }
 
+class _ExplanationCard extends StatelessWidget {
+  const _ExplanationCard({
+    required this.text,
+    required this.showAutoAdvanceHint,
+    required this.autoAdvanceSeconds,
+  });
+
+  final String text;
+  final bool showAutoAdvanceHint;
+  final int autoAdvanceSeconds;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.blueGrey.shade50,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.blueGrey.shade100),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _QuestionMarkdown(
+            text: text,
+            baseStyle: theme.textTheme.bodyLarge,
+            bodyStyle: theme.textTheme.bodyMedium,
+          ),
+          if (showAutoAdvanceHint) ...[
+            const SizedBox(height: 12),
+            Text(
+              l10n.quizAutoAdvanceHint(autoAdvanceSeconds),
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: Colors.grey[700],
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
 class _NoQuestionsMessage extends StatelessWidget {
   const _NoQuestionsMessage();
 
@@ -547,44 +776,73 @@ class _NoQuestionsMessage extends StatelessWidget {
 }
 
 class _QuestionMarkdown extends StatelessWidget {
-  const _QuestionMarkdown({required this.text});
+  const _QuestionMarkdown({
+    required this.text,
+    this.baseStyle,
+    this.bodyStyle,
+  });
 
   final String text;
+  final TextStyle? baseStyle;
+  final TextStyle? bodyStyle;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final baseStyle = theme.textTheme.headlineSmall;
-    final bodyStyle = theme.textTheme.bodyLarge;
-    return MarkdownBody(
-      data: text,
-      sizedImageBuilder: (config) {
-        final uri = config.uri;
-        final width = config.width;
-        final height = config.height;
-        if (uri.scheme.isEmpty || uri.scheme == 'asset') {
-          final path = uri.scheme == 'asset' ? uri.path : uri.toString();
-          return ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
-              path,
-              width: width,
-              height: height,
-              fit: BoxFit.contain,
-            ),
-          );
+    final effectiveStyle = baseStyle ?? bodyStyle ?? theme.textTheme.bodyLarge;
+    return GptMarkdown(
+      _sanitizeEscapes(text),
+      style: effectiveStyle,
+      textAlign: TextAlign.start,
+      textScaler: MediaQuery.textScalerOf(context),
+      useDollarSignsForLatex: true,
+      imageBuilder: (ctx, url) => _buildMarkdownImage(url),
+    );
+  }
+
+  String _sanitizeEscapes(String input) {
+    if (input.isEmpty) return input;
+    final buffer = StringBuffer();
+    for (var i = 0; i < input.length; i++) {
+      final char = input[i];
+      if (char == '\\' && i + 1 < input.length) {
+        final next = input[i + 1];
+        if (_shouldUnescape(next)) {
+          buffer.write(next);
+          i++;
+          continue;
         }
-        return Image.network(
-          uri.toString(),
-          width: width,
-          height: height,
-          fit: BoxFit.contain,
-        );
-      },
-      styleSheet: MarkdownStyleSheet.fromTheme(theme).copyWith(
-        p: baseStyle,
-        listBullet: bodyStyle,
-      ),
+      }
+      buffer.write(char);
+    }
+    return buffer.toString();
+  }
+
+  bool _shouldUnescape(String next) {
+    return next == '.';
+  }
+
+  Widget _buildMarkdownImage(String rawUrl) {
+    final trimmed = rawUrl.trim();
+    if (trimmed.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    Uri? uri;
+    try {
+      uri = Uri.parse(trimmed);
+    } catch (_) {
+      uri = null;
+    }
+    final isAsset = uri == null || uri.scheme.isEmpty || uri.scheme == 'asset';
+    final path = uri == null
+        ? trimmed
+        : (uri.scheme == 'asset' || uri.scheme.isEmpty ? uri.path : trimmed);
+    final image = isAsset
+        ? Image.asset(path, fit: BoxFit.contain)
+        : Image.network(trimmed, fit: BoxFit.contain);
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: image,
     );
   }
 }
@@ -596,14 +854,17 @@ class QuizQuestion {
     required this.type,
     List<QuizAnswer> answers = const [],
     List<String> acceptedAnswers = const [],
+    List<String> explanations = const [],
   })  : answers = List.unmodifiable(answers),
-        acceptedAnswers = List.unmodifiable(acceptedAnswers);
+        acceptedAnswers = List.unmodifiable(acceptedAnswers),
+        explanations = List.unmodifiable(explanations);
 
   final int id;
   final String text;
   final QuizQuestionType type;
   final List<QuizAnswer> answers;
   final List<String> acceptedAnswers;
+  final List<String> explanations;
 
   bool get isOpen => type == QuizQuestionType.open;
 
@@ -621,11 +882,19 @@ class QuizQuestion {
   }
 
   bool matchesOpenResponse(String response) {
-    if (!isOpen) return false;
+    return acceptedAnswerIndexFor(response) != null;
+  }
+
+  int? acceptedAnswerIndexFor(String response) {
+    if (!isOpen) return null;
     final normalizedAttempt = _normalizeAnswer(response);
-    return acceptedAnswers.any(
-      (answer) => _normalizeAnswer(answer) == normalizedAttempt,
-    );
+    for (var i = 0; i < acceptedAnswers.length; i++) {
+      final candidate = _normalizeAnswer(acceptedAnswers[i]);
+      if (candidate == normalizedAttempt) {
+        return i;
+      }
+    }
+    return null;
   }
 
   factory QuizQuestion.fromMap(
@@ -635,6 +904,7 @@ class QuizQuestion {
     final questionText = (map['text'] ?? '').toString().trim();
     final type = _parseType(map['type']);
     final answersRaw = map['answers'];
+    final explanations = _parseExplanationList(map['explanations']);
     final collectedAnswers = <String>[];
     int? flaggedIndex;
 
@@ -673,6 +943,7 @@ class QuizQuestion {
         text: questionText.isEmpty ? 'Untitled question' : questionText,
         type: QuizQuestionType.open,
         acceptedAnswers: collectedAnswers,
+        explanations: explanations,
       );
     }
 
@@ -696,6 +967,7 @@ class QuizQuestion {
       text: questionText.isEmpty ? 'Untitled question' : questionText,
       type: QuizQuestionType.multipleChoice,
       answers: answers,
+      explanations: explanations,
     );
   }
 
@@ -767,6 +1039,26 @@ class QuizQuestion {
       return null;
     }
     return index;
+  }
+
+  static List<String> _parseExplanationList(Object? raw) {
+    if (raw is Iterable) {
+      final collected = <String>[];
+      for (final entry in raw) {
+        String? text;
+        if (entry is String) {
+          text = entry;
+        } else if (entry is YamlScalar) {
+          text = entry.value?.toString();
+        }
+        text = text?.trim();
+        if (text != null && text.isNotEmpty) {
+          collected.add(text);
+        }
+      }
+      return collected;
+    }
+    return const [];
   }
 }
 

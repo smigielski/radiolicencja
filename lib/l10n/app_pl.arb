@@ -84,6 +84,12 @@
   "quizAcceptedAnswersLabel": "Akceptowane odpowiedzi: {answers}",
   "quizWrongAnswerLabel": "To nie to.",
   "quizYourAnswerLabel": "Twoja odpowiedź",
+  "quizAutoAdvanceHint": "Przechodzę dalej za {seconds}s - stuknij, aby zatrzymać",
+  "@quizAutoAdvanceHint": {
+    "placeholders": {
+      "seconds": {}
+    }
+  },
   "quizLearningCompleteTitle": "Zakończono naukę!",
   "quizTestCompleteTitle": "Koniec quizu!",
   "quizLearningCompleteBody": "Opanowałeś wszystkie {total} pytania.",
